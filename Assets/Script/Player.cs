@@ -14,8 +14,6 @@ public enum Comport
 
 public class Player : MonoBehaviour
 {
-
-
     [Header("Movimiento")]
     [Tooltip("Velocidad caminar")]
     public float walkSpeed;

@@ -7,9 +7,11 @@ public class HeroHead : MonoBehaviour
 {
     private HeroBody hb;
     public Text txtClick;
+    public float distanceObjects = 5f;
     // Start is called before the first frame update
     void Start()
     {
+        txtClick.gameObject.SetActive(false);
         hb = transform.GetComponent<HeroBody>();
     }
 
@@ -54,23 +56,36 @@ public class HeroHead : MonoBehaviour
 
         }
 
-
-        if (Input.GetMouseButtonDown(0))
+        if (hb.actions == Comport.CARGANDO)
         {
-            if (hb.actions == Comport.CARGANDO)
+            if (Input.GetMouseButtonDown(0))
             {
+
                 hb.SoltarCaja();
+            }
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distanceObjects, Color.yellow);
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distanceObjects))
+            {
+                if (hit.transform.gameObject.layer == 10)
+                {
+                    txtClick.gameObject.SetActive(true);
+                }
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (hb.actions != Comport.CARGANDO)
+
+                    {
+                        hb.Activate(hit);
+                        txtClick.gameObject.SetActive(false);
+                    }
+                }
             }
             else
             {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.yellow);
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 10))
-                {
-
-                    txtClick.gameObject.SetActive(true);
-                    hb.Activate(hit);
-
-                }
+                txtClick.gameObject.SetActive(false);
             }
         }
 

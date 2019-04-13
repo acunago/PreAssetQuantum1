@@ -82,14 +82,12 @@ public class HeroBody : Player
         Debug.Log("Esto funciona");
         if (hit.transform.gameObject.layer == 10)
         {
-            txtClick.gameObject.SetActive(true);
             bxSript = hit.transform.GetComponent<BoxScript>();
             bxSript.Agarre();
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);
             Debug.Log("Did Hit");
             actions = Comport.CARGANDO;
         }
-
     }
 
     public void SoltarCaja()
@@ -99,7 +97,6 @@ public class HeroBody : Player
             bxSript.Soltar();
             actions = Comport.IDDLE;
         }
-
     }
 
     private void OnCollisionEnter(Collision collision)
