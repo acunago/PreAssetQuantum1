@@ -21,14 +21,17 @@ public enum Comport
 
 public class HeroBody : MonoBehaviour
 {
-
+    /// <summary>
+    /// Velocidad Caminando
+    /// </summary>
     public float walkSpeed ;
     public float runSpeed ;
-
+    public float rotationDegreePerSecond = 300f;
     public float turnSmoothTime = 0.2f;
     float turnSmoothVelocity;
 
     public float speedSmoothTime = 0.1f;
+    public float RotationVelocity = 1f;
     float speedSmoothVelocity;
     float currentSpeed;
 
@@ -41,6 +44,7 @@ public class HeroBody : MonoBehaviour
     public Vector3 inputDir;
     public float jumpForce = 5;
     private BoxScript bxSript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,7 +108,7 @@ public class HeroBody : MonoBehaviour
         inputDir = dir.normalized;
 
         bool running = Input.GetKey(KeyCode.LeftShift);
-        float targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.magnitude;
+        float targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.z;
         //currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
         currentSpeed = targetSpeed;
 
@@ -119,7 +123,16 @@ public class HeroBody : MonoBehaviour
 
         //    float animationSpeedPercent = ((running) ? 1 : .5f) * inputDir.magnitude;
         //}
-        transform.position += dir * currentSpeed * Time.deltaTime;
+
+
+        Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotationDegreePerSecond * (dir.x < 0f ? -1f : 1f), 0f), Mathf.Abs(dir.x * RotationVelocity));
+        Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
+        this.transform.rotation = (this.transform.rotation * deltaRotation);
+
+
+
+
+        transform.position += transform.forward * currentSpeed * Time.deltaTime;
         //transform.LookAt(target.transform);
         animator.SetFloat("speed", dir.magnitude);
 
