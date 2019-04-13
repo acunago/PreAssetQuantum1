@@ -21,29 +21,34 @@ public enum Comport
 
 public class HeroBody : MonoBehaviour
 {
-    /// <summary>
-    /// Velocidad Caminando
-    /// </summary>
+    [Header("Movimiento")]
+    [Tooltip("Velocidad caminar")]
     public float walkSpeed ;
+    [Tooltip("Velocidad Correr")]
     public float runSpeed ;
-    public float rotationDegreePerSecond = 300f;
-    public float turnSmoothTime = 0.2f;
-    float turnSmoothVelocity;
-
-    public float speedSmoothTime = 0.1f;
+    [Tooltip("Velocidad de Rotacion")]
     public float RotationVelocity = 1f;
-    float speedSmoothVelocity;
-    float currentSpeed;
+    [Tooltip("Fuerza de Salto")]
+    public float jumpForce = 5;
+    [Header("Control")]
 
-    Animator animator;
-    Transform cameraT;
     public transformations state = transformations.NORMAL;
     public Comport actions = Comport.IDDLE;
     public Rigidbody rb;
+    private float currentSpeed;
+
+    private Vector3 inputDir;
     private Vector3 initcale;
-    public Vector3 inputDir;
-    public float jumpForce = 5;
+
+
+
     private BoxScript bxSript;
+    private float rotationDegreePerSecond = 200f;
+
+    Animator animator;
+    Transform cameraT;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -109,31 +114,15 @@ public class HeroBody : MonoBehaviour
 
         bool running = Input.GetKey(KeyCode.LeftShift);
         float targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.z;
-        //currentSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, speedSmoothTime);
+
         currentSpeed = targetSpeed;
-
-        //if (inputDir != Vector3.zero && dir.z > 0)
-        //{
-        //float targetRotation = Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg + cameraT.eulerAngles.y;
-        //transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, turnSmoothTime);
-
-
-
-
-
-        //    float animationSpeedPercent = ((running) ? 1 : .5f) * inputDir.magnitude;
-        //}
-
-
+        
         Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotationDegreePerSecond * (dir.x < 0f ? -1f : 1f), 0f), Mathf.Abs(dir.x * RotationVelocity));
         Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
         this.transform.rotation = (this.transform.rotation * deltaRotation);
 
-
-
-
         transform.position += transform.forward * currentSpeed * Time.deltaTime;
-        //transform.LookAt(target.transform);
+
         animator.SetFloat("speed", dir.magnitude);
 
 
