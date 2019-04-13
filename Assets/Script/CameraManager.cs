@@ -72,7 +72,7 @@ public class CameraManager : MonoBehaviour
 
         posFinal = target.position - transform.forward * dstFromTarget;
         //CompensateForWalls(target.position, ref posFinal);
-        transform.position = Vector3.Lerp(transform.position, posFinal, Time.deltaTime * smooth);
+        transform.position = posFinal;
 
     }
 
