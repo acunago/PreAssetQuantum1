@@ -15,12 +15,11 @@ public class BoxScript : MonoBehaviour
     // Start is called before the first frame update
 
     public Transform hands;
-
-    public CajaState posCaja = CajaState.PISO;
+    public CajaState posCaja;
 
     void Start()
     {
- 
+        posCaja = CajaState.PISO;
     }
 
     // Update is called once per frame
@@ -36,12 +35,10 @@ public class BoxScript : MonoBehaviour
 
     public void Agarre()
     {
-
         posCaja = CajaState.AGARRADO;
     }
     public void Soltar ()
     {
-
         posCaja = CajaState.PISO;
     }
 }

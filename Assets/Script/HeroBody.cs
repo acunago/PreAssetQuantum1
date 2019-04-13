@@ -11,51 +11,20 @@ public enum transformations
 
 }
 
-public enum Comport
+public class HeroBody : Player
 {
-    IDDLE,
-    AIR,
-    CARGANDO
 
-}
-
-public class HeroBody : MonoBehaviour
-{
-    [Header("Movimiento")]
-    [Tooltip("Velocidad caminar")]
-    public float walkSpeed ;
-    [Tooltip("Velocidad Correr")]
-    public float runSpeed ;
-    [Tooltip("Velocidad de Rotacion")]
-    public float RotationVelocity = 1f;
-    [Tooltip("Fuerza de Salto")]
-    public float jumpForce = 5;
     [Header("Control")]
-
     public transformations state = transformations.NORMAL;
-    public Comport actions = Comport.IDDLE;
-    public Rigidbody rb;
-    private float currentSpeed;
 
-    private Vector3 inputDir;
+
     private Vector3 initcale;
-
-
-
     private BoxScript bxSript;
-    private float rotationDegreePerSecond = 200f;
-
-    Animator animator;
-    Transform cameraT;
-
 
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = transform.GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
-        cameraT = Camera.main.transform;
         initcale = transform.localScale;
     }
 
@@ -65,6 +34,7 @@ public class HeroBody : MonoBehaviour
 
     }
 
+    #region transformations
     public void Big()
     {
         if (state != transformations.GIGANT)
@@ -74,7 +44,6 @@ public class HeroBody : MonoBehaviour
             state = transformations.GIGANT;
         }
     }
-
     public void Small()
     {
         if (state != transformations.SMALL)
@@ -85,7 +54,6 @@ public class HeroBody : MonoBehaviour
 
         }
     }
-
     public void Normal()
     {
         if(state != transformations.NORMAL) {
@@ -94,9 +62,9 @@ public class HeroBody : MonoBehaviour
         }
 
     }
-    
+    #endregion
 
-    public void Jump()
+    public override void Jump()
     {
         if(state == transformations.GIGANT) return;
         if(actions == Comport.AIR) return;
@@ -107,26 +75,6 @@ public class HeroBody : MonoBehaviour
         actions = Comport.AIR;
     }
 
-    public void Move(Vector3 dir) {
-
-
-        inputDir = dir.normalized;
-
-        bool running = Input.GetKey(KeyCode.LeftShift);
-        float targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.z;
-
-        currentSpeed = targetSpeed;
-        
-        Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotationDegreePerSecond * (dir.x < 0f ? -1f : 1f), 0f), Mathf.Abs(dir.x * RotationVelocity));
-        Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
-        this.transform.rotation = (this.transform.rotation * deltaRotation);
-
-        transform.position += transform.forward * currentSpeed * Time.deltaTime;
-
-        animator.SetFloat("speed", dir.magnitude);
-
-
-    }
     public void Activate()
     {
 
@@ -150,8 +98,6 @@ public class HeroBody : MonoBehaviour
                 actions = Comport.CARGANDO;
             }
         }
-
-
         //}
     }
 

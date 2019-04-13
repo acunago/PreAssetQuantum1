@@ -84,58 +84,6 @@ public class CameraManager : MonoBehaviour
             //toTarget =  wallHit.point;
             toTarget = wallHit.point ;
         }
-        //else
-        //{
-        //    distance = maxDistance;
-        //}
-
-        //toTarget = dollyDir * distance;
-
-        //toTarget = Vector3.Lerp(transform.localPosition, toTarget * distance, Time.deltaTime * smooth);
-        // Compensate for geometry intersecting with near clip plane
-        //Vector3 camPosCache = transform.position;
-        //transform.position = toTarget;
-
-        //viewFrustum = DebugDraw.CalculateViewFrustum(GetComponent<Camera>(), ref nearClipDimensions);
-        //for (int i = 0; i < (viewFrustum.Length / 2); i++)
-        //{
-        //    RaycastHit cWHit = new RaycastHit();
-        //    RaycastHit cCWHit = new RaycastHit();
-
-        //    // Cast lines in both directions around near clipping plane bounds
-        //    while (Physics.Linecast(viewFrustum[i], viewFrustum[(i + 1) % (viewFrustum.Length / 2)], out cWHit) ||
-        //           Physics.Linecast(viewFrustum[(i + 1) % (viewFrustum.Length / 2)], viewFrustum[i], out cCWHit))
-        //    {
-        //        Vector3 normal = wallHit.normal;
-        //        if (wallHit.normal == Vector3.zero)
-        //        {
-        //            // If there's no available wallHit, use normal of geometry intersected by LineCasts instead
-        //            if (cWHit.normal == Vector3.zero)
-        //            {
-        //                if (cCWHit.normal == Vector3.zero)
-        //                {
-        //                    Debug.LogError("No available geometry normal from near clip plane LineCasts. Something must be amuck.", this);
-        //                }
-        //                else
-        //                {
-        //                    normal = cCWHit.normal;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                normal = cWHit.normal;
-        //            }
-        //        }
-
-        //        toTarget += (compensationOffset * normal);
-        //       /* transform.position += toTarget*/;
-
-        //        // Recalculate positions of near clip plane
-
-        //    }
-        //}
-
-        //transform.position = camPosCache;
 
     }
 }
