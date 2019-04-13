@@ -61,7 +61,6 @@ public class CameraManager : MonoBehaviour
 
         currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
         transform.eulerAngles = currentRotation;
-        
 
         posFinal = target.position - transform.forward * dstFromTarget;
         //CompensateForWalls(target.position, ref posFinal);

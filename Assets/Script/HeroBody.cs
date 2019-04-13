@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum transformations
 {
@@ -21,6 +22,7 @@ public class HeroBody : Player
     private Vector3 initcale;
     private BoxScript bxSript;
 
+    public Text txtClick;
 
     // Start is called before the first frame update
     void Start()
@@ -75,30 +77,29 @@ public class HeroBody : Player
         actions = Comport.AIR;
     }
 
-    public void Activate()
+    public void Activate(RaycastHit hit)
     {
+        Debug.Log("Esto funciona");
+        if (hit.transform.gameObject.layer == 10)
+        {
+            txtClick.gameObject.SetActive(true);
+            bxSript = hit.transform.GetComponent<BoxScript>();
+            bxSript.Agarre();
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);
+            Debug.Log("Did Hit");
+            actions = Comport.CARGANDO;
+        }
 
-        RaycastHit hit;
-        //if (state == transformations.GIGANT) {
+    }
+
+    public void SoltarCaja()
+    {
         if (actions == Comport.CARGANDO)
         {
             bxSript.Soltar();
             actions = Comport.IDDLE;
         }
 
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.yellow);
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 10))
-        {
-            if (hit.transform.gameObject.layer == 10)
-            {
-                bxSript = hit.transform.GetComponent<BoxScript>();
-                bxSript.Agarre();
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);
-                Debug.Log("Did Hit");
-                actions = Comport.CARGANDO;
-            }
-        }
-        //}
     }
 
     private void OnCollisionEnter(Collision collision)

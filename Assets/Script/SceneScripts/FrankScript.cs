@@ -2,22 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+enum FrankState
+{
+    ACTIVE,
+    DISABLED
+}
+
 public class FrankScript : MonoBehaviour
 {
-    enum FrankState
-    {
-        ACTIVE,
-        START
-    }
+
+    private FrankState state;
     // Start is called before the first frame update
     void Start()
     {
-        
+        state = FrankState.DISABLED;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void SetActive()
+    {
+        state = FrankState.ACTIVE;
+
+    }
+    public void SetDisabled()
+    {
+        state = FrankState.DISABLED;
+
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeroHead : MonoBehaviour
 {
     private HeroBody hb;
+    public Text txtClick;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,14 +23,15 @@ public class HeroHead : MonoBehaviour
 
         left = Input.GetAxis("Horizontal");
         up = Input.GetAxis("Vertical");
-        vtr3 = new Vector3(left,0, up);
+        vtr3 = new Vector3(left, 0, up);
         hb.Move(vtr3);
         PressKey();
 
     }
 
-    private void PressKey() {
-
+    private void PressKey()
+    {
+        RaycastHit hit;
         if (Input.GetKeyDown(KeyCode.Space))
 
         {
@@ -50,10 +53,25 @@ public class HeroHead : MonoBehaviour
             hb.Normal();
 
         }
+
+
         if (Input.GetMouseButtonDown(0))
         {
-            hb.Activate();
+            if (hb.actions == Comport.CARGANDO)
+            {
+                hb.SoltarCaja();
+            }
+            else
+            {
+                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.yellow);
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 10))
+                {
 
+                    txtClick.gameObject.SetActive(true);
+                    hb.Activate(hit);
+
+                }
+            }
         }
 
     }

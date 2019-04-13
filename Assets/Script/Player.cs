@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     [Tooltip("Fuerza de Salto")]
     public float jumpForce = 5;
 
-    public Comport actions = Comport.IDDLE;
+    public Comport actions;
 
     public Rigidbody rb;
     public float currentSpeed;
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
         rb = transform.GetComponent<Rigidbody>();
         animator = transform.GetComponent<Animator>();
         cameraT = Camera.main.transform;
-
+        actions = Comport.IDDLE;
     }
 
     // Update is called once per frame
