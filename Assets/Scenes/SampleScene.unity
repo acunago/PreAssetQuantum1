@@ -337,7 +337,6 @@ MonoBehaviour:
   animator: {fileID: 0}
   inputDir: {x: 0, y: 0, z: 0}
   state: 1
-  txtClick: {fileID: 1682407828}
 --- !u!65 &224037967
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -494,9 +493,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dstFromTarget: 2
-  mouseSensitivity: 10
-  rotationSmoothTime: 0.1
-  pitchMinMax: {x: -40, y: 85}
+  mouseSensitivity: 8
+  rotationSmoothTime: 0.2
+  pitchMinMax: {x: -40, y: 70}
   lockCursor: 1
   target: {fileID: 498811213}
   camVar: 0
