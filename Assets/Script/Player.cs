@@ -72,13 +72,15 @@ public class Player : MonoBehaviour
 
         currentSpeed = targetSpeed;
 
+        Debug.Log("currentSpeed" + currentSpeed);
+
         Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotationDegreePerSecond * (dir.x < 0f ? -1f : 1f), 0f), Mathf.Abs(dir.x * RotationVelocity));
         Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
         transform.rotation = (transform.rotation * deltaRotation);
 
         transform.position += transform.forward * currentSpeed * Time.deltaTime;
 
-        animator.SetFloat("speed", dir.z);
+        animator.SetFloat("speed", currentSpeed);
 
 
     }

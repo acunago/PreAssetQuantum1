@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum DoorState
+public enum DoorState
 {
     ACTIVE,
     DISABLED
@@ -11,27 +11,29 @@ enum DoorState
 public class DoorScript : MonoBehaviour
 {
     public GameObject objetoManager;
-    private DoorState state;
+    public DoorState state;
+    private Quaternion rotation;
+    Vector3 auxV3;
     // Start is called before the first frame update
     void Start()
     {
         state = DoorState.DISABLED;
+        auxV3 = new Vector3(0, 90, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
     public void SetActive()
     {
         state = DoorState.ACTIVE;
-
+        transform.Rotate(auxV3);
     }
     public void SetDisabled()
     {
         state = DoorState.DISABLED;
-
+        transform.Rotate(-auxV3);
     }
 }

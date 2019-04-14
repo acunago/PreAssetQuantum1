@@ -4,35 +4,41 @@ using UnityEngine;
 
 public class PlatformScript : MonoBehaviour
 {
+    public int objects;
+    public float objectsToChange = 1;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (objects >= objectsToChange)
+        {
+            Renderer rend = GetComponent<Renderer>();
+            //rend.material.shader = Shader.Find("_Color");
+            rend.material.color = Color.blue;
+
+        }
+        else
+        {
+
+            Renderer rend = GetComponent<Renderer>();
+            //rend.material.shader = Shader.Find("_Color");
+            rend.material.color = Color.green;
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 10)
-        {
-            Renderer rend = GetComponent<Renderer>();
-            rend.material.shader = Shader.Find("_Color");
-            rend.material.SetColor("_Color", Color.blue);
 
-        }
+        objects = objects + 1;
+
     }
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.gameObject.layer == 10)
-        {
-            Renderer rend = GetComponent<Renderer>();
-            rend.material.shader = Shader.Find("_Color");
-            rend.material.SetColor("_Color", Color.green);
 
-        }
+        objects = objects - 1;
     }
 }

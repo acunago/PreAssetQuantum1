@@ -26,12 +26,10 @@ public class FrankScript : MonoBehaviour
 
     public void SetActive()
     {
-        state = FrankState.ACTIVE;
-
+        if (state == FrankState.ACTIVE)
+            state = FrankState.ACTIVE;
+        else
+            state = FrankState.DISABLED;
     }
-    public void SetDisabled()
-    {
-        state = FrankState.DISABLED;
 
-    }
 }

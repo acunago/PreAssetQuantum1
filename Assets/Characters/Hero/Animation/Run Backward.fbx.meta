@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b189fa7cdf45ca4d9545f6f73c3516a
+guid: 88519437adf9e5f49a16076f2a16d06d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -147,7 +147,7 @@ ModelImporter:
     2100002: Alpha_Joints_MAT
     4300000: Alpha_Surface
     4300002: Alpha_Joints
-    7400000: Running
+    7400000: mixamo.com
     9500000: //RootNode
     13700000: Alpha_Joints
     13700002: Alpha_Surface
@@ -180,7 +180,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Running
+      name: mixamo.com
       takeName: mixamo.com
       firstFrame: 0
       lastFrame: 19

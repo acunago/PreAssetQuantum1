@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CameraType
+{
+
+THIRD,
+FIRST
+
+}
+
 public class CameraManager : MonoBehaviour
 {
 
@@ -22,6 +30,8 @@ public class CameraManager : MonoBehaviour
     [Tooltip("Objetivo a seguir (CameraFollow)")]
     public Transform target;
 
+    public CameraType camVar = CameraType.THIRD;
+
     Vector3 rotationSmoothVelocity;
     Vector3 currentRotation;
 
@@ -41,6 +51,9 @@ public class CameraManager : MonoBehaviour
     public float compensationOffset = 0.2f;
     private Vector3[] viewFrustum;
     private Vector3 nearClipDimensions = Vector3.zero; // width, height, radius
+
+    internal CameraType CamVar { get => camVar; set => camVar = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +67,9 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        CameraFollow();
+        if (CamVar == CameraType.THIRD) {
+            CameraFollow();
+        }
     }
 
 

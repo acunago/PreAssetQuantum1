@@ -20,6 +20,7 @@ public class BoxScript : MonoBehaviour
     void Start()
     {
         posCaja = CajaState.PISO;
+        transform.gameObject.layer = 10;
     }
 
     // Update is called once per frame

@@ -69,9 +69,13 @@ public class HeroHead : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distanceObjects, Color.yellow);
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distanceObjects))
             {
-                if (hit.transform.gameObject.layer == 10)
+                if (hit.transform.gameObject.layer != 9)
                 {
+                    if (hit.transform.gameObject.layer == 10 && hb.state != transformations.GIGANT) {
+                        txtClick.gameObject.SetActive(false);
+                    } else { 
                     txtClick.gameObject.SetActive(true);
+                    }
                 }
                 if (Input.GetMouseButtonDown(0))
                 {
