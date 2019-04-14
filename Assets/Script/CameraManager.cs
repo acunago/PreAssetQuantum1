@@ -6,6 +6,7 @@ public enum CameraType
 {
 
 THIRD,
+GEARS,
 FIRST
 
 }
@@ -73,6 +74,21 @@ public class CameraManager : MonoBehaviour
     }
 
 
+    private void CameraGear()
+    {
+        //Vector3 posFinal = Vector3.zero;
+        //yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
+        //pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+        //pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
+
+        //currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
+        //transform.eulerAngles = currentRotation;
+
+        //    Vector2 inputDir = target.parent.transform.position.normalized;
+        //    float targetRotation = Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg + transform.eulerAngles.y;
+        //    target.parent.transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, rotationSmoothTime);
+    }
+
     private void CameraFollow()
     {
 
@@ -117,7 +133,6 @@ public class CameraManager : MonoBehaviour
 
             Debug.DrawLine(fromObject, (fromObject.magnitude - wallHit.point.magnitude) * toTarget.normalized, Color.blue);
             distance = Mathf.Clamp(wallHit.distance, 0, wallHit.distance);
-
             vAux = (fromObject.magnitude - distance + 0.8f) * wallHit.point.normalized;
 
             toTarget = vAux;

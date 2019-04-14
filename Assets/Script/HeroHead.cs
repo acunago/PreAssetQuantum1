@@ -28,14 +28,13 @@ public class HeroHead : MonoBehaviour
         vtr3 = new Vector3(left, 0, up);
         hb.Move(vtr3);
         PressKey();
-
+        CheckVision();
     }
 
     private void PressKey()
     {
         RaycastHit hit;
         if (Input.GetKeyDown(KeyCode.Space))
-
         {
             hb.Jump();
 
@@ -43,54 +42,56 @@ public class HeroHead : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             hb.Big();
-
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             hb.Small();
-
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             hb.Normal();
-
         }
 
-        if (hb.actions == Comport.CARGANDO)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (hb.actions == Comport.CARGANDO)
             {
-
                 hb.SoltarCaja();
-            }
-        }
-        else
-        {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distanceObjects, Color.yellow);
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distanceObjects))
-            {
-                if (hit.transform.gameObject.layer != 9)
-                {
-                    if (hit.transform.gameObject.layer == 10 && hb.state != transformations.GIGANT) {
-                        txtClick.gameObject.SetActive(false);
-                    } else { 
-                    txtClick.gameObject.SetActive(true);
-                    }
-                }
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if (hb.actions != Comport.CARGANDO)
-
-                    {
-                        hb.Activate(hit);
-                        txtClick.gameObject.SetActive(false);
-                    }
-                }
             }
             else
             {
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distanceObjects))
+                {
+                    hb.Activate(hit);
+                }
+            }
+        }
+    }
+    public void CheckVision()
+    {
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distanceObjects, Color.yellow);
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distanceObjects))
+        {
+            if (hit.transform.gameObject.layer != 9)
+            {
+                if (hit.transform.gameObject.layer == 10 && hb.state != transformations.GIGANT)
+                {
+                    txtClick.gameObject.SetActive(false);
+                }
+                else
+                {
+                    txtClick.gameObject.SetActive(true);
+                }
+            }
+            else {
                 txtClick.gameObject.SetActive(false);
             }
+            Debug.Log(hit.transform.gameObject.layer);
+        }
+        else
+        {
+            txtClick.gameObject.SetActive(false);
         }
 
     }

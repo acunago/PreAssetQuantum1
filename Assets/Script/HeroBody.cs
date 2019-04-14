@@ -23,7 +23,7 @@ public class HeroBody : Player
     private BoxScript bxSript;
     private LeverScript lvrSript;
 
-    public Text txtClick;
+
     private float auxWalkSpeed;
     private float auxRunSpeed;
 
@@ -95,14 +95,14 @@ public class HeroBody : Player
 
     public void Activate(RaycastHit hit)
     {
-        Debug.Log("Esto funciona");
+        
         if (hit.transform.gameObject.layer == 10)
         {
             if(state!= transformations.GIGANT) { return; }
             bxSript = hit.transform.GetComponent<BoxScript>();
             bxSript.Agarre();
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);
-            Debug.Log("Did Hit");
+            
             actions = Comport.CARGANDO;
             animator.SetBool("Box", true);
         }
@@ -111,7 +111,7 @@ public class HeroBody : Player
             lvrSript = hit.transform.GetComponent<LeverScript>();
             lvrSript.SetActive();
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.cyan);
-            Debug.Log("Did Hit lever");
+            
 
         }
     }

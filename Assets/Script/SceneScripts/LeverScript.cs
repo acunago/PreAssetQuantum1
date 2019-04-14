@@ -43,7 +43,6 @@ public class LeverScript : MonoBehaviour
             state = LeverState.ACTIVE;
             Renderer rend = GetComponent<Renderer>();
             rend.material.color = Color.red;
-            Debug.Log("Cambiamos");
 
 
             doorCall.SetActive();
