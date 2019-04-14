@@ -78,24 +78,35 @@ public class CameraManager : MonoBehaviour
 
         //}
 
-        
-        posFinal = target.position - transform.forward * dstFromTarget;
-        //CompensateForWalls(target.position, ref posFinal);
-        transform.position = posFinal;
 
+        posFinal = target.position - transform.forward * dstFromTarget;
+        CompensateForWalls(target.position, ref posFinal);
+
+        for (float i = 0; i < 1; i += 0.1f)
+        {
+            transform.position = Vector3.Lerp(transform.position, posFinal, i );
+        }
     }
     private void CompensateForWalls(Vector3 fromObject, ref Vector3 toTarget)
     {
         // Compensate for walls between camera
         float distance;
-        dollyDir = toTarget.normalized;
+        Vector3 vAux = Vector3.zero;
         distance = toTarget.magnitude;
         RaycastHit wallHit = new RaycastHit();
+        Debug.DrawRay(fromObject, toTarget, Color.red);
         if (Physics.Linecast(fromObject, toTarget, out wallHit))
         {
-            Debug.DrawRay(wallHit.point, wallHit.normal, Color.red);
+            //Debug.DrawRay(wallHit.point, wallHit.normal, Color.red);
             //toTarget =  wallHit.point;
-            toTarget = wallHit.point ;
+
+            Debug.DrawLine(fromObject, (fromObject.magnitude - wallHit.point.magnitude) * toTarget.normalized, Color.blue);
+            distance = Mathf.Clamp(wallHit.distance, 0, wallHit.distance);
+
+            vAux = (fromObject.magnitude - distance + 0.8f) * wallHit.point.normalized;
+
+            toTarget = vAux;
+
         }
 
     }
