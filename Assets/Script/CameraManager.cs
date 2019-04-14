@@ -35,7 +35,7 @@ public class CameraManager : MonoBehaviour
     Vector3 dollyDir;
     public Vector3 dollyDirAdjusted;
 
-
+    private float turnSmoothVelocity;
 
 
     public float compensationOffset = 0.2f;
@@ -54,6 +54,13 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        CameraFollow();
+    }
+
+
+    private void CameraFollow()
+    {
+
         Vector3 posFinal = Vector3.zero;
         yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
         pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
@@ -62,18 +69,21 @@ public class CameraManager : MonoBehaviour
         currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
         transform.eulerAngles = currentRotation;
 
+        //if (currentRotation != Vector3.zero) {
 
-        //target.parent.transform.eulerAngles = currentRotation;
 
+        //    Vector2 inputDir = target.parent.transform.position.normalized;
+        //    float targetRotation = Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg + transform.eulerAngles.y;
+        //    target.parent.transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, rotationSmoothTime);
 
+        //}
+
+        
         posFinal = target.position - transform.forward * dstFromTarget;
         //CompensateForWalls(target.position, ref posFinal);
         transform.position = posFinal;
 
     }
-
-
-
     private void CompensateForWalls(Vector3 fromObject, ref Vector3 toTarget)
     {
         // Compensate for walls between camera
