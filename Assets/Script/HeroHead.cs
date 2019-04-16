@@ -8,6 +8,8 @@ public class HeroHead : MonoBehaviour
     private HeroBody hb;
     public Text txtClick;
     public float distanceObjects = 5f;
+    public Camera cam;
+    public bool camChange = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,15 @@ public class HeroHead : MonoBehaviour
         left = Input.GetAxis("Horizontal");
         up = Input.GetAxis("Vertical");
         vtr3 = new Vector3(left, 0, up);
-        hb.Move(vtr3);
+
+        if (camChange)
+        {
+            hb.Move(vtr3, cam.transform);
+        }
+        else
+        {
+            hb.Move(vtr3);
+        }
         PressKey();
         CheckVision();
     }

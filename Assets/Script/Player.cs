@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     public Rigidbody rb;
     public float currentSpeed;
 
-
+    public float desiredRotationSpeed = 0.1f;
 
     public float rotationDegreePerSecond = 200f;
 
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     public Animator animator;
     Transform cameraT;
     public Vector3 inputDir;
-
+    public Vector3 desiredMoveDirection;
 
     // Start is called before the first frame update
     void Awake()
@@ -85,6 +85,46 @@ public class Player : MonoBehaviour
 
     }
 
+    public virtual void Move(Vector3 dir, Transform cam)
+    {
+        float targetSpeed = 0f;
+        inputDir = dir.normalized;
+
+        bool running = Input.GetKey(KeyCode.LeftShift);
+
+        Vector3 dirCamForward = new Vector3(cam.forward.x,0, cam.forward.z);
+        Vector3 dirCamRigth = new Vector3(cam.right.x, 0, cam.right.z); ;
+
+
+
+
+        Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotationDegreePerSecond * (dir.x < 0f ? -1f : 1f), 0f), Mathf.Abs(dir.x * RotationVelocity));
+        Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
+
+        if(dir.normalized.z == 1)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dirCamForward * dir.normalized.z), desiredRotationSpeed);
+              targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.z;
+
+        }
+        else
+        {
+            if (dir.normalized.x != 0)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dirCamRigth * dir.normalized.x), desiredRotationSpeed);
+                targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.x;
+            }
+        }
+
+        currentSpeed = Mathf.Abs(targetSpeed);
+        transform.position += transform.forward * currentSpeed * Time.deltaTime;
+
+
+
+        animator.SetFloat("speed", currentSpeed);
+
+
+    }
     #endregion
     private void OnCollisionEnter(Collision collision)
     {
