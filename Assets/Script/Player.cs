@@ -93,7 +93,8 @@ public class Player : MonoBehaviour
         bool running = Input.GetKey(KeyCode.LeftShift);
 
         Vector3 dirCamForward = new Vector3(cam.forward.x,0, cam.forward.z);
-        Vector3 dirCamRigth = new Vector3(cam.right.x, 0, cam.right.z); ;
+        Vector3 dirCamRigth = new Vector3(cam.right.x, 0, cam.right.z);
+        Vector3 sumNorm = Vector3.zero;
 
 
 
@@ -101,21 +102,23 @@ public class Player : MonoBehaviour
         Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotationDegreePerSecond * (dir.x < 0f ? -1f : 1f), 0f), Mathf.Abs(dir.x * RotationVelocity));
         Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
 
-        if(dir.normalized.z == 1)
+        if(dir.normalized.z != 0)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dirCamForward * dir.normalized.z), desiredRotationSpeed);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dirCamForward.normalized * dir.normalized.z), desiredRotationSpeed);
               targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.z;
-
+            sumNorm += dirCamForward.normalized * dir.normalized.z;
         }
-        else
+        //else
+        //{
+        if (dir.normalized.x != 0)
         {
-            if (dir.normalized.x != 0)
-            {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dirCamRigth * dir.normalized.x), desiredRotationSpeed);
-                targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.x;
-            }
+            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dirCamRigth.normalized * dir.normalized.x), desiredRotationSpeed);
+            sumNorm += dirCamRigth.normalized * dir.normalized.x;
+            targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.x;
         }
+        //}
 
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(sumNorm), desiredRotationSpeed);
         currentSpeed = Mathf.Abs(targetSpeed);
         transform.position += transform.forward * currentSpeed * Time.deltaTime;
 
