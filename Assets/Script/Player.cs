@@ -117,8 +117,10 @@ public class Player : MonoBehaviour
             targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.x;
         }
         //}
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(sumNorm), desiredRotationSpeed);
+        if (dir != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(sumNorm), desiredRotationSpeed);
+        }
         currentSpeed = Mathf.Abs(targetSpeed);
         transform.position += transform.forward * currentSpeed * Time.deltaTime;
 
