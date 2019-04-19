@@ -29,13 +29,14 @@ public class HeroHead : MonoBehaviour
         up = Input.GetAxis("Vertical");
         vtr3 = new Vector3(left, 0, up);
 
-        if (camChange)
+        if (CameraManager.instance.camVar == CameraType.THIRD)
         {
             hb.Move(vtr3, cam.transform);
         }
         else
         {
-            hb.Move(vtr3);
+            
+            hb.Move(vtr3,cam);
         }
         PressKey();
         CheckVision();
@@ -75,6 +76,17 @@ public class HeroHead : MonoBehaviour
                     hb.Activate(hit);
                 }
             }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            
+            CameraManager.instance.camVar = CameraType.FIRST;
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            CameraManager.instance.camVar = CameraType.THIRD;
         }
     }
     public void CheckVision()

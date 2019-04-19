@@ -6,35 +6,48 @@ public enum CameraType
 {
 
 THIRD,
-GEARS,
 FIRST
 
 }
 
 public class CameraManager : MonoBehaviour
 {
+    public static CameraManager instance;
 
     [Header("Parametros Modificables")]
+
     [Tooltip("Distancia en z del personaje")]
     public float dstFromTarget = 2;
+    [Tooltip("Distancia en z del personaje primeraPersona")]
+    public float dstFromTargetFirst = 2;
+
     [Tooltip("Sensibilidad del mouse")]
     public float mouseSensitivity = 10;
+    [Tooltip("Sensibilidad del mouse PP")]
+    public float mouseSensitivityPP = 0.1f;
     [Tooltip("Suavisado al mover el mouse")]
     public float rotationSmoothTime = .1f;
     [Tooltip("Hasta donde baja y sube la camara")]
     public Vector2 pitchMinMax = new Vector2(-40, 85);
+    [Tooltip("Hasta donde baja y sube la camara pp")]
+    public Vector2 pitchMinMaxPP = new Vector2(-20, 65);
 
     [Tooltip("Bloquear mouse")]
-    public bool lockCursor;
+    public bool lockCursor = true;
 
     [Header("Parametros Fijos")]
     [Tooltip("Objetivo a seguir (CameraFollow)")]
     public Transform target;
+    [Tooltip("Objetivo a seguir primeraPersona (CameraFollow)")]
+    public Transform targetPrimera;
 
     public CameraType camVar = CameraType.THIRD;
 
     Vector3 rotationSmoothVelocity;
     Vector3 currentRotation;
+
+    public Camera cam;
+    public Camera camPP;
 
     private float yaw;
     private float pitch;
@@ -53,7 +66,23 @@ public class CameraManager : MonoBehaviour
     private Vector3[] viewFrustum;
     private Vector3 nearClipDimensions = Vector3.zero; // width, height, radius
 
+    private Vector3 camInit;
+    private Vector3 camInitPP;
+
     internal CameraType CamVar { get => camVar; set => camVar = value; }
+    private bool cameraFirst;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            GameObject.Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -63,30 +92,66 @@ public class CameraManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if (CamVar == CameraType.THIRD) {
+        if (CamVar == CameraType.THIRD)
+        {
+            cam.enabled = true;
+            camPP.enabled = false;
+
             CameraFollow();
+            cameraFirst = true;
+
+        }
+        if (CamVar == CameraType.FIRST)
+        {
+            cam.enabled = false;
+            camPP.enabled = true;
+
+            if (cameraFirst)
+            {
+                ResetCameraPP();
+                cameraFirst = false;
+            }
+            CameraFirst();
         }
     }
 
 
-    private void CameraGear()
+    public void ResetCameraPP()
     {
-        //Vector3 posFinal = Vector3.zero;
-        //yaw += Input.GetAxis("Mouse X") * mouseSensitivity;
-        //pitch -= Input.GetAxis("Mouse Y") * mouseSensitivity;
-        //pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
+        //yaw = 0;
+        //pitch = 0;
+        Vector3 posFinal = Vector3.zero;
+        camPP.transform.LookAt(targetPrimera);
 
-        //currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
-        //transform.eulerAngles = currentRotation;
+        posFinal = targetPrimera.position - targetPrimera.forward * dstFromTargetFirst;
+        camPP.transform.position = posFinal;
+        camPP.transform.forward = targetPrimera.parent.transform.forward;
 
-        //    Vector2 inputDir = target.parent.transform.position.normalized;
-        //    float targetRotation = Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg + transform.eulerAngles.y;
-        //    target.parent.transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, rotationSmoothTime);
+
+
+    }
+
+    private void CameraFirst()
+    {
+        Vector3 posFinal = Vector3.zero;
+        yaw += Input.GetAxis("Mouse X") * mouseSensitivityPP;
+        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivityPP;
+        pitch = Mathf.Clamp(pitch, pitchMinMaxPP.x, pitchMinMaxPP.y);
+
+        currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
+        camPP.transform.eulerAngles = currentRotation;
+
+        posFinal = targetPrimera.position - camPP.transform.forward * dstFromTargetFirst;
+        for (float i = 0; i < 1; i += 0.1f)
+        {
+            transform.position = Vector3.Lerp(camPP.transform.position, posFinal, i);
+        }
     }
 
     private void CameraFollow()
@@ -98,24 +163,15 @@ public class CameraManager : MonoBehaviour
         pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
 
         currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
-        transform.eulerAngles = currentRotation;
-
-        //if (currentRotation != Vector3.zero) {
+        cam.transform.eulerAngles = currentRotation;
 
 
-        //    Vector2 inputDir = target.parent.transform.position.normalized;
-        //    float targetRotation = Mathf.Atan2(inputDir.x, inputDir.y) * Mathf.Rad2Deg + transform.eulerAngles.y;
-        //    target.parent.transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVelocity, rotationSmoothTime);
-
-        //}
-
-
-        posFinal = target.position - transform.forward * dstFromTarget;
+        posFinal = target.position - cam.transform.forward * dstFromTarget;
         CompensateForWalls(target.position, ref posFinal);
 
         for (float i = 0; i < 1; i += 0.1f)
         {
-            transform.position = Vector3.Lerp(transform.position, posFinal, i );
+            cam.transform.position = Vector3.Lerp(cam.transform.position, posFinal, i );
         }
     }
     private void CompensateForWalls(Vector3 fromObject, ref Vector3 toTarget)

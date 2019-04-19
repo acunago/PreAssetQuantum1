@@ -85,6 +85,18 @@ public class Player : MonoBehaviour
 
     }
 
+    public virtual void Move(Vector3 dir, Camera cam)
+    {
+        //inputDir = dir.normalized;
+
+        //bool running = Input.GetKey(KeyCode.LeftShift);
+        //float targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.z;
+        //Vector3 dirCamForward = new Vector3(cam.transform.forward.x, 0, cam.transform.forward.z);
+
+        //currentSpeed = targetSpeed;
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dirCamForward), desiredRotationSpeed);
+        //transform.position += transform.forward * currentSpeed * Time.deltaTime;
+    }
     public virtual void Move(Vector3 dir, Transform cam)
     {
         float targetSpeed = 0f;
@@ -104,19 +116,18 @@ public class Player : MonoBehaviour
 
         if(dir.normalized.z != 0)
         {
-            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dirCamForward.normalized * dir.normalized.z), desiredRotationSpeed);
+            
               targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.z;
             sumNorm += dirCamForward.normalized * dir.normalized.z;
         }
-        //else
-        //{
+
         if (dir.normalized.x != 0)
         {
-            //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(dirCamRigth.normalized * dir.normalized.x), desiredRotationSpeed);
+           
             sumNorm += dirCamRigth.normalized * dir.normalized.x;
             targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.x;
         }
-        //}
+
         if (dir != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(sumNorm), desiredRotationSpeed);
