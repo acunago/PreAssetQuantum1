@@ -1007,7 +1007,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 498811212}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.69, z: 0.047}
+  m_LocalPosition: {x: 0.012, y: 1.69, z: 0.047}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224037963}
@@ -1580,14 +1580,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d3aa5dc16f0ffa4f8823b83b0c39512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dstFromTarget: 2
+  dstFromTarget: 3.3
   dstFromTargetFirst: 2
   mouseSensitivity: 10
   mouseSensitivityPP: 0.1
   rotationSmoothTime: 0.1
-  pitchMinMax: {x: -40, y: 85}
+  pitchMinMax: {x: -30, y: 75}
   pitchMinMaxPP: {x: -20, y: 65}
-  lockCursor: 0
+  lockCursor: 1
   target: {fileID: 498811213}
   targetPrimera: {fileID: 9319655}
   camVar: 0
