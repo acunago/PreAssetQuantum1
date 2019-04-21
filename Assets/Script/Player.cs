@@ -56,8 +56,6 @@ public class Player : MonoBehaviour
     {
 
         if (actions == Comport.AIR) return;
-        if (actions == Comport.CARGANDO) return;
-
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         actions = Comport.AIR;

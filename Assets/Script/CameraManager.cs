@@ -14,43 +14,65 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager instance;
 
-    [Header("Parametros Modificables")]
+    [Header("Parametros Modificables Mediano")]
 
     [Tooltip("Distancia en z del personaje")]
     public float dstFromTarget = 2;
-    [Tooltip("Distancia en z del personaje primeraPersona")]
-    public float dstFromTargetFirst = 2;
-
     [Tooltip("Sensibilidad del mouse")]
     public float mouseSensitivity = 10;
-    [Tooltip("Sensibilidad del mouse PP")]
-    public float mouseSensitivityPP = 0.1f;
     [Tooltip("Suavisado al mover el mouse")]
     public float rotationSmoothTime = .1f;
     [Tooltip("Hasta donde baja y sube la camara")]
     public Vector2 pitchMinMax = new Vector2(-40, 85);
-    [Tooltip("Hasta donde baja y sube la camara pp")]
-    public Vector2 pitchMinMaxPP = new Vector2(-20, 65);
+    [Tooltip("Objetivo a seguir (CameraFollow)")]
+    public Transform target;
+
+    [Header("Parametros Modificables Pequeño")]
+
+    [Tooltip("Distancia en z del personaje")]
+    public float dstFromTargetPequeño = 2;
+    [Tooltip("Sensibilidad del mouse")]
+    public float mouseSensitivityPequeño = 10;
+    [Tooltip("Suavisado al mover el mouse")]
+    public float rotationSmoothTimePequeño = .1f;
+    [Tooltip("Hasta donde baja y sube la camara")]
+    public Vector2 pitchMinMaxPequeño = new Vector2(-40, 85);
+    [Tooltip("Objetivo a seguir (CameraFollow)")]
+    public Transform targetPequeño;
+
+    [Header("Parametros Modificables Grande")]
+
+    [Tooltip("Distancia en z del personaje")]
+    public float dstFromTargeGrande = 2;
+    [Tooltip("Sensibilidad del mouse")]
+    public float mouseSensitivityGrande = 10;
+    [Tooltip("Suavisado al mover el mouse")]
+    public float rotationSmoothTimeGrande = .1f;
+    [Tooltip("Hasta donde baja y sube la camara")]
+    public Vector2 pitchMinMaxGrande = new Vector2(-40, 85);
+    [Tooltip("Objetivo a seguir (CameraFollow)")]
+    public Transform targetGrande;
+
+
+
+    [Header("Parametros Fijos")]
 
     [Tooltip("Bloquear mouse")]
     public bool lockCursor = true;
 
-    [Header("Parametros Fijos")]
-    [Tooltip("Objetivo a seguir (CameraFollow)")]
-    public Transform target;
-    [Tooltip("Objetivo a seguir primeraPersona (CameraFollow)")]
-    public Transform targetPrimera;
-
     public CameraType camVar = CameraType.THIRD;
+    public Camera cam;
+    public float velocidadCamara = 0.1f;
 
     Vector3 rotationSmoothVelocity;
     Vector3 currentRotation;
 
-    public Camera cam;
-    public Camera camPP;
+    public transformations state = transformations.NORMAL;
 
     private float yaw;
     private float pitch;
+
+
 
     [Header("Aun no se usan")]
     public float minDistance = 1.0f;
@@ -70,7 +92,7 @@ public class CameraManager : MonoBehaviour
     private Vector3 camInitPP;
 
     internal CameraType CamVar { get => camVar; set => camVar = value; }
-    private bool cameraFirst;
+
     private void Awake()
     {
         if (instance != null)
@@ -98,62 +120,60 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (CamVar == CameraType.THIRD)
+
+        switch (state)
         {
-            cam.enabled = true;
-            camPP.enabled = false;
-
-            CameraFollow();
-            cameraFirst = true;
-
-        }
-        if (CamVar == CameraType.FIRST)
-        {
-            cam.enabled = false;
-            camPP.enabled = true;
-
-            if (cameraFirst)
-            {
-                ResetCameraPP();
-                cameraFirst = false;
-            }
-            CameraFirst();
+            case transformations.GIGANT:
+                CameraFollowGigant();
+                break;
+            case transformations.NORMAL:
+                CameraFollow();
+                break;
+            case transformations.SMALL:
+                CameraFollowSmall();
+                break;
+            default:
+                break;
         }
     }
 
 
-    public void ResetCameraPP()
+
+    private void CameraFollowSmall()
     {
-        //yaw = 0;
-        //pitch = 0;
+
         Vector3 posFinal = Vector3.zero;
-        camPP.transform.LookAt(targetPrimera);
+        yaw += Input.GetAxis("Mouse X") * mouseSensitivityPequeño;
+        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivityPequeño;
+        pitch = Mathf.Clamp(pitch, pitchMinMaxPequeño.x, pitchMinMaxPequeño.y);
 
-        posFinal = targetPrimera.position - targetPrimera.forward * dstFromTargetFirst;
-        camPP.transform.position = posFinal;
-        camPP.transform.forward = targetPrimera.parent.transform.forward;
+        currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTimePequeño);
+        cam.transform.eulerAngles = currentRotation;
 
+
+        posFinal = targetGrande.position - cam.transform.forward * dstFromTargetPequeño;
+        CompensateForWalls(targetPequeño.position, ref posFinal);
+
+        cam.transform.position = Vector3.Lerp(cam.transform.position, posFinal, velocidadCamara);
 
 
     }
-
-    private void CameraFirst()
+    private void CameraFollowGigant()
     {
         Vector3 posFinal = Vector3.zero;
-        yaw += Input.GetAxis("Mouse X") * mouseSensitivityPP;
-        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivityPP;
-        pitch = Mathf.Clamp(pitch, pitchMinMaxPP.x, pitchMinMaxPP.y);
+        yaw += Input.GetAxis("Mouse X") * mouseSensitivityGrande;
+        pitch -= Input.GetAxis("Mouse Y") * mouseSensitivityGrande;
+        pitch = Mathf.Clamp(pitch, pitchMinMaxGrande.x, pitchMinMaxGrande.y);
 
-        currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTime);
-        camPP.transform.eulerAngles = currentRotation;
+        currentRotation = Vector3.SmoothDamp(currentRotation, new Vector3(pitch, yaw), ref rotationSmoothVelocity, rotationSmoothTimeGrande);
+        cam.transform.eulerAngles = currentRotation;
 
-        posFinal = targetPrimera.position - camPP.transform.forward * dstFromTargetFirst;
-        for (float i = 0; i < 1; i += 0.1f)
-        {
-            transform.position = Vector3.Lerp(camPP.transform.position, posFinal, i);
-        }
+
+        posFinal = targetGrande.position - cam.transform.forward * dstFromTargeGrande;
+        CompensateForWalls(targetGrande.position, ref posFinal);
+
+        cam.transform.position = Vector3.Lerp(cam.transform.position, posFinal, velocidadCamara);
     }
-
     private void CameraFollow()
     {
 
@@ -169,11 +189,9 @@ public class CameraManager : MonoBehaviour
         posFinal = target.position - cam.transform.forward * dstFromTarget;
         CompensateForWalls(target.position, ref posFinal);
 
-        for (float i = 0; i < 1; i += 0.1f)
-        {
-            cam.transform.position = Vector3.Lerp(cam.transform.position, posFinal, i );
-        }
+        cam.transform.position = Vector3.Lerp(cam.transform.position, posFinal, velocidadCamara);
     }
+
     private void CompensateForWalls(Vector3 fromObject, ref Vector3 toTarget)
     {
         // Compensate for walls between camera
@@ -186,14 +204,15 @@ public class CameraManager : MonoBehaviour
         {
             //Debug.DrawRay(wallHit.point, wallHit.normal, Color.red);
             //toTarget =  wallHit.point;
+            if (wallHit.transform.gameObject.layer != 14)
+            {
+                Debug.DrawLine(fromObject, (fromObject.magnitude - wallHit.point.magnitude) * toTarget.normalized, Color.blue);
+                distance = Mathf.Clamp(wallHit.distance, 0, wallHit.distance);
+                vAux = (fromObject.magnitude - distance + 0.8f) * wallHit.point.normalized;
 
-            Debug.DrawLine(fromObject, (fromObject.magnitude - wallHit.point.magnitude) * toTarget.normalized, Color.blue);
-            distance = Mathf.Clamp(wallHit.distance, 0, wallHit.distance);
-            vAux = (fromObject.magnitude - distance + 0.8f) * wallHit.point.normalized;
-
-            toTarget = vAux;
-
+                toTarget = vAux;
+            }
         }
-
     }
 }
+

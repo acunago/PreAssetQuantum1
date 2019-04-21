@@ -3,17 +3,57 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+public enum transformations
+{
+    GIGANT,
+    NORMAL,
+    SMALL
+
+}
+
 public class HeroHead : MonoBehaviour
 {
+    [Header("Control")]
+    public transformations state = transformations.NORMAL;
+
+    public GameObject big;
+    public GameObject small;
+    public GameObject normal;
+
+
     private HeroBody hb;
+    private HeroBodyBig hbBig;
+    private HeroBodySmall hbSmall;
+
     public Text txtClick;
     public float distanceObjects = 5f;
     public Camera cam;
-    public bool camChange = false;
+
+    public GameObject CamManager;
+    
+
     // Start is called before the first frame update
     void Start()
     {
         txtClick.gameObject.SetActive(false);
+
+
+        switch (state)
+        {
+            case transformations.GIGANT:
+                hbBig = transform.GetComponent<HeroBodyBig>();
+                break;
+            case transformations.NORMAL:
+                hb = transform.GetComponent<HeroBody>();
+                break;
+            case transformations.SMALL:
+                hbSmall = transform.GetComponent<HeroBodySmall>();
+                break;
+            default:
+                break;
+        }
+
         hb = transform.GetComponent<HeroBody>();
     }
 
@@ -29,19 +69,30 @@ public class HeroHead : MonoBehaviour
         up = Input.GetAxis("Vertical");
         vtr3 = new Vector3(left, 0, up);
 
-        if (CameraManager.instance.camVar == CameraType.THIRD)
+        switch (state)
         {
-            hb.Move(vtr3, cam.transform);
+            case transformations.GIGANT:
+                hbBig.Move(vtr3, cam.transform);
+                PressKeyBig();
+                CheckVision();
+                break;
+            case transformations.NORMAL:
+                hb.Move(vtr3, cam.transform);
+                PressKey();
+                CheckVision();
+                break;
+            case transformations.SMALL:
+                hbSmall.Move(vtr3, cam.transform);
+                PressKeySmall();
+                break;
+            default:
+                break;
         }
-        else
-        {
-            
-            hb.Move(vtr3,cam);
-        }
-        PressKey();
-        CheckVision();
+
+
     }
 
+    #region Buttons
     private void PressKey()
     {
         RaycastHit hit;
@@ -52,22 +103,22 @@ public class HeroHead : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            hb.Big();
+            Big();
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            hb.Small();
+            Small();
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            hb.Normal();
+            Normal();
         }
 
         if (Input.GetMouseButtonDown(0))
         {
             if (hb.actions == Comport.CARGANDO)
             {
-                hb.SoltarCaja();
+                //hb.SoltarCaja();
             }
             else
             {
@@ -77,18 +128,66 @@ public class HeroHead : MonoBehaviour
                 }
             }
         }
+    }
 
-        if (Input.GetMouseButtonDown(1))
+    private void PressKeyBig()
+    {
+        RaycastHit hit;
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            
-            CameraManager.instance.camVar = CameraType.FIRST;
+            Big();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Small();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Normal();
         }
 
-        if (Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonDown(0))
         {
-            CameraManager.instance.camVar = CameraType.THIRD;
+            if (hbBig.actions == Comport.CARGANDO)
+            {
+                hbBig.SoltarCaja();
+            }
+            else
+            {
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distanceObjects))
+                {
+                    hbBig.Activate(hit);
+                }
+            }
         }
     }
+
+    private void PressKeySmall()
+    {
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            hbSmall.Jump();
+
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Big();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            Small();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Normal();
+        }
+
+    }
+    #endregion
+
+
     public void CheckVision()
     {
         RaycastHit hit;
@@ -97,7 +196,7 @@ public class HeroHead : MonoBehaviour
         {
             if (hit.transform.gameObject.layer != 9)
             {
-                if (hit.transform.gameObject.layer == 10 && hb.state != transformations.GIGANT)
+                if (hit.transform.gameObject.layer == 10 && state != transformations.GIGANT)
                 {
                     txtClick.gameObject.SetActive(false);
                 }
@@ -106,7 +205,8 @@ public class HeroHead : MonoBehaviour
                     txtClick.gameObject.SetActive(true);
                 }
             }
-            else {
+            else
+            {
                 txtClick.gameObject.SetActive(false);
             }
             Debug.Log(hit.transform.gameObject.layer);
@@ -117,4 +217,47 @@ public class HeroHead : MonoBehaviour
         }
 
     }
+
+    #region transformations
+    public void Big()
+    {
+        if (state != transformations.GIGANT)
+        {
+            CameraManager.instance.state = transformations.GIGANT;
+            big.transform.position = this.transform.position;
+            big.gameObject.SetActive(true);
+            small.gameObject.SetActive(false);
+            normal.gameObject.SetActive(false);
+
+
+        }
+    }
+    public void Small()
+    {
+        if (state != transformations.SMALL)
+        {
+            CameraManager.instance.state = transformations.SMALL;
+            small.transform.position = this.transform.position;
+            small.gameObject.SetActive(true);
+            normal.gameObject.SetActive(false);
+            big.gameObject.SetActive(false);
+
+        }
+    }
+    public void Normal()
+    {
+        if (state != transformations.NORMAL)
+        {
+            CameraManager.instance.state = transformations.NORMAL;
+            normal.transform.position = this.transform.position;
+            normal.gameObject.SetActive(true);
+            small.gameObject.SetActive(false);
+            big.gameObject.SetActive(false);
+        }
+
+    }
+    #endregion
+
+
+
 }
