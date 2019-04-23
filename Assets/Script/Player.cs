@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
 
     public virtual void Move(Vector3 dir)
     {
+        if (actions == Comport.AIR) return;
         inputDir = dir.normalized;
 
         bool running = Input.GetKey(KeyCode.LeftShift);

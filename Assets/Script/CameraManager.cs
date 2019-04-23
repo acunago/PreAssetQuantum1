@@ -151,7 +151,7 @@ public class CameraManager : MonoBehaviour
         cam.transform.eulerAngles = currentRotation;
 
 
-        posFinal = targetGrande.position - cam.transform.forward * dstFromTargetPequeño;
+        posFinal = targetPequeño.position - cam.transform.forward * dstFromTargetPequeño;
         CompensateForWalls(targetPequeño.position, ref posFinal);
 
         cam.transform.position = Vector3.Lerp(cam.transform.position, posFinal, velocidadCamara);
