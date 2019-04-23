@@ -150,4 +150,12 @@ public class Player : MonoBehaviour
         }
 
     }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.layer == 9)
+        {
+            actions = Comport.AIR;
+
+        }
+    }
 }
