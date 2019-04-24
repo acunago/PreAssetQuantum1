@@ -15,7 +15,10 @@ public class HeroBodyBig : Player
     // Update is called once per frame
     void Update()
     {
-        
+        if (blSoltarCaja)
+        {
+            SoltarCaja();
+        }
     }
 
     public void Activate(RaycastHit hit)
@@ -29,6 +32,7 @@ public class HeroBodyBig : Player
 
             actions = Comport.CARGANDO;
             animator.SetBool("box", true);
+            blSoltarCaja = false;
         }
     }
 

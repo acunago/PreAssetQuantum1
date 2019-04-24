@@ -226,6 +226,7 @@ public class HeroHead : MonoBehaviour
         {
             CameraManager.instance.state = transformations.GIGANT;
             big.transform.position = this.transform.position;
+            big.transform.rotation = (this.transform.rotation);
             big.gameObject.SetActive(true);
             small.gameObject.SetActive(false);
             normal.gameObject.SetActive(false);
@@ -239,6 +240,7 @@ public class HeroHead : MonoBehaviour
         {
             CameraManager.instance.state = transformations.SMALL;
             small.transform.position = this.transform.position;
+            small.transform.rotation = (this.transform.rotation);
             small.gameObject.SetActive(true);
             normal.gameObject.SetActive(false);
             big.gameObject.SetActive(false);
@@ -251,6 +253,7 @@ public class HeroHead : MonoBehaviour
         {
             CameraManager.instance.state = transformations.NORMAL;
             normal.transform.position = this.transform.position;
+            normal.transform.rotation = (this.transform.rotation);
             normal.gameObject.SetActive(true);
             small.gameObject.SetActive(false);
             big.gameObject.SetActive(false);

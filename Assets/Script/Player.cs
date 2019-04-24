@@ -39,6 +39,8 @@ public class Player : MonoBehaviour
     public Vector3 inputDir;
     public Vector3 desiredMoveDirection;
 
+    public bool blSoltarCaja = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -56,14 +58,18 @@ public class Player : MonoBehaviour
     {
 
         if (actions == Comport.AIR) return;
-        rb.velocity = Vector3.zero;
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         actions = Comport.AIR;
+        rb.velocity = Vector3.zero;
+        rb.AddForce((transform.up) * jumpForce, ForceMode.Impulse);
+
     }
 
     public virtual void Move(Vector3 dir)
     {
-        if (actions == Comport.AIR) return;
+
+
+
+
         inputDir = dir.normalized;
 
         bool running = Input.GetKey(KeyCode.LeftShift);
@@ -98,6 +104,15 @@ public class Player : MonoBehaviour
     }
     public virtual void Move(Vector3 dir, Transform cam)
     {
+        //if (actions == Comport.AIR) return;
+        if (actions == Comport.CARGANDO)
+        {
+            if (dir.x != 0 && dir.z < 0)
+            {
+                blSoltarCaja = true;
+            }
+        }
+
         float targetSpeed = 0f;
         inputDir = dir.normalized;
 
@@ -131,12 +146,15 @@ public class Player : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(sumNorm), desiredRotationSpeed);
         }
-        currentSpeed = Mathf.Abs(targetSpeed);
-        transform.position += transform.forward * currentSpeed * Time.deltaTime;
+        currentSpeed = Mathf.Abs(targetSpeed) * Time.deltaTime;
 
+        //transform.position += transform.forward * currentSpeed * Time.deltaTime;
 
+        //Debug.Log()
 
-        animator.SetFloat("speed", currentSpeed);
+        rb.MovePosition(transform.position + transform.forward  * currentSpeed);
+
+        animator.SetFloat("speed", Mathf.Abs(targetSpeed));
 
 
     }
