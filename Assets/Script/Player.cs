@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
     {
 
         if (actions == Comport.AIR) return;
-
+        rb.velocity = Vector3.zero;
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         actions = Comport.AIR;
     }
@@ -143,11 +143,7 @@ public class Player : MonoBehaviour
     #endregion
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 9)
-        {
             actions = Comport.IDDLE;
-
-        }
 
     }
 

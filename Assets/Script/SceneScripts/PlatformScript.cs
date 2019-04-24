@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PlatformScript : MonoBehaviour
 {
+    public GameObject interact;
     public int objects;
     public float objectsToChange = 1;
+    public Color keepColour;
     // Start is called before the first frame update
     void Start()
     {
+        
+        keepColour = GetComponent<Renderer>().material.color;
 
     }
 
@@ -20,6 +24,7 @@ public class PlatformScript : MonoBehaviour
             Renderer rend = GetComponent<Renderer>();
             //rend.material.shader = Shader.Find("_Color");
             rend.material.color = Color.blue;
+            interact.SetActive(false);
 
         }
         else
@@ -27,18 +32,24 @@ public class PlatformScript : MonoBehaviour
 
             Renderer rend = GetComponent<Renderer>();
             //rend.material.shader = Shader.Find("_Color");
-            rend.material.color = Color.green;
+            interact.SetActive(true);
+            rend.material.color = keepColour;
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-
-        objects = objects + 1;
+        if (collision.gameObject.layer != 9)
+        {
+            objects = objects + 1;
+        }
 
     }
     private void OnCollisionExit(Collision collision)
     {
+        if (collision.gameObject.layer != 9)
+        {
+            objects = objects - 1;
 
-        objects = objects - 1;
+        }
     }
 }

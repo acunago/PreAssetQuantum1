@@ -8,7 +8,7 @@ public enum LeverState
 }
 public class LeverScript : MonoBehaviour
 {
-    public GameObject interact;
+    public GameObject[] interact;
     public LeverState state;
 
     private DoorScript doorCall;
@@ -16,11 +16,6 @@ public class LeverScript : MonoBehaviour
     void Start()
     {
         state = LeverState.DISABLED;
-        if (interact.layer == 11)
-        {
-            doorCall = interact.GetComponent<DoorScript>();
-
-        }
     }
 
     // Update is called once per frame
@@ -35,7 +30,8 @@ public class LeverScript : MonoBehaviour
             state = LeverState.DISABLED;
             Renderer rend = GetComponent<Renderer>();
             rend.material.color = Color.grey;
-            doorCall.SetDisabled();
+            DisableElements();
+
 
         }
         else
@@ -43,10 +39,52 @@ public class LeverScript : MonoBehaviour
             state = LeverState.ACTIVE;
             Renderer rend = GetComponent<Renderer>();
             rend.material.color = Color.red;
-
-
-            doorCall.SetActive();
-
+            ActiveElements();
         }
+
+    }
+
+    public void ActiveElements()
+    {
+
+        for (int i = 0; i < interact.Length; i++)
+        {
+            if (interact[i].layer == 11) //puerta
+            {
+                interact[i].GetComponent<DoorScript>().SetActive();
+
+            }
+            else
+            {
+                if (interact[i].layer == 15) //puente
+                {
+                    interact[i].GetComponent<BridgeScript>().SetActive();
+
+                }
+            }
+        }
+
+    }
+
+    public void DisableElements()
+    {
+
+        for (int i = 0; i < interact.Length; i++)
+        {
+            if (interact[i].layer == 11) //puerta
+            {
+                interact[i].GetComponent<DoorScript>().SetDisabled();
+
+            }
+            else
+            {
+                if (interact[i].layer == 15) //puente
+                {
+                   interact[i].GetComponent<BridgeScript>().SetDisabled();
+
+                }
+            }
+        }
+
     }
 }

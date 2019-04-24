@@ -28,7 +28,7 @@ public class HeroBodyBig : Player
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 10, Color.red);
 
             actions = Comport.CARGANDO;
-            animator.SetBool("Box", true);
+            animator.SetBool("box", true);
         }
     }
 
@@ -38,16 +38,12 @@ public class HeroBodyBig : Player
         {
             bxSript.Soltar();
             actions = Comport.IDDLE;
-            animator.SetBool("Box", false);
+            animator.SetBool("box", false);
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == 9)
-        {
-            actions = Comport.IDDLE;
 
-        }
 
     }
 

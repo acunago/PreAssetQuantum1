@@ -16,14 +16,6 @@ public class HeroBodySmall : Player
         
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == 9)
-        {
-            actions = Comport.IDDLE;
 
-        }
-
-    }
 
 }

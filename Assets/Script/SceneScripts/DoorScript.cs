@@ -22,18 +22,17 @@ public class DoorScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-    }
 
     public void SetActive()
     {
         state = DoorState.ACTIVE;
         transform.Rotate(auxV3);
+        transform.gameObject.SetActive(false);
     }
     public void SetDisabled()
     {
         state = DoorState.DISABLED;
         transform.Rotate(-auxV3);
+        transform.gameObject.SetActive(true);
     }
 }

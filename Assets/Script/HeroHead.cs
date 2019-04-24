@@ -31,6 +31,7 @@ public class HeroHead : MonoBehaviour
     public Camera cam;
 
     public GameObject CamManager;
+    public GameObject rayCastDirection;
     
 
     // Start is called before the first frame update
@@ -122,7 +123,7 @@ public class HeroHead : MonoBehaviour
             }
             else
             {
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distanceObjects))
+                if (Physics.Raycast(rayCastDirection.transform.position, transform.TransformDirection(Vector3.forward), out hit, distanceObjects))
                 {
                     hb.Activate(hit);
                 }
@@ -155,7 +156,7 @@ public class HeroHead : MonoBehaviour
             }
             else
             {
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distanceObjects))
+                if (Physics.Raycast(transform.position, transform.forward, out hit, distanceObjects))
                 {
                     hbBig.Activate(hit);
                 }
@@ -191,8 +192,8 @@ public class HeroHead : MonoBehaviour
     public void CheckVision()
     {
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distanceObjects, Color.yellow);
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, distanceObjects))
+        Debug.DrawRay(rayCastDirection.transform.position, transform.forward * distanceObjects, Color.black);
+        if (Physics.Raycast(rayCastDirection.transform.position, transform.forward, out hit, distanceObjects))
         {
             if (hit.transform.gameObject.layer != 9)
             {
