@@ -634,15 +634,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ab5d5508e8ca929439162c7c349fcc17, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.005210638
+      value: -0.0043225
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ab5d5508e8ca929439162c7c349fcc17, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8537059
+      value: -0.74
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ab5d5508e8ca929439162c7c349fcc17, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.000024139881
+      value: -0.0000061393
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ab5d5508e8ca929439162c7c349fcc17, type: 3}
       propertyPath: m_LocalRotation.x
@@ -678,15 +678,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ab5d5508e8ca929439162c7c349fcc17, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.3720007
+      value: 1.693186
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ab5d5508e8ca929439162c7c349fcc17, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.372
+      value: 1.6931852
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ab5d5508e8ca929439162c7c349fcc17, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.3720007
+      value: 1.693186
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: ab5d5508e8ca929439162c7c349fcc17, type: 3}
       propertyPath: m_Controller
@@ -1364,7 +1364,7 @@ PrefabInstance:
     - target: {fileID: 3910900485005896704, guid: 5e4099b394108744ea11b30855123a6a,
         type: 3}
       propertyPath: "dstFromTargetPeque\xF1o"
-      value: 2.8
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3910900485005896704, guid: 5e4099b394108744ea11b30855123a6a,
         type: 3}
@@ -1420,6 +1420,21 @@ PrefabInstance:
         type: 3}
       propertyPath: dstFromTargeGrande
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910900485005896704, guid: 5e4099b394108744ea11b30855123a6a,
+        type: 3}
+      propertyPath: "mouseSensitivityPeque\xF1o"
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910900485005896704, guid: 5e4099b394108744ea11b30855123a6a,
+        type: 3}
+      propertyPath: mouseSensitivity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3910900485005896704, guid: 5e4099b394108744ea11b30855123a6a,
+        type: 3}
+      propertyPath: mouseSensitivityGrande
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e4099b394108744ea11b30855123a6a, type: 3}
@@ -1804,8 +1819,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1ab1712162ed24c86a66ed69de2a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 4
-  runSpeed: 4
+  walkSpeed: 3
+  runSpeed: 3
   RotationVelocity: 1
   jumpForce: 0
   actions: 0
@@ -2643,15 +2658,15 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 6079c16a76db8cf4a88d93795005fb16, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 6079c16a76db8cf4a88d93795005fb16, type: 3}
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 6079c16a76db8cf4a88d93795005fb16, type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 6079c16a76db8cf4a88d93795005fb16, type: 3}
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
@@ -2997,8 +3012,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cbe444febc7dc140a8596f8f7bd0ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 8
-  runSpeed: 15
+  walkSpeed: 6
+  runSpeed: 9
   RotationVelocity: 1
   jumpForce: 5
   actions: 0
@@ -3522,7 +3537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933215102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.026, y: 2.198, z: -0}
+  m_LocalPosition: {x: 0.004, y: 1.441, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 135357316}
@@ -10205,7 +10220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888454277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.603, z: 0}
+  m_LocalPosition: {x: 0, y: 3.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 760553600}
@@ -10327,9 +10342,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 6
-  runSpeed: 10
+  runSpeed: 9
   RotationVelocity: 1.5
-  jumpForce: 4
+  jumpForce: 6
   actions: 0
   rb: {fileID: 0}
   currentSpeed: 0
