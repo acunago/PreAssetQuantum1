@@ -18,10 +18,6 @@ public class HeroBodyBig : Player
         
     }
 
-    public override void Jump()
-    {
-
-    }
     public void Activate(RaycastHit hit)
     {
         if (hit.transform.gameObject.layer == 10)
@@ -44,6 +40,15 @@ public class HeroBodyBig : Player
             actions = Comport.IDDLE;
             animator.SetBool("Box", false);
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 9)
+        {
+            actions = Comport.IDDLE;
+
+        }
+
     }
 
 }

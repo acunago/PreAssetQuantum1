@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
 
         currentSpeed = targetSpeed;
 
-        
+
 
         Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotationDegreePerSecond * (dir.x < 0f ? -1f : 1f), 0f), Mathf.Abs(dir.x * RotationVelocity));
         Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
 
         bool running = Input.GetKey(KeyCode.LeftShift);
 
-        Vector3 dirCamForward = new Vector3(cam.forward.x,0, cam.forward.z);
+        Vector3 dirCamForward = new Vector3(cam.forward.x, 0, cam.forward.z);
         Vector3 dirCamRigth = new Vector3(cam.right.x, 0, cam.right.z);
         Vector3 sumNorm = Vector3.zero;
 
@@ -113,16 +113,16 @@ public class Player : MonoBehaviour
         Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, rotationDegreePerSecond * (dir.x < 0f ? -1f : 1f), 0f), Mathf.Abs(dir.x * RotationVelocity));
         Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
 
-        if(dir.normalized.z != 0)
+        if (dir.normalized.z != 0)
         {
-            
-              targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.z;
+
+            targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.z;
             sumNorm += dirCamForward.normalized * dir.normalized.z;
         }
 
         if (dir.normalized.x != 0)
         {
-           
+
             sumNorm += dirCamRigth.normalized * dir.normalized.x;
             targetSpeed = ((running) ? runSpeed : walkSpeed) * inputDir.x;
         }
@@ -150,12 +150,5 @@ public class Player : MonoBehaviour
         }
 
     }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.layer == 9)
-        {
-            actions = Comport.AIR;
 
-        }
-    }
 }
