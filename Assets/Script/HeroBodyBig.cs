@@ -5,6 +5,7 @@ using UnityEngine;
 public class HeroBodyBig : Player
 {
     private BoxScript bxSript;
+    public GameObject Hands;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,15 +44,6 @@ public class HeroBodyBig : Player
             actions = Comport.IDDLE;
             animator.SetBool("Box", false);
         }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.layer == 9)
-        {
-            actions = Comport.IDDLE;
-
-        }
-
     }
 
 }
