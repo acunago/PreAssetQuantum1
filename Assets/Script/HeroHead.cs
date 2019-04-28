@@ -26,7 +26,7 @@ public class HeroHead : MonoBehaviour
     private HeroBodyBig hbBig;
     private HeroBodySmall hbSmall;
 
-    public Text txtClick;
+    //public Text txtClick;
     public float distanceObjects = 5f;
     public Camera cam;
 
@@ -37,7 +37,7 @@ public class HeroHead : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        txtClick.gameObject.SetActive(false);
+        //txtClick.gameObject.SetActive(false);
 
 
         switch (state)
@@ -191,31 +191,31 @@ public class HeroHead : MonoBehaviour
 
     public void CheckVision()
     {
-        RaycastHit hit;
-        Debug.DrawRay(rayCastDirection.transform.position, transform.forward * distanceObjects, Color.black);
-        if (Physics.Raycast(rayCastDirection.transform.position, transform.forward, out hit, distanceObjects))
-        {
-            if (hit.transform.gameObject.layer != 9)
-            {
-                if (hit.transform.gameObject.layer == 10 && state != transformations.GIGANT)
-                {
-                    txtClick.gameObject.SetActive(false);
-                }
-                else
-                {
-                    txtClick.gameObject.SetActive(true);
-                }
-            }
-            else
-            {
-                txtClick.gameObject.SetActive(false);
-            }
-            Debug.Log(hit.transform.gameObject.layer);
-        }
-        else
-        {
-            txtClick.gameObject.SetActive(false);
-        }
+        //RaycastHit hit;
+        //Debug.DrawRay(rayCastDirection.transform.position, transform.forward * distanceObjects, Color.black);
+        //if (Physics.Raycast(rayCastDirection.transform.position, transform.forward, out hit, distanceObjects))
+        //{
+        //    if (hit.transform.gameObject.layer != 9)
+        //    {
+        //        if (hit.transform.gameObject.layer == 10 && state != transformations.GIGANT)
+        //        {
+        //            txtClick.gameObject.SetActive(false);
+        //        }
+        //        else
+        //        {
+        //            txtClick.gameObject.SetActive(true);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        txtClick.gameObject.SetActive(false);
+        //    }
+        //    Debug.Log(hit.transform.gameObject.layer);
+        //}
+        //else
+        //{
+        //    txtClick.gameObject.SetActive(false);
+        //}
 
     }
 
