@@ -12282,7 +12282,7 @@ MonoBehaviour:
   actions: 0
   rb: {fileID: 0}
   currentSpeed: 0
-  desiredRotationSpeed: 0.25
+  desiredRotationSpeed: 15
   rotationDegreePerSecond: 200
   animator: {fileID: 0}
   inputDir: {x: 0, y: 0, z: 0}
