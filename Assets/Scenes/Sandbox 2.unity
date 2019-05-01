@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1444,15 +1444,15 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: ab5d5508e8ca929439162c7c349fcc17, type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: ab5d5508e8ca929439162c7c349fcc17, type: 3}
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 100010, guid: ab5d5508e8ca929439162c7c349fcc17, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: ab5d5508e8ca929439162c7c349fcc17, type: 3}
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
@@ -5509,15 +5509,15 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 6079c16a76db8cf4a88d93795005fb16, type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 6079c16a76db8cf4a88d93795005fb16, type: 3}
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 6079c16a76db8cf4a88d93795005fb16, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 6079c16a76db8cf4a88d93795005fb16, type: 3}
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
@@ -11876,7 +11876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCloseEvents: 1
-  openCloseWindow: 0
+  openCloseWindow: 1
   selectedToolbar: 0
   actionEnter: 1
   actionStay: 0
@@ -12083,7 +12083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCloseEvents: 0
   openCloseWindow: 1
-  selectedToolbar: 2
+  selectedToolbar: 1
   _isDead: 0
   _currentHealth: 0
   maxHealth: 100
@@ -12125,9 +12125,9 @@ MonoBehaviour:
   debugWindow: 0
   maxStamina: 200
   staminaRecovery: 1.2
-  sprintStamina: 30
-  jumpStamina: 30
-  rollStamina: 25
+  sprintStamina: 0
+  jumpStamina: 0
+  rollStamina: 0
   OnStaminaEnd:
     m_PersistentCalls:
       m_Calls: []
@@ -12150,9 +12150,9 @@ MonoBehaviour:
   freeSpeed:
     rotationSpeed: 10
     walkByDefault: 0
-    walkSpeed: 2
-    runningSpeed: 3
-    sprintSpeed: 4
+    walkSpeed: 10
+    runningSpeed: 4
+    sprintSpeed: 5
     crouchSpeed: 2
   strafeSpeed:
     rotationSpeed: 10
@@ -12168,7 +12168,7 @@ MonoBehaviour:
   jumpAirControl: 1
   jumpTimer: 0.3
   jumpForward: 5
-  jumpHeight: 6
+  jumpHeight: 5
   groundCheckMethod: 1
   groundMinDistance: 0.25
   groundMaxDistance: 0.5
@@ -12209,7 +12209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602260427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.94, y: 9.21, z: 10.65}
+  m_LocalPosition: {x: 1.44, y: 9.21, z: 10.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1015892040}
