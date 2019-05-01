@@ -16,30 +16,32 @@ public class BoxScript : MonoBehaviour
 
     public Transform hands;
     public CajaState posCaja;
-
+    public float masaMovible;
+    private Rigidbody rb;
+    private float masaBase;
+    
     void Start()
     {
         posCaja = CajaState.PISO;
-        transform.gameObject.layer = 10;
+        rb = transform.GetComponent<Rigidbody>();
+        masaBase = rb.mass;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (posCaja == CajaState.AGARRADO)
-        {
-            transform.position = hands.position;
-        }
+
         
     }
 
 
     public void Agarre()
     {
-        posCaja = CajaState.AGARRADO;
+        rb.mass = masaMovible;
     }
     public void Soltar ()
     {
-        posCaja = CajaState.PISO;
+        rb.mass = masaBase;
     }
 }
