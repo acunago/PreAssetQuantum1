@@ -2,46 +2,62 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public enum CajaState
+public enum StateCaja
 {
     AGARRADO,
     PISO
 
-}
 
+}
 public class BoxScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public Transform hands;
-    public CajaState posCaja;
-    public float masaMovible;
-    private Rigidbody rb;
-    private float masaBase;
+    public StateCaja state = StateCaja.PISO;
+    public Animator animator;
+    Rigidbody rb;
     
-    void Start()
+    private void Start()
     {
-        posCaja = CajaState.PISO;
         rb = transform.GetComponent<Rigidbody>();
-        masaBase = rb.mass;
-
+        rb.mass = 10000;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
 
-        
+        if (state == StateCaja.AGARRADO)
+        {
+
+            {
+
+
+                if (Input.GetKey(KeyCode.W))
+                {
+
+                    rb.mass = 700;
+
+
+                }
+
+
+            }
+        }
+
     }
-
-
     public void Agarre()
     {
-        rb.mass = masaMovible;
+        state = StateCaja.AGARRADO;
+        animator.SetBool("SoltarCaja", false);
     }
-    public void Soltar ()
+    public void Soltar()
     {
-        rb.mass = masaBase;
+
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        rb.mass = 10000;
+        animator.SetBool("SoltarCaja", true);
+        state = StateCaja.PISO;
     }
 }
