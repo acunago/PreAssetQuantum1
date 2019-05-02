@@ -11,11 +11,15 @@ public class LeverScript : MonoBehaviour
     public GameObject[] interact;
     public LeverState state;
 
+    private Color original;
     private DoorScript doorCall;
+    private Renderer rend;
     // Start is called before the first frame update
     void Start()
     {
         state = LeverState.DISABLED;
+        rend = GetComponent<Renderer>();
+        original = rend.material.color;
     }
 
     // Update is called once per frame
@@ -28,8 +32,8 @@ public class LeverScript : MonoBehaviour
         if (state == LeverState.ACTIVE)
         {
             state = LeverState.DISABLED;
-            Renderer rend = GetComponent<Renderer>();
-            rend.material.color = Color.grey;
+            
+            rend.material.color = original;
             DisableElements();
 
 
@@ -37,7 +41,7 @@ public class LeverScript : MonoBehaviour
         else
         {
             state = LeverState.ACTIVE;
-            Renderer rend = GetComponent<Renderer>();
+            
             rend.material.color = Color.red;
             ActiveElements();
         }
@@ -71,14 +75,14 @@ public class LeverScript : MonoBehaviour
 
         for (int i = 0; i < interact.Length; i++)
         {
-            if (interact[i].layer == 11) //puerta
+            if (interact[i].layer == 16) //puerta
             {
                 interact[i].GetComponent<DoorScript>().SetDisabled();
 
             }
             else
             {
-                if (interact[i].layer == 15) //puente
+                if (interact[i].layer == 17) //puente
                 {
                    interact[i].GetComponent<BridgeScript>().SetDisabled();
 

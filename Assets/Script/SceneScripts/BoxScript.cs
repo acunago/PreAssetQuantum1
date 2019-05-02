@@ -29,19 +29,19 @@ public class BoxScript : MonoBehaviour
         if (state == StateCaja.AGARRADO)
         {
 
+
+
+
+            if (Input.GetKey(KeyCode.W))
             {
 
-
-                if (Input.GetKey(KeyCode.W))
-                {
-
-                    rb.mass = 700;
-
-
-                }
+                rb.mass = 700;
 
 
             }
+
+
+
         }
 
     }
