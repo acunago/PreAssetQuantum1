@@ -49,14 +49,14 @@ public class LeverScript : MonoBehaviour
 
         for (int i = 0; i < interact.Length; i++)
         {
-            if (interact[i].layer == 11) //puerta
+            if (interact[i].layer == 16) //puerta
             {
                 interact[i].GetComponent<DoorScript>().SetActive();
 
             }
             else
             {
-                if (interact[i].layer == 15) //puente
+                if (interact[i].layer == 17) //puente
                 {
                     interact[i].GetComponent<BridgeScript>().SetActive();
 
