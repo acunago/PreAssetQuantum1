@@ -27,12 +27,12 @@ public class DoorScript : MonoBehaviour
     {
         state = DoorState.ACTIVE;
         transform.Rotate(auxV3);
-        transform.gameObject.SetActive(false);
+
     }
     public void SetDisabled()
     {
         state = DoorState.DISABLED;
         transform.Rotate(-auxV3);
-        transform.gameObject.SetActive(true);
+
     }
 }

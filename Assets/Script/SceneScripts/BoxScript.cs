@@ -29,9 +29,6 @@ public class BoxScript : MonoBehaviour
         if (state == StateCaja.AGARRADO)
         {
 
-
-
-
             if (Input.GetKey(KeyCode.W))
             {
 
@@ -39,11 +36,7 @@ public class BoxScript : MonoBehaviour
 
 
             }
-
-
-
         }
-
     }
     public void Agarre()
     {
