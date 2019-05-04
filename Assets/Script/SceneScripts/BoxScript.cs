@@ -16,12 +16,14 @@ public class BoxScript : MonoBehaviour
     public StateCaja state = StateCaja.PISO;
     public Animator animator;
     public GameObject character;
+    public float massBase = 10000;
+    public float massChange = 600;
     Rigidbody rb;
     
     private void Start()
     {
         rb = transform.GetComponent<Rigidbody>();
-        rb.mass = 10000;
+        rb.mass = massBase;
     }
 
     private void Update()
@@ -34,7 +36,7 @@ public class BoxScript : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
 
-                rb.mass = 700;
+                rb.mass = massChange;
             }
             Debug.DrawRay(character.transform.position, character.transform.forward * 10, Color.red);
 
@@ -42,7 +44,7 @@ public class BoxScript : MonoBehaviour
             if (dot > 0.7f) { Debug.Log("Quite facing"); } else
             {
 
-                rb.mass = 10000;
+                rb.mass = massBase;
                 animator.SetBool("SoltarCaja", true);
                 state = StateCaja.PISO;
 
@@ -55,13 +57,10 @@ public class BoxScript : MonoBehaviour
         state = StateCaja.AGARRADO;
         animator.SetBool("SoltarCaja", false);
     }
-    public void Soltar()
-    {
 
-    }
     private void OnCollisionExit(Collision collision)
     {
-        rb.mass = 10000;
+        rb.mass = massBase;
         animator.SetBool("SoltarCaja", true);
         state = StateCaja.PISO;
     }

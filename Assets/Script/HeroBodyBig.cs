@@ -40,7 +40,7 @@ public class HeroBodyBig : Player
     {
         if (actions == Comport.CARGANDO)
         {
-            bxSript.Soltar();
+            
             actions = Comport.IDDLE;
             animator.SetBool("box", false);
         }
