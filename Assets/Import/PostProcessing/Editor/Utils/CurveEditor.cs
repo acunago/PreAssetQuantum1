@@ -381,7 +381,7 @@ namespace UnityEditor.PostProcessing
                         var selectedColor = (isCurrentlySelectedCurve && isCurrentlySelectedKeyframe)
                             ? settings.selectionColor
                             : state.color;
-                          
+
                         // Keyframe
                         EditorGUI.DrawRect(offset.Remove(hitRect), selectedColor);
 

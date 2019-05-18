@@ -9905,6 +9905,12 @@ PrefabInstance:
       propertyPath: m_RenderingPath
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 721285921755605588, guid: a71ab202441924e49996a9e95514f65b,
+        type: 3}
+      propertyPath: profile
+      value: 
+      objectReference: {fileID: 11400000, guid: 8dcdc3b62db7aec4fac1cbf93b4931b9,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a71ab202441924e49996a9e95514f65b, type: 3}
 --- !u!1 &817019081
@@ -15676,8 +15682,8 @@ Transform:
   - {fileID: 2120236220}
   - {fileID: 47750629}
   - {fileID: 962792243}
-  - {fileID: 249430902}
   - {fileID: 1344153989}
+  - {fileID: 249430902}
   - {fileID: 89090088}
   - {fileID: 1455197056}
   - {fileID: 1477370038}
