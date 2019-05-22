@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 public class ActionsController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ActionsController : MonoBehaviour
     GameObject blueMagnet;
     public bool atract;
 
+    public GameObject crossHair;
     // Start is called before the first frame update
     void Start()
     {
@@ -125,11 +127,20 @@ public class ActionsController : MonoBehaviour
 
     public GameObject CreateBox(GameObject cube)
     {
+        RaycastHit rayCross;
+
+        Vector3 fwd =  crossHair.transform.position- puntoDisparo.transform.position;
+
+        if (Physics.Raycast(puntoDisparo.transform.position, fwd, 10))
+        {
+            
+        }
         GameObject arrow = Instantiate(cube, puntoDisparo.transform.position, transform.rotation);
-        Vector3 _direction = 2 * (puntoDisparo.transform.forward);
+        Vector3 _direction = 2 * fwd;
         Vector3 _force = _direction.normalized * arrowSpeed;
 
         arrow.transform.GetComponent<Rigidbody>().AddForce(_force, ForceMode.Impulse);
         return arrow;
+                    
     }
 }
