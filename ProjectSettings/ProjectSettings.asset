@@ -506,7 +506,7 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   scriptingDefineSymbols:
-    1: INVECTOR_BASIC;INVECTOR_MELEE;INVECTOR_SHOOTER
+    1: INVECTOR_BASIC;INVECTOR_MELEE;INVECTOR_SHOOTER;EMERALD_AI_PRESENT
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
