@@ -30,6 +30,20 @@ public class MagnetsController : MonoBehaviour
         {
             DestroyObj();
         }
+
+
+
+
+        if (collision.collider != null && collision.collider.gameObject.GetComponent<Emerald_AI>() != null)
+        {
+            collision.collider.gameObject.GetComponent<Emerald_AI>().Damage(100, Emerald_AI.TargetType.Player);
+
+        }
+
+
+
+
+
     }
     public void DestroyObj()
     {

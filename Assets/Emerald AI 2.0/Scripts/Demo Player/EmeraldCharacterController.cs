@@ -135,10 +135,10 @@ public class EmeraldCharacterController : MonoBehaviour {
 			}
 
 			// Jump
-			if (canJump && Input.GetButton("Jump")) 
-			{
-				rb.velocity = new Vector3(velocity.x, CalculateJumpVerticalwalkSpeed(), velocity.z);
-			}
+			//if (canJump && Input.GetButton("Jump")) 
+			//{
+			//	rb.velocity = new Vector3(velocity.x, CalculateJumpVerticalwalkSpeed(), velocity.z);
+			//}
 		}
 		
 		// We apply gravity manually for more tuning control

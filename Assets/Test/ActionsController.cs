@@ -129,7 +129,8 @@ public class ActionsController : MonoBehaviour
     {
         RaycastHit rayCross;
 
-        Vector3 fwd =  crossHair.transform.position- puntoDisparo.transform.position;
+        
+        Vector3 fwd =   puntoDisparo.transform.position - Camera.main.ScreenToWorldPoint(crossHair.transform.position);
 
         if (Physics.Raycast(puntoDisparo.transform.position, fwd, 10))
         {

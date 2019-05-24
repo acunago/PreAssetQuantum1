@@ -3,9 +3,8 @@
 --- !u!221 &22100000
 AnimatorOverrideController:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_Name: Skeleton Demo
   m_Controller: {fileID: 9100000, guid: cfe4ed0e2e60564439a2919e9923ef2a, type: 2}
   m_Clips:
@@ -22,7 +21,7 @@ AnimatorOverrideController:
   - m_OriginalClip: {fileID: 7400000, guid: 4ddaafeeaddec7640862c0ace77af550, type: 2}
     m_OverrideClip: {fileID: 7400022, guid: fdb031097e06548bcbd93c253ac24868, type: 3}
   - m_OriginalClip: {fileID: 7400000, guid: edaa2f8edb68aca42ad6c077a77bdbf9, type: 2}
-    m_OverrideClip: {fileID: 7400016, guid: fdb031097e06548bcbd93c253ac24868, type: 3}
+    m_OverrideClip: {fileID: 7400018, guid: fdb031097e06548bcbd93c253ac24868, type: 3}
   - m_OriginalClip: {fileID: 7400000, guid: 596805cb832f72545a3cf92125001f2b, type: 2}
     m_OverrideClip: {fileID: 7400034, guid: fdb031097e06548bcbd93c253ac24868, type: 3}
   - m_OriginalClip: {fileID: 7400000, guid: d291d0f9a15f6fe47995022a9df8b7e9, type: 2}
