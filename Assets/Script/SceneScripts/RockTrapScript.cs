@@ -25,6 +25,11 @@ public class RockTrapScript : MonoBehaviour
                 trap.transform.GetChild(i).GetComponent<Collider>().isTrigger = false;
             }
             trap.transform.GetComponent<Rigidbody>().useGravity = true;
+            RemoveObj();
         }
+    }
+    public void RemoveObj()
+    {
+        Destroy(trap, 3f);
     }
 }
