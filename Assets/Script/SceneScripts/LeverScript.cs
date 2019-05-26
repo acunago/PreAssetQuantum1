@@ -10,6 +10,14 @@ public class LeverScript : MonoBehaviour
 {
     public GameObject[] interact;
     public LeverState state;
+    public GameObject Movement;
+    public Vector3 rotationAngle;
+
+    public bool isTimmer;
+    public float timmer;
+    public float actTime;
+
+    private Quaternion quatOrignal;
 
     private Color original;
     private DoorScript doorCall;
@@ -17,14 +25,38 @@ public class LeverScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Movement.transform.rotation = Quaternion.Euler(Movement.transform.rotation.x, Movement.transform.rotation.y, 0);
         state = LeverState.DISABLED;
-        rend = GetComponent<Renderer>();
-        original = rend.material.color;
+        quatOrignal = Movement.transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (state == LeverState.ACTIVE)
+        {
+            Movement.transform.rotation = Quaternion.Slerp(Movement.transform.rotation, Quaternion.Euler(rotationAngle), 1f);
+            Movement.transform.GetChild(0).GetComponent<Outline>().enabled = true;
+            Movement.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
+            if (isTimmer)
+            {
+                actTime += Time.deltaTime;
+                if (timmer <= actTime)
+                {
+                    state = LeverState.DISABLED;
+                    actTime = 0;
+
+                }
+            }
+
+        }
+        else
+        {
+            Movement.transform.rotation = quatOrignal;
+            Movement.transform.GetChild(0).GetComponent<Outline>().enabled = false;
+            Movement.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
+        }
     }
 
     public void SetActive()
@@ -33,7 +65,7 @@ public class LeverScript : MonoBehaviour
         {
             state = LeverState.DISABLED;
             
-            rend.material.color = original;
+
             DisableElements();
 
 
@@ -42,7 +74,7 @@ public class LeverScript : MonoBehaviour
         {
             state = LeverState.ACTIVE;
             
-            rend.material.color = Color.red;
+            
             ActiveElements();
         }
 
@@ -90,5 +122,13 @@ public class LeverScript : MonoBehaviour
             }
         }
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Entro");
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        Debug.Log("sALIO");
     }
 }

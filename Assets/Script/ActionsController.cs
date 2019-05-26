@@ -62,28 +62,22 @@ public class ActionsController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (i == 1)
-            {
                 if (redMagnet != null)
                 {
                     redMagnet.GetComponent<MagnetsController>().DestroyObj();
                     atract = false;
                 }
                 redMagnet = CreateBox(red);
-                i = i + 1;
+        }
 
-            }
-            else
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (blueMagnet != null)
             {
-                if (blueMagnet != null)
-                {
-                    blueMagnet.GetComponent<MagnetsController>().DestroyObj();
-                    atract = false;
-                }
-                blueMagnet = CreateBox(blue);
-                i = 1;
+                blueMagnet.GetComponent<MagnetsController>().DestroyObj();
+                atract = false;
             }
-
+            blueMagnet = CreateBox(blue);
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -120,7 +114,7 @@ public class ActionsController : MonoBehaviour
             }
 
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (redMagnet != null)
             {
