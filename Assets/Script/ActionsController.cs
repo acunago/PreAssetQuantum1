@@ -143,16 +143,23 @@ public class ActionsController : MonoBehaviour
                 return;
             }
 
+
+
             Rigidbody rbBlue = blueMagnet.GetComponent<FixedJoint>().connectedBody;
             Rigidbody rbRed = redMagnet.GetComponent<FixedJoint>().connectedBody;
 
 
             Vector3 _direction = 2 * (blueMagnet.transform.position - redMagnet.transform.position);
             Vector3 _force = _direction.normalized * arrowSpeed;
+            if (rbBlue.transform.gameObject.layer == 18)
+            {
+                rbBlue.AddForce(-_force, ForceMode.Acceleration);
+            }
 
-            rbBlue.transform.GetComponent<Rigidbody>().AddForce(-_force, ForceMode.Impulse);
-            rbRed.transform.GetComponent<Rigidbody>().AddForce(_force, ForceMode.Impulse);
-
+            if (rbRed.transform.gameObject.layer == 18)
+            {
+                rbRed.AddForce(_force, ForceMode.Acceleration);
+            }
         }
     }
     public GameObject CreateBox(GameObject cube)

@@ -4190,6 +4190,7 @@ GameObject:
   - component: {fileID: 8162956765649492722}
   - component: {fileID: 8162956765649492721}
   - component: {fileID: 8162956765649492720}
+  - component: {fileID: 8859070928226777245}
   m_Layer: 8
   m_Name: Character
   m_TagString: Player
@@ -4607,6 +4608,28 @@ CapsuleCollider:
   m_Height: 1.9088755
   m_Direction: 1
   m_Center: {x: 0, y: 0.92057085, z: -0.014343739}
+--- !u!114 &8859070928226777245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8162956765649492727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a6e29aa7f269ea44973293e4f139d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCloseEvents: 0
+  openCloseWindow: 1
+  selectedToolbar: 0
+  removePhysicsAfterDie: 0
+  disableColliders: 0
+  collisionSource: {fileID: 0}
+  collisionClip: {fileID: 8300000, guid: 820b4795221a59a4f84bdbb8bc6957e9, type: 3}
+  ignoreTags:
+  - Weapon
+  - Ignore Ragdoll
 --- !u!1 &8162956765678347669
 GameObject:
   m_ObjectHideFlags: 0

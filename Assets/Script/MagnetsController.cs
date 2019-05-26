@@ -22,27 +22,22 @@ public class MagnetsController : MonoBehaviour
     {
         if (collision.transform.GetComponent<Rigidbody>() != null)
         {
-            var sticky = gameObject.AddComponent(typeof(FixedJoint)) as FixedJoint;
-            sticky.connectedBody = collision.rigidbody;
-            Stick = true;
+
+                var sticky = gameObject.AddComponent(typeof(FixedJoint)) as FixedJoint;
+                sticky.connectedBody = collision.rigidbody;
+                Stick = true;
+        
         }
         else
         {
             DestroyObj();
         }
 
+        //if (collision.collider != null && collision.collider.gameObject.GetComponent<Emerald_AI>() != null)
+        //{
+        //    collision.collider.gameObject.GetComponent<Emerald_AI>().Damage(100, Emerald_AI.TargetType.Player);
 
-
-
-        if (collision.collider != null && collision.collider.gameObject.GetComponent<Emerald_AI>() != null)
-        {
-            collision.collider.gameObject.GetComponent<Emerald_AI>().Damage(100, Emerald_AI.TargetType.Player);
-
-        }
-
-
-
-
+        //}
 
     }
     public void DestroyObj()
