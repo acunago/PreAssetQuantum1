@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum LeverState
+
+public enum ButtonState
 {
     ACTIVE,
     DISABLED
 }
-public class LeverScript : MonoBehaviour
+
+public class ButtonScript : MonoBehaviour
 {
+
     public GameObject[] interact;
-    public LeverState state;
+    public ButtonState state;
     public GameObject Movement;
     public Vector3 rotationAngle;
 
@@ -17,23 +20,21 @@ public class LeverScript : MonoBehaviour
     public float timmer;
     public float actTime;
 
-    private Quaternion quatOrignal;
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
-        //Movement.transform.rotation = Quaternion.Euler(Movement.transform.rotation.x, Movement.transform.rotation.y, 0);
-        state = LeverState.DISABLED;
-        quatOrignal = Movement.transform.rotation;
+        state = ButtonState.DISABLED;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (state == LeverState.ACTIVE)
+        if (state == ButtonState.ACTIVE)
         {
-            Movement.transform.rotation = Quaternion.Slerp(Movement.transform.rotation, Quaternion.Euler(rotationAngle), 1f);
+            
             Movement.transform.GetChild(0).GetComponent<Outline>().enabled = true;
             Movement.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
             if (isTimmer)
@@ -42,25 +43,24 @@ public class LeverScript : MonoBehaviour
                 if (timmer <= actTime)
                 {
                     SetActive();
-
-
                 }
             }
 
         }
         else
         {
-            Movement.transform.rotation = quatOrignal;
+            
             Movement.transform.GetChild(0).GetComponent<Outline>().enabled = false;
             Movement.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
+
     public void SetActive()
     {
-        if (state == LeverState.ACTIVE)
+        if (state == ButtonState.ACTIVE)
         {
-            state = LeverState.DISABLED;
+            state = ButtonState.DISABLED;
 
             actTime = 0;
             DisableElements();
@@ -69,13 +69,14 @@ public class LeverScript : MonoBehaviour
         }
         else
         {
-            state = LeverState.ACTIVE;
-            
-            
+            state = ButtonState.ACTIVE;
+
+
             ActiveElements();
         }
 
     }
+
 
     public void ActiveElements()
     {
@@ -99,7 +100,6 @@ public class LeverScript : MonoBehaviour
         }
 
     }
-
     public void DisableElements()
     {
 
@@ -114,12 +114,11 @@ public class LeverScript : MonoBehaviour
             {
                 if (interact[i].layer == 17) //puente
                 {
-                   interact[i].GetComponent<BridgeScript>().SetDisabled();
+                    interact[i].GetComponent<BridgeScript>().SetDisabled();
 
                 }
             }
         }
 
     }
-
 }

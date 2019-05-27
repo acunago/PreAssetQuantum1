@@ -26,13 +26,13 @@ public class DoorScript : MonoBehaviour
 
     public void SetActive()
     {
-        state = DoorState.ACTIVE;
+        //state = DoorState.ACTIVE;
         transform.Rotate(auxV3);
 
     }
     public void SetDisabled()
     {
-        state = DoorState.DISABLED;
+        //state = DoorState.DISABLED;
         transform.Rotate(-auxV3);
 
     }
