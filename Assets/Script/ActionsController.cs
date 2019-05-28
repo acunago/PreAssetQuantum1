@@ -19,26 +19,24 @@ public class ActionsController : MonoBehaviour
     public GameObject PosTotal;
     public GameObject crossHair;
 
-    private bool attached = false;
+
     private bool playerClose = false;
-    private bool attachSkull = false;
+    public bool attached = false;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        attached = false;
+
     }
     // Update is called once per frame
     void Update()
     {
-        if (attachSkull)
-        {
-            transform.position = Vector3.Lerp(transform.position, PosTotal.transform.position, 0.15f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, PosTotal.transform.rotation, 0.15f);
-        }
 
         if (attached)
         {
+            transform.position = Vector3.Lerp(transform.position, PosTotal.transform.position, 0.15f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, PosTotal.transform.rotation, 0.15f);
             KeyPress();
 
         }
@@ -48,7 +46,7 @@ public class ActionsController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    attachSkull = true;
+                    
                     attached = true;
                 }
 
@@ -147,12 +145,16 @@ public class ActionsController : MonoBehaviour
             Vector3 _force = _direction.normalized * arrowSpeed;
             if (rbBlue.transform.gameObject.layer == 18)
             {
+                Debug.Log("Deberia mover Azul");
                 rbBlue.AddForce(-_force, ForceMode.Acceleration);
+                
             }
 
             if (rbRed.transform.gameObject.layer == 18)
             {
+                Debug.Log("Deberia mover Rojo");
                 rbRed.AddForce(_force, ForceMode.Acceleration);
+                
             }
         }
     }

@@ -21,7 +21,6 @@ public class RockTrapScript : MonoBehaviour
             for (int i = 0; i < trap.transform.childCount; i++)
             {
                 trap.transform.GetChild(i).GetComponent<Rigidbody>().useGravity = true;
-                trap.transform.GetChild(i).GetComponent<Rigidbody>().useGravity = true;
                 trap.transform.GetChild(i).GetComponent<Collider>().isTrigger = false;
             }
             trap.transform.GetComponent<Rigidbody>().useGravity = true;
