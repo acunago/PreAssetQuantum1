@@ -10,15 +10,20 @@ public enum LanzallamaState
 public class LanzallamasScript : MonoBehaviour
 {
     public LanzallamaState state;
+    public GameObject fire;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public void ActiveTrap()
     {
-        
+        if (state == LanzallamaState.DISABLED)
+        {
+            state = LanzallamaState.ACTIVE;
+            fire.gameObject.SetActive(true);
+        }
+        else
+        {
+            state = LanzallamaState.DISABLED;
+            fire.gameObject.SetActive(false);
+        }
     }
 }

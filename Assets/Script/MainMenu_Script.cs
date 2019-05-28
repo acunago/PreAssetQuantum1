@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenu_Script : MonoBehaviour
 {
@@ -39,5 +40,6 @@ public class MainMenu_Script : MonoBehaviour
     {
         Application.Quit();
     }
+
 
 }
