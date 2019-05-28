@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameScript : MonoBehaviour
@@ -49,6 +50,11 @@ public class GameScript : MonoBehaviour
             {
                 Player.transform.position = respawn[3].transform.position;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("Level1-TheCave");
+
         }
     }
 }
