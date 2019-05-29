@@ -2976,14 +2976,22 @@ public class Emerald_AI : MonoBehaviour {
 	}
 
 	public void DamagePlayer(){
-		//If you'd like AI to damage RFPS, simple uncomment this and comment out the PlayerHealth if statement.
-		/*
+        //If you'd like AI to damage RFPS, simple uncomment this and comment out the PlayerHealth if statement.
+        /*
 		if (CurrentTarget != null && CurrentTarget.GetComponent<FPSPlayer>() != null){
 			CurrentTarget.GetComponent<FPSPlayer>().ApplyDamage((float)CurrentDamageAmount, transform, true);
 		}
 		*/
-		if (CurrentTarget != null && CurrentTarget.GetComponent<PlayerHealth>() != null){
-			CurrentTarget.GetComponent<PlayerHealth>().DamagePlayer((float)CurrentDamageAmount);
+
+
+
+
+        if (CurrentTarget != null && CurrentTarget.GetComponent<Invector.vCharacterController.vCharacter>() != null){
+            var _Damage = new Invector.vDamage(100000);
+            _Damage.hitReaction = true;
+            CurrentTarget.GetComponent<Invector.vCharacterController.vCharacter>().TakeDamage(_Damage);
+
+           
 		}
 	}
 		
