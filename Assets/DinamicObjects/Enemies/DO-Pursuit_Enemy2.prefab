@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8679914199937694403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3814334014182869607}
+  m_Layer: 0
+  m_Name: DO-Pursuit_Enemy2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3814334014182869607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8679914199937694403}
+  m_LocalRotation: {x: -0, y: -0.057388246, z: -0, w: 0.998352}
+  m_LocalPosition: {x: -4.98, y: 4.83, z: -105.19}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Children:
+  - {fileID: 6245730892288049243}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -6.5800004, z: 0}
+--- !u!1001 &6245730892288196207
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3814334014182869607}
+    m_Modifications:
+    - target: {fileID: 177072, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+      propertyPath: m_Name
+      value: Character_Skeleton_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 409140, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409140, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409140, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409140, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409140, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409140, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409140, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 409140, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409140, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409140, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 409140, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 27953ea55848f7a48897c38360d8b331, type: 3}
+--- !u!4 &6245730892288049243 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 409140, guid: 27953ea55848f7a48897c38360d8b331,
+    type: 3}
+  m_PrefabInstance: {fileID: 6245730892288196207}
+  m_PrefabAsset: {fileID: 0}
