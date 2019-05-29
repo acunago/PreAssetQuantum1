@@ -20,7 +20,7 @@ public class GameScript : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("muerto");
-        Invoke("ExectImage", 1);
+        Invoke("ExectImage", 3);
     }
     public void Teleport()
     {
