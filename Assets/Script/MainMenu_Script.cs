@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor.SceneManagement;
 
 public class MainMenu_Script : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class MainMenu_Script : MonoBehaviour
         transform.localRotation = Quaternion.Slerp(transform.localRotation, currentPos.rotation, speedFactor);
     }
     
+    public void StartLevel()
+    {
+        EditorSceneManager.LoadScene("Level1-TheCave");
+    }
+
     public void Move_1()
     {
         currentPos = startPos;
