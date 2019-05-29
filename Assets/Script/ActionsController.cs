@@ -32,24 +32,26 @@ public class ActionsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (attached)
+        if (PosTotal != null)
         {
-            transform.position = Vector3.Lerp(transform.position, PosTotal.transform.position, 0.15f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, PosTotal.transform.rotation, 0.15f);
-            KeyPress();
-
-        }
-        else
-        {
-            if (playerClose)
+            if (attached)
             {
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    
-                    attached = true;
-                }
+                transform.position = Vector3.Lerp(transform.position, PosTotal.transform.position, 0.15f);
+                transform.rotation = Quaternion.Lerp(transform.rotation, PosTotal.transform.rotation, 0.15f);
+                KeyPress();
 
+            }
+            else
+            {
+                if (playerClose)
+                {
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+
+                        attached = true;
+                    }
+
+                }
             }
         }
     }

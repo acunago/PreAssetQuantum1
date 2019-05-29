@@ -19,7 +19,8 @@ public class GameScript : MonoBehaviour
 
     public void GameOver()
     {
-        Gameover.gameObject.SetActive(true);
+        Debug.Log("muerto");
+        Invoke("ExectImage", 1);
     }
     public void Teleport()
     {
@@ -56,5 +57,10 @@ public class GameScript : MonoBehaviour
             SceneManager.LoadScene("Level1-TheCave");
 
         }
+    }
+    public void ExectImage()
+    {
+        Debug.Log("raro");
+        Gameover.gameObject.SetActive(true);
     }
 }
