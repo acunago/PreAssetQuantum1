@@ -84,7 +84,7 @@ public class LeverScript : MonoBehaviour
         {
             if (interact[i].layer == 16) //puerta
             {
-                Debug.Log("Puerta");
+                
                 interact[i].GetComponent<DoorScript>().SetActive();
 
             }
@@ -95,7 +95,27 @@ public class LeverScript : MonoBehaviour
                     interact[i].GetComponent<BridgeScript>().SetActive();
 
                 }
+                else
+                {
+                    if (interact[i].layer == 23) //reja
+                    {
+                        Debug.Log("reja");
+                        interact[i].GetComponent<RejaScript>().SetActive();
+
+                    }
+                    else
+                    {
+                        if (interact[i].layer == 24) //pendulo
+                        {
+                            
+                            interact[i].GetComponent<PenduloScript>().SetActive();
+
+                        }
+                    }
+                }
+
             }
+
         }
 
     }
@@ -116,6 +136,24 @@ public class LeverScript : MonoBehaviour
                 {
                    interact[i].GetComponent<BridgeScript>().SetDisabled();
 
+                }
+                else
+                {
+                    if (interact[i].layer == 23) //reja
+                    {
+                        Debug.Log("reja");
+                        interact[i].GetComponent<RejaScript>().SetActive();
+
+                    }
+                    else
+                    {
+                        if (interact[i].layer == 24) //pendulo
+                        {
+                            
+                            interact[i].GetComponent<PenduloScript>().SetActive();
+
+                        }
+                    }
                 }
             }
         }

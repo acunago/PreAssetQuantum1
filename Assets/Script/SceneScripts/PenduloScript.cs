@@ -12,10 +12,12 @@ public class PenduloScript : MonoBehaviour
 {
     public PenduloState state;
     private float i;
+    Quaternion angle;
     // Start is called before the first frame update
     void Start()
     {
         state = PenduloState.ACTIVE;
+        angle = transform.rotation;
     }
 
     // Update is called once per frame
@@ -30,7 +32,22 @@ public class PenduloScript : MonoBehaviour
         }
         else
         {
+            transform.rotation = Quaternion.Lerp(transform.rotation, angle,0.1f);
             i = 0;
+        }
+    }
+    public void SetActive()
+    {
+        if (state == PenduloState.ACTIVE)
+        {
+            state = PenduloState.DISABLED;
+
+
+        }
+        else
+        {
+
+            state = PenduloState.ACTIVE;
         }
     }
 }

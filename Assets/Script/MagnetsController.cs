@@ -20,6 +20,7 @@ public class MagnetsController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.layer == 2) { return; }
         if (collision.transform.GetComponent<Rigidbody>() != null)
         {
 

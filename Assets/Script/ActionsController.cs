@@ -47,7 +47,6 @@ public class ActionsController : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-
                         attached = true;
                     }
 
@@ -95,8 +94,6 @@ public class ActionsController : MonoBehaviour
 
                         Debug.Log("pego");
                         atract = true;
-
-
                     }
                     else
                     {
@@ -158,6 +155,16 @@ public class ActionsController : MonoBehaviour
                     rbBlue.transform.position = Vector3.MoveTowards(rbBlue.transform.position, rbRed.transform.position, 2f * Time.deltaTime);
                 }
                 //rbBlue.MovePosition((rbRed.transform.position - rbBlue.transform.position).normalized  *  Time.deltaTime);
+
+            }
+
+            if(rbBlue.transform.gameObject.layer == 22)
+            {
+                rbBlue.transform.parent.GetComponent<LeverScript>().SetActive();
+
+
+                atract = false;
+
 
             }
 
