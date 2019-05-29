@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3727186499667733981}
+  - component: {fileID: 437618365591538226}
+  - component: {fileID: 6247080337359615101}
   m_Layer: 0
   m_Name: DO-Floor_Needles
   m_TagString: Untagged
@@ -33,6 +35,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &437618365591538226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830858188455774289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a6ee24d8c766042b403d33a08151b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCloseEvents: 0
+  openCloseWindow: 1
+  selectedToolbar: 0
+  damage:
+    damageValue: 10000
+    staminaBlockCost: 5
+    staminaRecoveryDelay: 1
+    ignoreDefense: 0
+    activeRagdoll: 0
+    sender: {fileID: 0}
+    receiver: {fileID: 0}
+    hitPosition: {x: 0, y: 0, z: 0}
+    hitReaction: 1
+    recoil_id: 0
+    reaction_id: 0
+    damageType: 
+  overrideDamageSender: {fileID: 0}
+  tags:
+  - Player
+  useCollision: 0
+  continuousDamage: 0
+  damageFrequency: 0.5
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Invector.vObjectDamage+OnHitEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!65 &6247080337359615101
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3830858188455774289}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.175963, y: 1.0554512, z: 1.876269}
+  m_Center: {x: -0.08892179, y: 0.70592964, z: -0.10326785}
 --- !u!1001 &457849190672183069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40,10 +94,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3727186499667733981}
     m_Modifications:
-    - target: {fileID: 172248, guid: 741f1739761e2d64f8da104d700a2180, type: 3}
-      propertyPath: m_Name
-      value: SM_Env_Rock_Brick_Simple_02
-      objectReference: {fileID: 0}
     - target: {fileID: 414706, guid: 741f1739761e2d64f8da104d700a2180, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -99,6 +149,10 @@ PrefabInstance:
     - target: {fileID: 414706, guid: 741f1739761e2d64f8da104d700a2180, type: 3}
       propertyPath: m_LocalScale.z
       value: 4.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 172248, guid: 741f1739761e2d64f8da104d700a2180, type: 3}
+      propertyPath: m_Name
+      value: SM_Env_Rock_Brick_Simple_02
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 741f1739761e2d64f8da104d700a2180, type: 3}

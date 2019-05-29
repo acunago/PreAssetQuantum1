@@ -60,7 +60,7 @@ public class GameScript : MonoBehaviour
     }
     public void ExectImage()
     {
-        Debug.Log("raro");
+
         Gameover.gameObject.SetActive(true);
     }
 }
