@@ -60,12 +60,12 @@ public class ActionsController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-                if (redMagnet != null)
-                {
-                    redMagnet.GetComponent<MagnetsController>().DestroyObj();
-                    atract = false;
-                }
-                redMagnet = CreateBox(red);
+            if (redMagnet != null)
+            {
+                redMagnet.GetComponent<MagnetsController>().DestroyObj();
+                atract = false;
+            }
+            redMagnet = CreateBox(red);
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -143,18 +143,32 @@ public class ActionsController : MonoBehaviour
 
             Vector3 _direction = 2 * (blueMagnet.transform.position - redMagnet.transform.position);
             Vector3 _force = _direction.normalized * arrowSpeed;
-            if (rbBlue.transform.gameObject.layer == 18)
+            if (Vector3.Distance(blueMagnet.transform.position, redMagnet.transform.position) > 1.5f)
             {
-                Debug.Log("Deberia mover Azul");
-                rbBlue.AddForce(-_force, ForceMode.Acceleration);
-                
-            }
+                if (rbBlue.transform.gameObject.layer == 18)
+                {
 
-            if (rbRed.transform.gameObject.layer == 18)
-            {
-                Debug.Log("Deberia mover Rojo");
-                rbRed.AddForce(_force, ForceMode.Acceleration);
-                
+                    Debug.Log("Deberia mover Azul");
+                    //rbBlue.AddForce(-_force, ForceMode.Impulse);
+                    //rbBlue.transform.position  = Vector3.Lerp (rbRed.transform.position, (rbRed.transform.position - rbBlue.transform.position).normalized,1f);
+                    rbBlue.transform.position = Vector3.MoveTowards(rbBlue.transform.position, rbRed.transform.position * 0.99f, 2f * Time.deltaTime);
+                    //rbBlue.MovePosition((rbRed.transform.position - rbBlue.transform.position).normalized  *  Time.deltaTime);
+
+                }
+
+                if (rbRed.transform.gameObject.layer == 18)
+                {
+
+                    Debug.Log("Deberia mover Rojo");
+                    rbRed.transform.position = Vector3.MoveTowards(rbRed.transform.position, rbBlue.transform.position * 0.99f, 2f * Time.deltaTime);
+                    //rbRed.AddForce(_force, ForceMode.Impulse);
+
+                }
+                RaycastHit hit;
+                if (Physics.Raycast(blueMagnet.transform.position, redMagnet.transform.position, out hit))
+                {
+                    Debug.Log("hit" + Vector3.Distance(blueMagnet.transform.position, redMagnet.transform.position));
+                }
             }
         }
     }
