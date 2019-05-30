@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 
-public enum mySounds : int
+public enum MySounds : int
 {
     disparo = 0,
     arrow = 1,
@@ -71,7 +71,7 @@ public class ActionsController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            AudManager.PlaySound(sounds[(int)mySounds.disparo]);
+            AudManager.PlaySound(sounds[(int)MySounds.disparo]);
             if (redMagnet != null)
             {
                 redMagnet.GetComponent<MagnetsController>().DestroyObj();
@@ -82,7 +82,7 @@ public class ActionsController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            AudManager.PlaySound(sounds[(int)mySounds.disparo]);
+            AudManager.PlaySound(sounds[(int)MySounds.disparo]);
             if (blueMagnet != null)
             {
                 blueMagnet.GetComponent<MagnetsController>().DestroyObj();
