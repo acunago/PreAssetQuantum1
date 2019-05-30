@@ -39599,7 +39599,7 @@ PrefabInstance:
     - target: {fileID: 2290271492522416954, guid: 3dbb9579778c9cc429f2cfbb7b6d467b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2290271491734906905, guid: 3dbb9579778c9cc429f2cfbb7b6d467b,
         type: 3}
@@ -40193,6 +40193,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainCave
+      objectReference: {fileID: 0}
+    - target: {fileID: 3368359806424776164, guid: 531fc28417b5f824c946935c88fa8239,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3368359806424776167, guid: 531fc28417b5f824c946935c88fa8239,
         type: 3}
