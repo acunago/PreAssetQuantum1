@@ -9,7 +9,7 @@ public class GameScript : MonoBehaviour
     // Start is called before the first frame update
     public GameObject[] respawn;
     public GameObject Player;
-    public Image Gameover;
+    public GameObject Gameover;
 
     private void Update()
     {
@@ -60,7 +60,8 @@ public class GameScript : MonoBehaviour
     }
     public void ExectImage()
     {
-
+        Time.timeScale = 0;
+        Cursor.visible = true;
         Gameover.gameObject.SetActive(true);
     }
 }
