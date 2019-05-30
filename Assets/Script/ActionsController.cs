@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 
+public enum mySounds : int
+{
+    disparo = 0,
+    arrow = 1,
+    sword = 2,
+    dash = 3,
+    death = 4,
+}
+
 public class ActionsController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -23,11 +32,12 @@ public class ActionsController : MonoBehaviour
     private bool playerClose = false;
     public bool attached = false;
 
-
+    public List<AudioClip> sounds = new List<AudioClip>();
+    public AudioManager AudManager;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-
+        AudManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
     // Update is called once per frame
     void Update()
@@ -61,6 +71,7 @@ public class ActionsController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            AudManager.PlaySound(sounds[(int)mySounds.disparo]);
             if (redMagnet != null)
             {
                 redMagnet.GetComponent<MagnetsController>().DestroyObj();
@@ -71,6 +82,7 @@ public class ActionsController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
+            AudManager.PlaySound(sounds[(int)mySounds.disparo]);
             if (blueMagnet != null)
             {
                 blueMagnet.GetComponent<MagnetsController>().DestroyObj();

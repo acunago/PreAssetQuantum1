@@ -1,6 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+public enum mySounds : int
+{
+    jump = 0,
+    arrow = 1,
+    sword = 2,
+    dash = 3,
+    death = 4,
+}
+
 namespace Invector
 {   [vClassHeader("OBJECT DAMAGE", iconName = "DamageIcon")]
     public class vObjectDamage : vMonoBehaviour
