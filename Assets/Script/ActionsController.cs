@@ -170,6 +170,14 @@ public class ActionsController : MonoBehaviour
                     }
                     //rbBlue.useGravity = false;
                     rbBlue.transform.position = Vector3.MoveTowards(rbBlue.transform.position, rbRed.transform.position, 2f * Time.deltaTime);
+                    if (Vector3.Distance(rbBlue.transform.position, rbRed.transform.position) < 2f)
+                    {
+                        if (rbBlue.transform.GetComponent<AudioSource>().isPlaying)
+                        {
+
+                            rbBlue.transform.GetComponent<AudioSource>().Stop();
+                        }
+                    }
                 }
                 //rbBlue.MovePosition((rbRed.transform.position - rbBlue.transform.position).normalized  *  Time.deltaTime);
 
