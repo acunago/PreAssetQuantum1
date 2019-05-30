@@ -6,7 +6,7 @@ using UnityEngine.Experimental.UIElements;
 public enum MySounds : int
 {
     disparo = 0,
-    arrow = 1,
+    cajas = 1,
     sword = 2,
     dash = 3,
     death = 4,
@@ -163,6 +163,7 @@ public class ActionsController : MonoBehaviour
                 //rbBlue.transform.position  = Vector3.Lerp (rbRed.transform.position, (rbRed.transform.position - rbBlue.transform.position).normalized,1f);
                 if (Vector3.Distance(rbBlue.transform.position, rbRed.transform.position) > 2f)
                 {
+                    AudManager.PlaySound(sounds[(int)MySounds.cajas]);
                     //rbBlue.useGravity = false;
                     rbBlue.transform.position = Vector3.MoveTowards(rbBlue.transform.position, rbRed.transform.position, 2f * Time.deltaTime);
                 }

@@ -983,7 +983,7 @@ PrefabInstance:
     - target: {fileID: 8685193319904373488, guid: def903eab6ffe6e4e82de7fc80153dcb,
         type: 3}
       propertyPath: sounds.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8685193319904373488, guid: def903eab6ffe6e4e82de7fc80153dcb,
         type: 3}
@@ -1015,6 +1015,11 @@ PrefabInstance:
       propertyPath: sounds.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 892135a14454ef44092e0543b5df8dfb, type: 3}
+    - target: {fileID: 8685193319904373488, guid: def903eab6ffe6e4e82de7fc80153dcb,
+        type: 3}
+      propertyPath: sounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 16a8ce9f6dd012349988b5838dac6c8c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: def903eab6ffe6e4e82de7fc80153dcb, type: 3}
 --- !u!1 &28366879
@@ -23201,6 +23206,11 @@ PrefabInstance:
     - target: {fileID: 5193162081265704219, guid: 51dc37d633ab39748b3efa7da58e4f99,
         type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5193162081265704219, guid: 51dc37d633ab39748b3efa7da58e4f99,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2361498169558210482, guid: 51dc37d633ab39748b3efa7da58e4f99,
