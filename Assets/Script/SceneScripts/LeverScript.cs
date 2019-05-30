@@ -16,6 +16,7 @@ public class LeverScript : MonoBehaviour
     public bool isTimmer;
     public float timmer;
     public float actTime;
+    public SoundBag snd;
 
     private Quaternion quatOrignal;
     
@@ -64,14 +65,14 @@ public class LeverScript : MonoBehaviour
 
             actTime = 0;
             DisableElements();
-
+            snd.PlaySound();
 
         }
         else
         {
             state = LeverState.ACTIVE;
-            
-            
+
+            snd.PlaySound();
             ActiveElements();
         }
 

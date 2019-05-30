@@ -6,11 +6,14 @@ public class RockTrapScript : MonoBehaviour
 {
     public GameObject trap;
     // Start is called before the first frame update
+    public AudioClip sonido;
+    public AudioSource AudManager;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == 8) { 
             ActiveChild();
+            PlaySound();
         }
     }
 
@@ -30,5 +33,19 @@ public class RockTrapScript : MonoBehaviour
     public void RemoveObj()
     {
         Destroy(trap, 3f);
+    }
+
+
+
+    public void PlaySound()
+    {
+        Invoke("Play",0.7f);
+    }
+    public void Play()
+    {
+        if (!AudManager.isPlaying)
+        {
+            AudManager.PlayOneShot(sonido);
+        }
     }
 }
