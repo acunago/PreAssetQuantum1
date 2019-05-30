@@ -65,14 +65,14 @@ public class LeverScript : MonoBehaviour
 
             actTime = 0;
             DisableElements();
-            snd.PlaySound();
+            
 
         }
         else
         {
             state = LeverState.ACTIVE;
 
-            snd.PlaySound();
+
             ActiveElements();
         }
 

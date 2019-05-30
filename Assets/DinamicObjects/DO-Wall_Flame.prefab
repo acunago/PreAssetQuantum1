@@ -95,6 +95,18 @@ PrefabInstance:
       propertyPath: VelocityModule.inWorldSpace
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19861774, guid: f8356666ac1766c498d6e8a0bc3eb447, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 19861774, guid: f8356666ac1766c498d6e8a0bc3eb447, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 19861774, guid: f8356666ac1766c498d6e8a0bc3eb447, type: 3}
+      propertyPath: VelocityModule.speedModifier.scalar
+      value: 3.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8356666ac1766c498d6e8a0bc3eb447, type: 3}
 --- !u!4 &4724568410448504514 stripped

@@ -12,6 +12,7 @@ public class PenduloScript : MonoBehaviour
 {
     public PenduloState state;
     private float i;
+    public SoundBag snd;
     Quaternion angle;
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,10 @@ public class PenduloScript : MonoBehaviour
             i += Time.deltaTime;
             transform.Rotate(new Vector3(0, 0,  Mathf.Sin(i)));
 
+            if (Mathf.Sin(i) >= -0.2 && Mathf.Sin(i) <= 0.2)
+            {
+                snd.PlaySound();
+            }
         }
         else
         {
@@ -41,12 +46,12 @@ public class PenduloScript : MonoBehaviour
         if (state == PenduloState.ACTIVE)
         {
             state = PenduloState.DISABLED;
-
+            
 
         }
         else
         {
-
+            
             state = PenduloState.ACTIVE;
         }
     }
