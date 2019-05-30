@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
                     {
                         playSong = true;
                         sources[i].PlayOneShot(pClip);
+
                         break;
                     }
                 }
@@ -48,5 +49,12 @@ public class AudioManager : MonoBehaviour
             sources[sources.Count - 1].PlayOneShot(pClip);
         }
 
+    }
+    public void PlayOnce(AudioClip pClip)
+    {
+        if (sources.Count > 0)
+        {
+            
+        }
     }
 }
