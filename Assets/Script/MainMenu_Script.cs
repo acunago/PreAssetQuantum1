@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class MainMenu_Script : MonoBehaviour
 {
@@ -24,7 +24,7 @@ public class MainMenu_Script : MonoBehaviour
     
     public void StartLevel()
     {
-        EditorSceneManager.LoadScene("Level1-TheCave");
+        SceneManager.LoadScene("Level1-TheCave");
     }
 
     public void Move_1()

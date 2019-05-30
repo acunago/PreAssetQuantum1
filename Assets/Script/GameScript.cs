@@ -10,6 +10,7 @@ public class GameScript : MonoBehaviour
     public GameObject[] respawn;
     public GameObject Player;
     public GameObject Gameover;
+    public GameObject vinctoria;
 
     private void Update()
     {
@@ -19,6 +20,7 @@ public class GameScript : MonoBehaviour
 
     public void GameOver()
     {
+
         Debug.Log("muerto");
         Invoke("ExectImage", 3);
     }
@@ -60,8 +62,20 @@ public class GameScript : MonoBehaviour
     }
     public void ExectImage()
     {
-        Time.timeScale = 0;
-        Cursor.visible = true;
+
+
         Gameover.gameObject.SetActive(true);
+        Invoke("menu", 2);
+    }
+    public void menu()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        SceneManager.LoadScene("Menu");
+    }
+    public void victoria()
+    {
+        Gameover.gameObject.SetActive(true);
+        Invoke("menu", 2);
     }
 }
