@@ -164,10 +164,10 @@ public class ActionsController : MonoBehaviour
                 if (Vector3.Distance(rbBlue.transform.position, rbRed.transform.position) > 2f)
                 {
                     
-                    if (!rbBlue.transform.GetComponent<AudioSource>().isPlaying)
-                    {
-                        rbBlue.transform.GetComponent<AudioSource>().PlayOneShot(sounds[(int)MySounds.cajas]);
-                    }
+                    //if (!rbBlue.transform.GetComponent<AudioSource>().isPlaying)
+                    //{
+                    //    rbBlue.transform.GetComponent<AudioSource>().PlayOneShot(sounds[(int)MySounds.cajas]);
+                    //}
                     //rbBlue.useGravity = false;
                     rbBlue.transform.position = Vector3.MoveTowards(rbBlue.transform.position, rbRed.transform.position, 2f * Time.deltaTime);
                     if (Vector3.Distance(rbBlue.transform.position, rbRed.transform.position) < 2f)

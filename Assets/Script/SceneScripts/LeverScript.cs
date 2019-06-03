@@ -19,7 +19,7 @@ public class LeverScript : MonoBehaviour
     public SoundBag snd;
 
     private Quaternion quatOrignal;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +65,7 @@ public class LeverScript : MonoBehaviour
 
             actTime = 0;
             DisableElements();
-            
+
 
         }
         else
@@ -85,7 +85,7 @@ public class LeverScript : MonoBehaviour
         {
             if (interact[i].layer == 16) //puerta
             {
-                
+
                 interact[i].GetComponent<DoorScript>().SetActive();
 
             }
@@ -108,19 +108,27 @@ public class LeverScript : MonoBehaviour
                     {
                         if (interact[i].layer == 24) //pendulo
                         {
-                            
+
                             interact[i].GetComponent<PenduloScript>().SetActive();
 
                         }
+                        else
+                        {
+                            if (interact[i].layer == 25) //activo
+                            {
+
+                                interact[i].SetActive(true);
+
+                            }
+                        }
                     }
+
                 }
 
             }
 
         }
-
     }
-
     public void DisableElements()
     {
 
@@ -135,7 +143,7 @@ public class LeverScript : MonoBehaviour
             {
                 if (interact[i].layer == 17) //puente
                 {
-                   interact[i].GetComponent<BridgeScript>().SetDisabled();
+                    interact[i].GetComponent<BridgeScript>().SetDisabled();
 
                 }
                 else
@@ -150,9 +158,18 @@ public class LeverScript : MonoBehaviour
                     {
                         if (interact[i].layer == 24) //pendulo
                         {
-                            
+
                             interact[i].GetComponent<PenduloScript>().SetActive();
 
+                        }
+                        else
+                        {
+                            if (interact[i].layer == 25) //activo
+                            {
+
+                                interact[i].SetActive(false);
+
+                            }
                         }
                     }
                 }

@@ -28,7 +28,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 973590390029637318}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -600,7 +601,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 100
+    maxNumParticles: 1000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -865,7 +866,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 20
+      scalar: 300
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -2044,7 +2045,7 @@ ParticleSystem:
     speedModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4725,3 +4726,87 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &7933857148099852567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 973590390029637318}
+  - component: {fileID: 1268441054256123022}
+  - component: {fileID: 285798697529442232}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &973590390029637318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7933857148099852567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.542}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 444886}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1268441054256123022
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7933857148099852567}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2120097, y: 1.3352592, z: 2.6982107}
+  m_Center: {x: -0.06401336, y: 0.052060246, z: 1.1754189}
+--- !u!114 &285798697529442232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7933857148099852567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a6ee24d8c766042b403d33a08151b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCloseEvents: 0
+  openCloseWindow: 1
+  selectedToolbar: 0
+  damage:
+    damageValue: 100000
+    staminaBlockCost: 5
+    staminaRecoveryDelay: 1
+    ignoreDefense: 0
+    activeRagdoll: 0
+    sender: {fileID: 0}
+    receiver: {fileID: 0}
+    hitPosition: {x: 0, y: 0, z: 0}
+    hitReaction: 1
+    recoil_id: 0
+    reaction_id: 0
+    damageType: 
+  overrideDamageSender: {fileID: 0}
+  tags:
+  - Player
+  useCollision: 0
+  continuousDamage: 0
+  damageFrequency: 0.5
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Invector.vObjectDamage+OnHitEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
