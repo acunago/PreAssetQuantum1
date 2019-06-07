@@ -16,28 +16,43 @@ public class DoorScript : MonoBehaviour
     public SoundBag snd;
     private Quaternion rotation;
     Vector3 auxV3;
+    Vector3 initial;
 
     // Start is called before the first frame update
     void Start()
     {
         state = DoorState.DISABLED;
-        auxV3 = new Vector3(0, 90 * rotationAngle, 0);
+        auxV3 = new Vector3(0,  rotationAngle, 0);
+        rotation = transform.rotation;
+    }
+
+    private void Update()
+    {
+        if (state == DoorState.ACTIVE)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(auxV3), 0.05f);
+            
+        }
+        else
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 0.05f);
+        }
     }
 
     // Update is called once per frame
 
     public void SetActive()
     {
-        //state = DoorState.ACTIVE;
-        transform.Rotate(auxV3);
-
+        state = DoorState.ACTIVE;
+        //transform.Rotate(auxV3);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(auxV3), 1f);
 
     }
     public void SetDisabled()
     {
-        //state = DoorState.DISABLED;
-        transform.Rotate(-auxV3);
-
+        state = DoorState.DISABLED;
+        //transform.Rotate(-auxV3);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(-auxV3), 1f);
 
     }
 }

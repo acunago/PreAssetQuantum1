@@ -6,6 +6,7 @@ public class MagnetsController : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool Stick = false;
+    public Color32 colour;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +25,19 @@ public class MagnetsController : MonoBehaviour
         if (collision.transform.GetComponent<Rigidbody>() != null)
         {
 
-                var sticky = gameObject.AddComponent(typeof(FixedJoint)) as FixedJoint;
-                sticky.connectedBody = collision.rigidbody;
-                Stick = true;
-        
+            var sticky = gameObject.AddComponent(typeof(FixedJoint)) as FixedJoint;
+            sticky.connectedBody = collision.rigidbody;
+
+            if (collision.transform.gameObject.GetComponent<Outline>() == null)
+            {
+                collision.transform.gameObject.AddComponent<Outline>();
+
+                collision.transform.gameObject.GetComponent<Outline>().OutlineMode = Outline.Mode.OutlineVisible;
+                collision.transform.gameObject.GetComponent<Outline>().OutlineWidth = 10;
+                collision.transform.gameObject.GetComponent<Outline>().OutlineColor = colour;
+            }
+            Stick = true;
+
         }
         else
         {

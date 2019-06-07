@@ -127,11 +127,13 @@ public class ActionsController : MonoBehaviour
         {
             if (redMagnet != null)
             {
+                Destroy(redMagnet.GetComponent<FixedJoint>().connectedBody.transform.gameObject.GetComponent< Outline >());
                 redMagnet.GetComponent<MagnetsController>().DestroyObj();
                 atract = false;
             }
             if (blueMagnet != null)
             {
+                Destroy(blueMagnet.GetComponent<FixedJoint>().connectedBody.transform.gameObject.GetComponent<Outline>());
                 blueMagnet.GetComponent<MagnetsController>().DestroyObj();
                 atract = false;
             }
@@ -155,42 +157,25 @@ public class ActionsController : MonoBehaviour
             Vector3 _direction = 2 * (blueMagnet.transform.position - redMagnet.transform.position);
             Vector3 _force = _direction.normalized * arrowSpeed;
 
-            if (rbBlue.transform.gameObject.layer == 18)
+            if (rbBlue.transform.gameObject.layer == 18 || rbBlue.transform.gameObject.layer == 22)
             {
 
                 Debug.Log("Deberia mover Azul");
                 //rbBlue.AddForce(-_force, ForceMode.Impulse);
                 //rbBlue.transform.position  = Vector3.Lerp (rbRed.transform.position, (rbRed.transform.position - rbBlue.transform.position).normalized,1f);
-                if (Vector3.Distance(rbBlue.transform.position, rbRed.transform.position) > 2f)
-                {
-                    
-                    //if (!rbBlue.transform.GetComponent<AudioSource>().isPlaying)
-                    //{
-                    //    rbBlue.transform.GetComponent<AudioSource>().PlayOneShot(sounds[(int)MySounds.cajas]);
-                    //}
-                    //rbBlue.useGravity = false;
-                    rbBlue.transform.position = Vector3.MoveTowards(rbBlue.transform.position, rbRed.transform.position, 2f * Time.deltaTime);
-                    if (Vector3.Distance(rbBlue.transform.position, rbRed.transform.position) < 2f)
-                    {
-                        if (rbBlue.transform.GetComponent<AudioSource>().isPlaying)
-                        {
 
-                            rbBlue.transform.GetComponent<AudioSource>().Stop();
-                        }
-                    }
-                }
-                //rbBlue.MovePosition((rbRed.transform.position - rbBlue.transform.position).normalized  *  Time.deltaTime);
+                InteractOrbs(rbBlue.gameObject, rbRed.gameObject);
+
 
             }
-
-            if(rbBlue.transform.gameObject.layer == 22)
+            else
             {
-                rbBlue.transform.parent.GetComponent<LeverScript>().SetActive();
+                if(rbRed.transform.gameObject.layer == 18 || rbRed.transform.gameObject.layer == 22)
+                {
 
+                    InteractOrbs(rbRed.gameObject, rbBlue.gameObject);
 
-                atract = false;
-
-
+                }
             }
 
             //if (rbBlue.transform.gameObject.layer == 18)
@@ -208,14 +193,49 @@ public class ActionsController : MonoBehaviour
             //}
 
         }
+    }
+
+    
+
+
+    private void InteractOrbs(GameObject atractObj, GameObject to)
+    {
+        if (atractObj.transform.gameObject.layer == 18)
+        {
+
+            Debug.Log("Deberia mover Azul");
+            //rbBlue.AddForce(-_force, ForceMode.Impulse);
+            //rbBlue.transform.position  = Vector3.Lerp (rbRed.transform.position, (rbRed.transform.position - rbBlue.transform.position).normalized,1f);
+            if (Vector3.Distance(atractObj.transform.position, to.transform.position) > 2f)
+            {
+                atractObj.transform.position = Vector3.MoveTowards(atractObj.transform.position, to.transform.position, 2f * Time.deltaTime);
+                if (Vector3.Distance(atractObj.transform.position, to.transform.position) < 2f)
+                {
+                    if (atractObj.transform.GetComponent<AudioSource>().isPlaying)
+                    {
+
+                        atractObj.transform.GetComponent<AudioSource>().Stop();
+                    }
+                }
+            }
+            //rbBlue.MovePosition((rbRed.transform.position - rbBlue.transform.position).normalized  *  Time.deltaTime);
+
+        }
+
+        if (atractObj.transform.gameObject.layer == 22)
+        {
+            atractObj.transform.parent.GetComponent<LeverScript>().SetActive();
+
+
+            atract = false;
+
+
+        }
 
     }
 
     public GameObject CreateBox(GameObject cube)
-    {
-
-
-        
+    {        
         Vector3 fwd =   puntoDisparo.transform.position - Camera.main.ScreenToWorldPoint(crossHair.transform.position);
 
         GameObject arrow = Instantiate(cube, puntoDisparo.transform.position, transform.rotation);
@@ -224,7 +244,7 @@ public class ActionsController : MonoBehaviour
 
         arrow.transform.GetComponent<Rigidbody>().AddForce(_force, ForceMode.Impulse);
         return arrow;
-                    
+                   
     }
     private void OnTriggerEnter(Collider other)
     {

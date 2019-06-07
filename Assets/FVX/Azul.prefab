@@ -9476,6 +9476,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stick: 0
+  colour:
+    serializedVersion: 2
+    rgba: 4288163126
 --- !u!1 &8955311329192777000
 GameObject:
   m_ObjectHideFlags: 0
@@ -18897,7 +18900,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9016244676667213569}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.99, y: 2.9272265, z: -0.048968267}
+  m_LocalPosition: {x: -0.1329999, y: 0.05799997, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8955311328027707188}
