@@ -26,6 +26,7 @@ public class LeverScript : MonoBehaviour
         //Movement.transform.rotation = Quaternion.Euler(Movement.transform.rotation.x, Movement.transform.rotation.y, 0);
         state = LeverState.DISABLED;
         quatOrignal = Movement.transform.rotation;
+        snd = transform.gameObject.GetComponent<SoundBag>();
     }
 
     // Update is called once per frame
@@ -34,9 +35,10 @@ public class LeverScript : MonoBehaviour
 
         if (state == LeverState.ACTIVE)
         {
-            Movement.transform.rotation = Quaternion.Slerp(Movement.transform.rotation, Quaternion.Euler(rotationAngle), 1f);
+            Movement.transform.rotation = Quaternion.Slerp(Movement.transform.rotation, Quaternion.Euler(rotationAngle), 0.2f);
             Movement.transform.GetChild(0).GetComponent<Outline>().enabled = true;
             Movement.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
+            
             if (isTimmer)
             {
                 actTime += Time.deltaTime;
@@ -51,7 +53,8 @@ public class LeverScript : MonoBehaviour
         }
         else
         {
-            Movement.transform.rotation = quatOrignal;
+            
+            Movement.transform.rotation = Quaternion.Slerp(Movement.transform.rotation, quatOrignal, 0.2f);
             Movement.transform.GetChild(0).GetComponent<Outline>().enabled = false;
             Movement.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -59,6 +62,10 @@ public class LeverScript : MonoBehaviour
 
     public void SetActive()
     {
+        if (snd != null)
+        {
+            snd.PlaySound();
+        }
         if (state == LeverState.ACTIVE)
         {
             state = LeverState.DISABLED;
@@ -71,8 +78,6 @@ public class LeverScript : MonoBehaviour
         else
         {
             state = LeverState.ACTIVE;
-
-
             ActiveElements();
         }
 

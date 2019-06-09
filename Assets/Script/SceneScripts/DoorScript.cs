@@ -43,6 +43,7 @@ public class DoorScript : MonoBehaviour
 
     public void SetActive()
     {
+        snd.PlaySound(0);
         state = DoorState.ACTIVE;
         //transform.Rotate(auxV3);
         //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(auxV3), 1f);
@@ -50,6 +51,7 @@ public class DoorScript : MonoBehaviour
     }
     public void SetDisabled()
     {
+        snd.PlaySound(1);
         state = DoorState.DISABLED;
         //transform.Rotate(-auxV3);
         //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(-auxV3), 1f);

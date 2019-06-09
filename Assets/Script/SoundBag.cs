@@ -11,28 +11,51 @@ public enum SoundState
 public class SoundBag : MonoBehaviour
 {
     // Start is called before the first frame update
-    public AudioClip sonido;
+    public AudioClip[] sonido;
     public AudioSource AudManager;
     public SoundState state = SoundState.DISABLED;
 
 
     private void Start()
     {
-        AudManager =  transform.GetComponent<AudioSource>();
+
     }
     private void Update()
     {
-        if(state == SoundState.ACTIVE)
+        if (state == SoundState.ACTIVE)
         {
             PlaySound();
         }
     }
 
+    public void PlaySound(int sound)
+    {
+        if (AudManager != null && sonido != null)
+        {
+            if (!AudManager.isPlaying)
+            {
+                AudManager.PlayOneShot(sonido[sound]);
+            }
+        }
+    }
     public void PlaySound()
     {
-        if (!AudManager.isPlaying)
+        if (AudManager != null && sonido != null)
         {
-            AudManager.PlayOneShot(sonido);
+            if (!AudManager.isPlaying)
+            {
+                AudManager.PlayOneShot(sonido[0]);
+            }
+        }
+    }
+    public void StopSound()
+    {
+        if (AudManager != null && sonido != null)
+        {
+            if (AudManager.isPlaying)
+            {
+                AudManager.Stop();
+            }
         }
     }
 }

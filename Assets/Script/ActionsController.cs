@@ -127,7 +127,7 @@ public class ActionsController : MonoBehaviour
         {
             if (redMagnet != null)
             {
-                Destroy(redMagnet.GetComponent<FixedJoint>().connectedBody.transform.gameObject.GetComponent< Outline >());
+                Destroy(redMagnet.GetComponent<FixedJoint>().connectedBody.transform.gameObject.GetComponent<Outline>());
                 redMagnet.GetComponent<MagnetsController>().DestroyObj();
                 atract = false;
             }
@@ -170,7 +170,7 @@ public class ActionsController : MonoBehaviour
             }
             else
             {
-                if(rbRed.transform.gameObject.layer == 18 || rbRed.transform.gameObject.layer == 22)
+                if (rbRed.transform.gameObject.layer == 18 || rbRed.transform.gameObject.layer == 22)
                 {
 
                     InteractOrbs(rbRed.gameObject, rbBlue.gameObject);
@@ -195,7 +195,7 @@ public class ActionsController : MonoBehaviour
         }
     }
 
-    
+
 
 
     private void InteractOrbs(GameObject atractObj, GameObject to)
@@ -209,13 +209,17 @@ public class ActionsController : MonoBehaviour
             if (Vector3.Distance(atractObj.transform.position, to.transform.position) > 2f)
             {
                 atractObj.transform.position = Vector3.MoveTowards(atractObj.transform.position, to.transform.position, 2f * Time.deltaTime);
-                if (Vector3.Distance(atractObj.transform.position, to.transform.position) < 2f)
+                if (Vector3.Distance(atractObj.transform.position, to.transform.position) > 2f)
                 {
-                    if (atractObj.transform.GetComponent<AudioSource>().isPlaying)
+                    if (atractObj.transform.GetComponent<SoundBag>() != null)
                     {
-
-                        atractObj.transform.GetComponent<AudioSource>().Stop();
+                        atractObj.transform.GetComponent<SoundBag>().PlaySound();
                     }
+
+                }
+                else
+                {
+                    atractObj.transform.GetComponent<SoundBag>().StopSound();
                 }
             }
             //rbBlue.MovePosition((rbRed.transform.position - rbBlue.transform.position).normalized  *  Time.deltaTime);
@@ -235,8 +239,8 @@ public class ActionsController : MonoBehaviour
     }
 
     public GameObject CreateBox(GameObject cube)
-    {        
-        Vector3 fwd =   puntoDisparo.transform.position - Camera.main.ScreenToWorldPoint(crossHair.transform.position);
+    {
+        Vector3 fwd = puntoDisparo.transform.position - Camera.main.ScreenToWorldPoint(crossHair.transform.position);
 
         GameObject arrow = Instantiate(cube, puntoDisparo.transform.position, transform.rotation);
         Vector3 _direction = 2 * fwd;
@@ -244,12 +248,12 @@ public class ActionsController : MonoBehaviour
 
         arrow.transform.GetComponent<Rigidbody>().AddForce(_force, ForceMode.Impulse);
         return arrow;
-                   
+
     }
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.gameObject.layer);
-        if(other.gameObject.layer == 8)
+        if (other.gameObject.layer == 8)
         {
             playerClose = true;
         }
