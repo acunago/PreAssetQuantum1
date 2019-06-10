@@ -28,11 +28,13 @@ public class PenduloScript : MonoBehaviour
         if(state == PenduloState.ACTIVE)
         {
             i += Time.deltaTime;
+            
             transform.Rotate(new Vector3(0, 0,  Mathf.Sin(i)));
+
 
             if (Mathf.Sin(i) >= -0.2 && Mathf.Sin(i) <= 0.2)
             {
-                snd.PlaySound();
+                //snd.PlaySound();
             }
         }
         else
