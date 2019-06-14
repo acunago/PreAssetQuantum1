@@ -164,6 +164,10 @@ namespace Invector
                                 sndBag.PlaySound(0);
                                 Debug.Log("Deberia Ser 1");
                             }
+                            else
+                            {
+                                sndBag.StopSound();
+                            }
                         }
                     }
                     else
@@ -175,7 +179,11 @@ namespace Invector
                                 soundAux = false;
 
                                 sndBag.PlaySound(1);
-                                
+
+                            }
+                            else
+                            {
+                                sndBag.StopSound();
                             }
                             soundAux = true;
                         }

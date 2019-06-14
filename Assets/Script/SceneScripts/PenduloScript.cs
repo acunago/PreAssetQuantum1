@@ -13,6 +13,7 @@ public class PenduloScript : MonoBehaviour
     public PenduloState state;
     private float i;
     public SoundBag snd;
+    public float  invert = 1;
     Quaternion angle;
     // Start is called before the first frame update
     void Start()
@@ -28,8 +29,9 @@ public class PenduloScript : MonoBehaviour
         if(state == PenduloState.ACTIVE)
         {
             i += Time.deltaTime;
-            
-            transform.Rotate(new Vector3(0, 0,  Mathf.Sin(i)));
+
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, invert * 110 * Mathf.Abs(Mathf.Sin(i))));
+            //transform.Rotate(new Vector3(0, 0,  Mathf.Sin(i)));
 
 
             if (Mathf.Sin(i) >= -0.2 && Mathf.Sin(i) <= 0.2)

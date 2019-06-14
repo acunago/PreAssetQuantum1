@@ -37,7 +37,10 @@ public class RejaScript : MonoBehaviour
         if (state == RejaState.ACTIVE)
         {
             state = RejaState.DISABLED;
-
+            if (snd != null)
+            {
+                snd.PlaySound();
+            }
 
         }
         else
