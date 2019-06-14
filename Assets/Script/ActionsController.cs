@@ -170,12 +170,12 @@ public class ActionsController : MonoBehaviour
             }
             else
             {
-                if (rbRed.transform.gameObject.layer == 18 || rbRed.transform.gameObject.layer == 22)
-                {
+                //if (rbRed.transform.gameObject.layer == 18 || rbRed.transform.gameObject.layer == 22)
+                //{
 
-                    InteractOrbs(rbRed.gameObject, rbBlue.gameObject);
+                //    InteractOrbs(rbRed.gameObject, rbBlue.gameObject);
 
-                }
+                //}
             }
 
             //if (rbBlue.transform.gameObject.layer == 18)

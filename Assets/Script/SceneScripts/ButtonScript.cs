@@ -34,7 +34,7 @@ public class ButtonScript : MonoBehaviour
     {
         if (state == ButtonState.ACTIVE)
         {
-            
+
             Movement.transform.GetChild(0).GetComponent<Outline>().enabled = true;
             Movement.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
             if (isTimmer)
@@ -49,7 +49,7 @@ public class ButtonScript : MonoBehaviour
         }
         else
         {
-            
+
             Movement.transform.GetChild(0).GetComponent<Outline>().enabled = false;
             Movement.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -85,7 +85,7 @@ public class ButtonScript : MonoBehaviour
         {
             if (interact[i].layer == 16) //puerta
             {
-                Debug.Log("Puerta");
+
                 interact[i].GetComponent<DoorScript>().SetActive();
 
             }
@@ -96,9 +96,38 @@ public class ButtonScript : MonoBehaviour
                     interact[i].GetComponent<BridgeScript>().SetActive();
 
                 }
-            }
-        }
+                else
+                {
+                    if (interact[i].layer == 23) //reja
+                    {
+                        Debug.Log("reja");
+                        interact[i].GetComponent<RejaScript>().SetActive();
 
+                    }
+                    else
+                    {
+                        if (interact[i].layer == 24) //pendulo
+                        {
+
+                            interact[i].GetComponent<PenduloScript>().SetActive();
+
+                        }
+                        else
+                        {
+                            if (interact[i].layer == 25) //activo
+                            {
+
+                                interact[i].SetActive(true);
+
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
+        }
     }
     public void DisableElements()
     {
@@ -116,6 +145,33 @@ public class ButtonScript : MonoBehaviour
                 {
                     interact[i].GetComponent<BridgeScript>().SetDisabled();
 
+                }
+                else
+                {
+                    if (interact[i].layer == 23) //reja
+                    {
+                        Debug.Log("reja");
+                        interact[i].GetComponent<RejaScript>().SetActive();
+
+                    }
+                    else
+                    {
+                        if (interact[i].layer == 24) //pendulo
+                        {
+
+                            interact[i].GetComponent<PenduloScript>().SetActive();
+
+                        }
+                        else
+                        {
+                            if (interact[i].layer == 25) //activo
+                            {
+
+                                interact[i].SetActive(false);
+
+                            }
+                        }
+                    }
                 }
             }
         }

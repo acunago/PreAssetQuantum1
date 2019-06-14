@@ -14,6 +14,10 @@ namespace Invector
         [Tooltip("Index to Starting point")]
         public int startIndex;
 
+        public bool isSound = false;
+        public SoundBag sndBag;
+        private bool soundAux;
+
         [HideInInspector]
         public bool canMove;
 
@@ -118,7 +122,10 @@ namespace Invector
                 dist = Vector3.Distance(targetTransform.position, points[index].transform.position);
                 targetTransform = points[index].transform;
                 oldEuler = transform.eulerAngles;
+
             }
+            Debug.Log(invert + " Indice");
+            Sounds();
         }
 
         void OnTriggerStay(Collider other)
@@ -138,6 +145,48 @@ namespace Invector
             }
         }
 
+
+        public void Sounds()
+        {
+            if (isSound)
+            {
+                if (sndBag != null)
+                {
+
+                    if (currentDist <= 0.01f)
+                    {
+                        if (soundAux)
+                        {
+                            if (invert)
+                            {
+                                soundAux = false;
+                                sndBag.StopSound();
+                                sndBag.PlaySound(0);
+                                Debug.Log("Deberia Ser 1");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (sndBag != null)
+                        {
+                            if (invert)
+                            {
+                                soundAux = false;
+
+                                sndBag.PlaySound(1);
+                                
+                            }
+                            soundAux = true;
+                        }
+
+                    }
+
+                }
+            }
+
+        }
+
         [System.Serializable]
         public class vPlatformPoint
         {
@@ -149,5 +198,9 @@ namespace Invector
             [vHideInInspector("useDefaultSpeed", true)]
             public float speedToNextPoint = 1f;
         }
+
+
+
     }
+
 }

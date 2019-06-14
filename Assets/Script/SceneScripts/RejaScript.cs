@@ -22,12 +22,12 @@ public class RejaScript : MonoBehaviour
         if (state == RejaState.ACTIVE)
         {
             transform.position = Vector3.Lerp(transform.position, fin.transform.position, 0.1f);
-            Collider.SetActive(true);
+
         }
         else
         {
             transform.position = Vector3.Lerp(transform.position, Origen.transform.position, 0.1f);
-            Collider.SetActive(false);
+
         }
     }
 

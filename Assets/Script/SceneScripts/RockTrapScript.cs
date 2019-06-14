@@ -8,6 +8,7 @@ public class RockTrapScript : MonoBehaviour
     // Start is called before the first frame update
     public AudioClip sonido;
     public AudioSource AudManager;
+    public float timeTrap = 0.7f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -39,7 +40,7 @@ public class RockTrapScript : MonoBehaviour
 
     public void PlaySound()
     {
-        Invoke("Play",0.7f);
+        Invoke("Play", timeTrap);
     }
     public void Play()
     {
