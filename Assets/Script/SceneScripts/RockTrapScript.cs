@@ -33,7 +33,7 @@ public class RockTrapScript : MonoBehaviour
     }
     public void RemoveObj()
     {
-        Destroy(trap, 3f);
+        Destroy(trap, 10f);
     }
 
 
