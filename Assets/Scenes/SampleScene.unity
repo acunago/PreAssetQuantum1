@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 34014efa70f533e41bb6ef68e71cffc6, type: 2}
+--- !u!1 &51039275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8152868537355652527, guid: 8726d19f22b02604a85f7752278ca4f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1009405894}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -2414,12 +2420,6 @@ MonoBehaviour:
   ignoreTags:
   - Weapon
   - Ignore Ragdoll
---- !u!4 &1639573960 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8152868537355652520, guid: 8726d19f22b02604a85f7752278ca4f9,
-    type: 3}
-  m_PrefabInstance: {fileID: 1009405894}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1645427676
 GameObject:
   m_ObjectHideFlags: 0
@@ -3501,7 +3501,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1639573960}
+      objectReference: {fileID: 51039275}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20c0858ab9b9bf549a356fa5446643b1, type: 3}
 --- !u!1001 &5868772641805169756

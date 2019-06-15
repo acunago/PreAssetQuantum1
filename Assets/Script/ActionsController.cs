@@ -28,6 +28,7 @@ public class ActionsController : MonoBehaviour
     public GameObject PosTotal;
     public GameObject crossHair;
 
+    private particleAttractorLinear pal;
 
     private bool playerClose = false;
     public bool attached = false;
@@ -78,6 +79,11 @@ public class ActionsController : MonoBehaviour
                 atract = false;
             }
             redMagnet = CreateBox(red);
+
+            if (blueMagnet != null)
+            {
+                blueMagnet.transform.GetChild(4).GetChild(0).GetComponent<particleAttractorLinear>().target = redMagnet;
+            }
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -89,6 +95,12 @@ public class ActionsController : MonoBehaviour
                 atract = false;
             }
             blueMagnet = CreateBox(blue);
+
+            if(redMagnet!= null)
+            {
+                blueMagnet.transform.GetChild(4).GetChild(0).GetComponent<particleAttractorLinear>().target = redMagnet;
+            }
+
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
