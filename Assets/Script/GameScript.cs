@@ -63,19 +63,20 @@ public class GameScript : MonoBehaviour
     public void ExectImage()
     {
 
-
-        Gameover.gameObject.SetActive(true);
-        Invoke("menu", 2);
-    }
-    public void menu()
-    {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        Gameover.gameObject.SetActive(true);
+        Invoke("Menu", 2);
+    }
+    public void Menu()
+    {
+
         SceneManager.LoadScene("Menu");
     }
     public void victoria()
     {
         Gameover.gameObject.SetActive(true);
-        Invoke("menu", 2);
+        Invoke("Menu", 2);
     }
 }

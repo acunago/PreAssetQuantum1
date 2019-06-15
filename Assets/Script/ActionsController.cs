@@ -7,9 +7,7 @@ public enum MySounds : int
 {
     disparo = 0,
     cajas = 1,
-    sword = 2,
-    dash = 3,
-    death = 4,
+    init = 2,
 }
 
 public class ActionsController : MonoBehaviour
@@ -39,6 +37,10 @@ public class ActionsController : MonoBehaviour
     void Awake()
     {
         AudManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+    }
+    private void Start()
+    {
+        AudManager.PlaySound(sounds[(int)MySounds.init]);
     }
     // Update is called once per frame
     void Update()

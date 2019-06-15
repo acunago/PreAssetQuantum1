@@ -9,7 +9,9 @@ public class VictoryScript : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        Invoke("Victoria", 2);
+        if(other.gameObject.layer == 8) { 
+            Invoke("Victoria", 2);
+        }
     }
     public void Menu()
     {
