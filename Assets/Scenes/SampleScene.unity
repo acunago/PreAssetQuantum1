@@ -1297,11 +1297,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4436943444933359376, guid: 530c6a054b2cb3f45a1309596089872d,
-        type: 3}
-      propertyPath: m_Name
-      value: DO-Lever
-      objectReference: {fileID: 0}
     - target: {fileID: 6144981341967383993, guid: 530c6a054b2cb3f45a1309596089872d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1356,6 +1351,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4436943444933359376, guid: 530c6a054b2cb3f45a1309596089872d,
+        type: 3}
+      propertyPath: m_Name
+      value: DO-Lever
       objectReference: {fileID: 0}
     - target: {fileID: 7042821349328771389, guid: 530c6a054b2cb3f45a1309596089872d,
         type: 3}
@@ -1879,12 +1879,12 @@ PrefabInstance:
     - target: {fileID: 8152868537355652520, guid: 8726d19f22b02604a85f7752278ca4f9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.896
       objectReference: {fileID: 0}
     - target: {fileID: 8152868537355652520, guid: 8726d19f22b02604a85f7752278ca4f9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.955536
+      value: 18.027
       objectReference: {fileID: 0}
     - target: {fileID: 8152868537355652520, guid: 8726d19f22b02604a85f7752278ca4f9,
         type: 3}
@@ -2414,6 +2414,12 @@ MonoBehaviour:
   ignoreTags:
   - Weapon
   - Ignore Ragdoll
+--- !u!4 &1639573960 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8152868537355652520, guid: 8726d19f22b02604a85f7752278ca4f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1009405894}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1645427676
 GameObject:
   m_ObjectHideFlags: 0
@@ -3491,6 +3497,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2080329740877001355, guid: 20c0858ab9b9bf549a356fa5446643b1,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1639573960}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20c0858ab9b9bf549a356fa5446643b1, type: 3}
 --- !u!1001 &5868772641805169756
