@@ -162,7 +162,7 @@ namespace Invector
                                 soundAux = false;
                                 sndBag.StopSound();
                                 sndBag.PlaySound(0);
-                                Debug.Log("Deberia Ser 1");
+
                             }
                             else
                             {

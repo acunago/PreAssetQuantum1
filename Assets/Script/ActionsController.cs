@@ -72,7 +72,7 @@ public class ActionsController : MonoBehaviour
         MagnetsController blueScript;
         MagnetsController redScript;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             AudManager.PlaySound(sounds[(int)MySounds.disparo]);
             if (redMagnet != null)
@@ -88,7 +88,7 @@ public class ActionsController : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
             AudManager.PlaySound(sounds[(int)MySounds.disparo]);
             if (blueMagnet != null)
