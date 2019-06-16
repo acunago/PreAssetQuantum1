@@ -11,7 +11,7 @@ public class LeverScript : MonoBehaviour
     public GameObject[] interact;
     public LeverState state;
     public GameObject Movement;
-    public Vector3 rotationAngle;
+    public Transform activePOS;
 
     public bool isTimmer;
     public float timmer;
@@ -19,6 +19,7 @@ public class LeverScript : MonoBehaviour
     public SoundBag snd;
 
     private Quaternion quatOrignal;
+    private Quaternion quatActive;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class LeverScript : MonoBehaviour
         //Movement.transform.rotation = Quaternion.Euler(Movement.transform.rotation.x, Movement.transform.rotation.y, 0);
         state = LeverState.DISABLED;
         quatOrignal = Movement.transform.rotation;
+        quatActive = activePOS.rotation;
         snd = transform.gameObject.GetComponent<SoundBag>();
     }
 
@@ -35,7 +37,7 @@ public class LeverScript : MonoBehaviour
 
         if (state == LeverState.ACTIVE)
         {
-            Movement.transform.rotation = Quaternion.Slerp(Movement.transform.rotation, Quaternion.Euler(rotationAngle), 0.2f);
+            Movement.transform.rotation = Quaternion.Slerp(Movement.transform.rotation, quatActive, 0.2f);
             Movement.transform.GetChild(0).GetComponent<Outline>().enabled = true;
             Movement.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true);
             

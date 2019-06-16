@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5891973867768046236}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: Handler_Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 5454572377526875917}
   - component: {fileID: 6758302839745288023}
   - component: {fileID: 8079464242020108605}
-  m_Layer: 16
+  m_Layer: 22
   m_Name: Smoke (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529396386151394354}
   m_LocalRotation: {x: -0.6320341, y: -0.16496325, z: -0.74410135, w: -0.14011854}
-  m_LocalPosition: {x: -0.09122037, y: 0.46809703, z: -0.18055734}
+  m_LocalPosition: {x: 0.012, y: -0.123, z: -0.003}
   m_LocalScale: {x: 0.6222613, y: 0.6578042, z: 0.5288997}
   m_Children: []
   m_Father: {fileID: 4631015977499206463}
@@ -4729,6 +4729,36 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &2730788202962975375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6951707546472585399}
+  m_Layer: 22
+  m_Name: ActivePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6951707546472585399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2730788202962975375}
+  m_LocalRotation: {x: 0.2164396, y: 0, z: 0, w: 0.97629607}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6144981341967383993}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 25, y: 0, z: 0}
 --- !u!1 &4436943444933359376
 GameObject:
   m_ObjectHideFlags: 0
@@ -4743,7 +4773,7 @@ GameObject:
   - component: {fileID: 7042821349328771389}
   - component: {fileID: 3532589282341947676}
   - component: {fileID: 4099094356376118580}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: DO-Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4757,16 +4787,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4436943444933359376}
-  m_LocalRotation: {x: -0, y: 0.760646, z: -0, w: -0.64916706}
+  m_LocalRotation: {x: 0, y: 0.760644, z: -0, w: -0.64916927}
   m_LocalPosition: {x: -11.778695, y: -0.16, z: -17.984795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6936621628833729442}
   - {fileID: 5891973867768046236}
   - {fileID: 8055017873492177714}
+  - {fileID: 6951707546472585399}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 251.375, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 260.958, z: 0}
 --- !u!135 &6494546792278335561
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4862,13 +4893,14 @@ MonoBehaviour:
   interact:
   - {fileID: 0}
   - {fileID: 0}
-  state: 0
-  Movement: {fileID: 0}
-  rotationAngle: {x: 0, y: 45.05, z: 0}
-  isTimmer: 1
+  - {fileID: 0}
+  state: 1
+  Movement: {fileID: 971767899588666905}
+  activePOS: {fileID: 6951707546472585399}
+  isTimmer: 0
   timmer: 5.04
   actTime: 0
-  snd: {fileID: 0}
+  snd: {fileID: 7693735569676335508, guid: 28088a3544bfec64cbddc26b19404a3a, type: 3}
 --- !u!82 &3532589282341947676
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4993,7 +5025,7 @@ GameObject:
   - component: {fileID: 4631015977495778483}
   - component: {fileID: 4631015977496861329}
   - component: {fileID: 1774320521812205163}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: SM_Wep_Handle_Wood_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5067,7 +5099,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4631015977498846037}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
@@ -5151,7 +5183,7 @@ GameObject:
   - component: {fileID: 6936621628833729442}
   - component: {fileID: 6936621628832459252}
   - component: {fileID: 6936621628831750622}
-  m_Layer: 0
+  m_Layer: 22
   m_Name: SM_Trap_Saw_Rail_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
