@@ -25,8 +25,9 @@ public class ActionsController : MonoBehaviour
 
     public GameObject PosTotal;
     public GameObject crossHair;
+    public RectTransform cross;
 
-    private particleAttractorLinear pal;
+    public Camera cam;
 
     private bool playerClose = false;
     public bool attached = false;
@@ -45,6 +46,10 @@ public class ActionsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Ray ray = cam.ScreenPointToRay(new Vector3(cross.localPosition.x, cross.localPosition.y, 0));
+        Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
+
+        //Debug.DrawLine(transform.position,  Camera.main.ScreenToWorldPoint(crossHair.transform.forward) * 8);
         if (PosTotal != null)
         {
             if (attached)
@@ -141,13 +146,12 @@ public class ActionsController : MonoBehaviour
         {
             if (redMagnet != null)
             {
-                Destroy(redMagnet.GetComponent<FixedJoint>().connectedBody.transform.gameObject.GetComponent<Outline>());
                 redMagnet.GetComponent<MagnetsController>().DestroyObj();
                 atract = false;
             }
             if (blueMagnet != null)
             {
-                Destroy(blueMagnet.GetComponent<FixedJoint>().connectedBody.transform.gameObject.GetComponent<Outline>());
+
                 blueMagnet.GetComponent<MagnetsController>().DestroyObj();
                 atract = false;
             }
@@ -254,13 +258,18 @@ public class ActionsController : MonoBehaviour
 
     public GameObject CreateBox(GameObject cube)
     {
-        Vector3 fwd = puntoDisparo.transform.position - Camera.main.ScreenToWorldPoint(crossHair.transform.position);
+
+        Ray ray = cam.ScreenPointToRay(cross.position);
+        Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
+
+        //Vector3 fwd = Camera.main.ScreenToWorldPoint(crossHair.transform.position) - puntoDisparo.transform.forward  ;
+        Vector3 fwd = Camera.main.ScreenToWorldPoint(crossHair.transform.position) + puntoDisparo.transform.position  ;
 
         GameObject arrow = Instantiate(cube, puntoDisparo.transform.position, transform.rotation);
         Vector3 _direction = 2 * fwd;
-        Vector3 _force = _direction.normalized * arrowSpeed;
+        Vector3 _force = fwd.normalized * arrowSpeed;
 
-        arrow.transform.GetComponent<Rigidbody>().AddForce(_force, ForceMode.Impulse);
+        arrow.transform.GetComponent<Rigidbody>().AddForce(ray.direction * arrowSpeed, ForceMode.Impulse);
         return arrow;
 
     }

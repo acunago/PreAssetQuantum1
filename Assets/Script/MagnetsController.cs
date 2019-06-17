@@ -53,6 +53,10 @@ public class MagnetsController : MonoBehaviour
     }
     public void DestroyObj()
     {
+        if (gameObject.GetComponent<FixedJoint>() != null)
+        {
+            Destroy(gameObject.GetComponent<FixedJoint>().connectedBody.transform.gameObject.GetComponent<Outline>());
+        }
         Destroy(gameObject);
     }
 }

@@ -331,7 +331,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -40.415447, y: 6.1366286, z: 1.9335374e-13}
+  m_ConnectedAnchor: {x: -40.415417, y: 6.1366243, z: 1.9335363e-13}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -972,7 +972,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 39.930943, y: -0.000036239624, z: -0.00001001358}
+  m_ConnectedAnchor: {x: 39.930935, y: -0.000036239624, z: -0.0000076293945}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1303,6 +1303,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4436943444933359376, guid: 530c6a054b2cb3f45a1309596089872d,
+        type: 3}
+      propertyPath: m_Name
+      value: DO-Lever
+      objectReference: {fileID: 0}
     - target: {fileID: 6144981341967383993, guid: 530c6a054b2cb3f45a1309596089872d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1357,11 +1362,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4436943444933359376, guid: 530c6a054b2cb3f45a1309596089872d,
-        type: 3}
-      propertyPath: m_Name
-      value: DO-Lever
       objectReference: {fileID: 0}
     - target: {fileID: 7042821349328771389, guid: 530c6a054b2cb3f45a1309596089872d,
         type: 3}
@@ -1593,7 +1593,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -39.93091, y: -0.0000009536743, z: 0.000014305115}
+  m_ConnectedAnchor: {x: -39.930916, y: -0.0000014305115, z: 0.000012874603}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -1877,6 +1877,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rojo
       objectReference: {fileID: 0}
+    - target: {fileID: 8152868537355652527, guid: 8726d19f22b02604a85f7752278ca4f9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8152868537355652520, guid: 8726d19f22b02604a85f7752278ca4f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1943,6 +1948,12 @@ GameObject:
 --- !u!1 &1146793780 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9210939748050691727, guid: 29aebf92d290461448915a3dd450c952,
+    type: 3}
+  m_PrefabInstance: {fileID: 9210939749195106747}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1146793781 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9210939748050691726, guid: 29aebf92d290461448915a3dd450c952,
     type: 3}
   m_PrefabInstance: {fileID: 9210939749195106747}
   m_PrefabAsset: {fileID: 0}
@@ -2146,7 +2157,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -9.89671, y: 83.1558, z: -2.0469189}
+  m_ConnectedAnchor: {x: -9.89671, y: 83.15581, z: -2.0469189}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -3180,6 +3191,21 @@ PrefabInstance:
       propertyPath: arrowSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8685193319904373488, guid: def903eab6ffe6e4e82de7fc80153dcb,
+        type: 3}
+      propertyPath: crosshairImage
+      value: 
+      objectReference: {fileID: 2800000, guid: 01bfa540aed020d43945d31524792653, type: 3}
+    - target: {fileID: 8685193319904373488, guid: def903eab6ffe6e4e82de7fc80153dcb,
+        type: 3}
+      propertyPath: cross
+      value: 
+      objectReference: {fileID: 1146793781}
+    - target: {fileID: 8685193319904373488, guid: def903eab6ffe6e4e82de7fc80153dcb,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 1656546608}
     - target: {fileID: 5731973457980223882, guid: def903eab6ffe6e4e82de7fc80153dcb,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -3321,7 +3347,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 9.896706, y: 83.15582, z: -2.0469189}
+  m_ConnectedAnchor: {x: 9.896706, y: 83.15581, z: -2.0469189}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -3442,6 +3468,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Azul
       objectReference: {fileID: 0}
+    - target: {fileID: 8955311328478489906, guid: 20c0858ab9b9bf549a356fa5446643b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8955311328478489917, guid: 20c0858ab9b9bf549a356fa5446643b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3524,7 +3555,7 @@ PrefabInstance:
     - target: {fileID: 5868772641848020944, guid: 7230bff8113571a48839f76552f7d3a8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.8212357
+      value: 0.611
       objectReference: {fileID: 0}
     - target: {fileID: 5868772641848020944, guid: 7230bff8113571a48839f76552f7d3a8,
         type: 3}
@@ -3606,6 +3637,11 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 50000
       objectReference: {fileID: 0}
+    - target: {fileID: 5868772641615840007, guid: 7230bff8113571a48839f76552f7d3a8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.577
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7230bff8113571a48839f76552f7d3a8, type: 3}
 --- !u!1001 &9210939749195106747
@@ -3623,7 +3659,7 @@ PrefabInstance:
     - target: {fileID: 9210939747949333704, guid: 29aebf92d290461448915a3dd450c952,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9210939747949333708, guid: 29aebf92d290461448915a3dd450c952,
         type: 3}
@@ -3730,5 +3766,48 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9210939748050691727, guid: 29aebf92d290461448915a3dd450c952,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254321572, guid: 29aebf92d290461448915a3dd450c952, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965778448, guid: 29aebf92d290461448915a3dd450c952, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 965778448, guid: 29aebf92d290461448915a3dd450c952, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -305.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 315185533939442602, guid: 29aebf92d290461448915a3dd450c952,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.865097
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210939748050691726, guid: 29aebf92d290461448915a3dd450c952,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210939748050691726, guid: 29aebf92d290461448915a3dd450c952,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210939748050691726, guid: 29aebf92d290461448915a3dd450c952,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210939748050691725, guid: 29aebf92d290461448915a3dd450c952,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 01bfa540aed020d43945d31524792653,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29aebf92d290461448915a3dd450c952, type: 3}
