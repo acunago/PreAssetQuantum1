@@ -12,6 +12,9 @@ public class GameScript : MonoBehaviour
     public GameObject Gameover;
     public GameObject vinctoria;
 
+    public Camera camPrinc;
+    public Camera camDerrota;
+
     private void Update()
     {
         Teleport();
@@ -66,8 +69,10 @@ public class GameScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        Gameover.gameObject.SetActive(true);
-        Invoke("Menu", 2);
+        //Gameover.gameObject.SetActive(true);
+        camPrinc.gameObject.SetActive(false);
+        camDerrota.gameObject.SetActive(true);
+        //Invoke("Menu", 2);
     }
     public void Menu()
     {
@@ -76,7 +81,14 @@ public class GameScript : MonoBehaviour
     }
     public void victoria()
     {
-        Gameover.gameObject.SetActive(true);
-        Invoke("Menu", 2);
+        //Gameover.gameObject.SetActive(true);
+        Invoke("ChangeVictory", 2);
+    }
+
+    public void ChangeVictory()
+    {
+        SceneManager.LoadScene("WinScene"); 
+
+
     }
 }

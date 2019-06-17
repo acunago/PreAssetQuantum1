@@ -46,8 +46,11 @@ public class ActionsController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Ray ray = cam.ScreenPointToRay(new Vector3(cross.localPosition.x, cross.localPosition.y, 0));
-        Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
+
+        if (PauseMenu.GameIsPaused) return;
+
+        //Ray ray = cam.ScreenPointToRay(new Vector3(cross.localPosition.x, cross.localPosition.y, 0));
+        //Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
 
         //Debug.DrawLine(transform.position,  Camera.main.ScreenToWorldPoint(crossHair.transform.forward) * 8);
         if (PosTotal != null)
