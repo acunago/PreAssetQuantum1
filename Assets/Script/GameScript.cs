@@ -12,8 +12,15 @@ public class GameScript : MonoBehaviour
     public GameObject Gameover;
     public GameObject vinctoria;
 
+    public GameObject gameOverBtns;
     public Camera camPrinc;
     public Camera camDerrota;
+
+    public GameObject playerPrefab;
+
+    public GameObject checkpoint;
+
+    public GameObject Calavera;
 
     private void Update()
     {
@@ -26,6 +33,7 @@ public class GameScript : MonoBehaviour
 
         Debug.Log("muerto");
         Invoke("ExectImage", 3);
+
     }
     public void Teleport()
     {
@@ -50,28 +58,38 @@ public class GameScript : MonoBehaviour
                 Player.transform.position = respawn[2].transform.position;
             }
         }
-        if (respawn.Length >= 4)
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            if (respawn[3] != null)
+            if (respawn.Length >= 4)
             {
-                Player.transform.position = respawn[3].transform.position;
+                if (respawn[3] != null)
+                {
+                    Player.transform.position = respawn[3].transform.position;
+                }
             }
         }
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            RestCheck();
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("Level1-TheCave");
 
         }
+
+
     }
     public void ExectImage()
     {
 
+        Destroy(Player.gameObject);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         //Gameover.gameObject.SetActive(true);
-        camPrinc.gameObject.SetActive(false);
-        camDerrota.gameObject.SetActive(true);
+        ActiveGame(true);
         //Invoke("Menu", 2);
     }
     public void Menu()
@@ -88,7 +106,26 @@ public class GameScript : MonoBehaviour
     public void ChangeVictory()
     {
         SceneManager.LoadScene("WinScene"); 
+    }
 
+    public void RestCheck()
+    {
+        ActiveGame(false);
+
+        Player = Instantiate(playerPrefab, checkpoint.transform.position, checkpoint.transform.rotation);
+        Calavera.GetComponent<ActionsController>().PosTotal = Player.transform.Find("SkullPos").gameObject;
+       AudioManager.instance.sourceHolder = Player.transform.Find("collisionAudio").gameObject ;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
     }
+
+    public void ActiveGame(bool status)
+    {
+        PauseMenu.GameIsPaused = status;
+        gameOverBtns.SetActive(status);
+        camPrinc.gameObject.SetActive(!status);
+        camDerrota.gameObject.SetActive(status);
+    }
+
 }

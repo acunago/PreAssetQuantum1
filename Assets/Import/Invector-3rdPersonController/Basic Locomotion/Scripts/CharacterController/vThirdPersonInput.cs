@@ -293,6 +293,7 @@ namespace Invector.vCharacterController
         public virtual void CameraInput()
         {
             if (!Camera.main) Debug.Log("Missing a Camera with the tag MainCamera, please add one.");
+            
             if (!ignoreCameraRotation)
             {
                 if (!keepDirection) cc.UpdateTargetDirection(Camera.main.transform);

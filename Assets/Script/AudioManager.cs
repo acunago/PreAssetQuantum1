@@ -8,12 +8,20 @@ public class AudioManager : MonoBehaviour
 
     public List<AudioSource> sources = new List<AudioSource>();
     public GameObject sourceHolder;
-
+    public static AudioManager instance;
     // Use this for initialization
     void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
-        DontDestroyOnLoad(this.sourceHolder);
+        if (instance == null)
+        {
+            instance = this;
+
+        }
+        else
+        {
+            Destroy(this.gameObject);
+            return;
+        }
     }
 
     // Update is called once per frame
