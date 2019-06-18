@@ -1,6 +1,4 @@
-﻿using Invector.vCharacterController;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -115,18 +113,11 @@ public class GameScript : MonoBehaviour
         ActiveGame(false);
 
         Player = Instantiate(playerPrefab, checkpoint.transform.position, checkpoint.transform.rotation);
-        Player.gameObject.GetComponent<vThirdPersonController>().onDead.AddListener(GameOver);
         Calavera.GetComponent<ActionsController>().PosTotal = Player.transform.Find("SkullPos").gameObject;
-        AudioManager.instance.sourceHolder = Player.transform.Find("collisionAudio").gameObject;
+       AudioManager.instance.sourceHolder = Player.transform.Find("collisionAudio").gameObject ;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-    }
-
-    private void GameOver(GameObject arg0)
-    {
-        Debug.Log("muerto");
-        Invoke("ExectImage", 3);
     }
 
     public void ActiveGame(bool status)
