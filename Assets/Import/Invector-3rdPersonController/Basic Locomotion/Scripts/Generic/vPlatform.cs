@@ -124,7 +124,7 @@ namespace Invector
                 oldEuler = transform.eulerAngles;
 
             }
-            Debug.Log(invert + " Indice");
+
             Sounds();
         }
 

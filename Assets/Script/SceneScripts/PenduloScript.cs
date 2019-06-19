@@ -38,7 +38,7 @@ public class PenduloScript : MonoBehaviour
             if (Mathf.Sin(i) >= -0.1 && Mathf.Sin(i) <= 0.1)
             {
                 snd.PlaySound();
-                Debug.Log("pendulo movimiento");
+
             }
         }
         else

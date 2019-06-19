@@ -34,7 +34,7 @@ public class SoundBag : MonoBehaviour
         {
             if (!AudManager.isPlaying)
             {
-                Debug.Log("Sonido");
+
                 AudManager.PlayOneShot(sonido[sound]);
             }
         }
