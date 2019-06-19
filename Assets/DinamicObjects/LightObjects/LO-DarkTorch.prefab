@@ -47,7 +47,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -4762,10 +4762,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3893891083972964971}
     m_Modifications:
-    - target: {fileID: 195218, guid: 8ee445c91f489f34b827e3a7c115b032, type: 3}
-      propertyPath: m_Name
-      value: SM_Prop_BottleTorch_01
-      objectReference: {fileID: 0}
     - target: {fileID: 457334, guid: 8ee445c91f489f34b827e3a7c115b032, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4809,6 +4805,10 @@ PrefabInstance:
     - target: {fileID: 457334, guid: 8ee445c91f489f34b827e3a7c115b032, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 195218, guid: 8ee445c91f489f34b827e3a7c115b032, type: 3}
+      propertyPath: m_Name
+      value: SM_Prop_BottleTorch_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ee445c91f489f34b827e3a7c115b032, type: 3}

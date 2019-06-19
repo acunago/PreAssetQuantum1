@@ -80,7 +80,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -176,10 +176,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6170206297321239118}
     m_Modifications:
-    - target: {fileID: 194764, guid: 2bcc13328f8e4a44abdb601fda7419a4, type: 3}
-      propertyPath: m_Name
-      value: SM_Prop_TorchStick_30 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 412208, guid: 2bcc13328f8e4a44abdb601fda7419a4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -223,6 +219,10 @@ PrefabInstance:
     - target: {fileID: 412208, guid: 2bcc13328f8e4a44abdb601fda7419a4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 194764, guid: 2bcc13328f8e4a44abdb601fda7419a4, type: 3}
+      propertyPath: m_Name
+      value: SM_Prop_TorchStick_30 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bcc13328f8e4a44abdb601fda7419a4, type: 3}
