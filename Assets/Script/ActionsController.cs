@@ -199,19 +199,8 @@ public class ActionsController : MonoBehaviour
                 //}
             }
 
-            //if (rbBlue.transform.gameObject.layer == 18)
-            //{
 
-            //    Debug.Log("Deberia mover Azul");
-            //    //rbBlue.AddForce(-_force, ForceMode.Impulse);
-            //    //rbBlue.transform.position  = Vector3.Lerp (rbRed.transform.position, (rbRed.transform.position - rbBlue.transform.position).normalized,1f);
-            //    if (Vector3.Distance(rbBlue.transform.position, rbRed.transform.position) > 2f)
-            //    {
-            //        rbBlue.transform.position = Vector3.MoveTowards(rbBlue.transform.position, rbRed.transform.position, 2f * Time.deltaTime);
-            //    }
-            //    //rbBlue.MovePosition((rbRed.transform.position - rbBlue.transform.position).normalized  *  Time.deltaTime);
 
-            //}
 
         }
     }
@@ -249,7 +238,7 @@ public class ActionsController : MonoBehaviour
 
         if (atractObj.transform.gameObject.layer == 22)
         {
-            atractObj.transform.parent.GetComponent<LeverScript>().SetActive();
+            atractObj.transform.parent.GetComponent<LeverScript>().ActiveElements();
 
 
             atract = false;

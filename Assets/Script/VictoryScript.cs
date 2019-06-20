@@ -10,19 +10,18 @@ public class VictoryScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.layer == 8) { 
-            Invoke("Victoria", 2);
+            Invoke("Victoria", 1);
         }
     }
     public void Menu()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        vinctoria.gameObject.SetActive(true);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("WinScene");
     }
     public void Victoria()
     {
-        vinctoria.gameObject.SetActive(true);
+
         Invoke("Menu", 2);
     }
 }

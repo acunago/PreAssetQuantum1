@@ -90,50 +90,52 @@ public class LeverScript : MonoBehaviour
 
         for (int i = 0; i < interact.Length; i++)
         {
-            if (interact[i].layer == 16) //puerta
+            if (interact[i] != null)
             {
-
-                interact[i].GetComponent<DoorScript>().SetActive();
-
-            }
-            else
-            {
-                if (interact[i].layer == 17) //puente
+                if (interact[i].layer == 16) //puerta
                 {
-                    interact[i].GetComponent<BridgeScript>().SetActive();
+
+                    interact[i].GetComponent<DoorScript>().SetActive();
 
                 }
                 else
                 {
-                    if (interact[i].layer == 23) //reja
+                    if (interact[i].layer == 17) //puente
                     {
-                        Debug.Log("reja");
-                        interact[i].GetComponent<RejaScript>().SetActive();
+                        interact[i].GetComponent<BridgeScript>().SetActive();
 
                     }
                     else
                     {
-                        if (interact[i].layer == 24) //pendulo
+                        if (interact[i].layer == 23) //reja
                         {
-
-                            interact[i].GetComponent<PenduloScript>().SetActive();
+                            Debug.Log("reja");
+                            interact[i].GetComponent<RejaScript>().SetActive();
 
                         }
                         else
                         {
-                            if (interact[i].layer == 25) //activo
+                            if (interact[i].layer == 24) //pendulo
                             {
 
-                                interact[i].SetActive(true);
+                                interact[i].GetComponent<PenduloScript>().SetActive();
 
                             }
+                            else
+                            {
+                                if (interact[i].layer == 25) //activo
+                                {
+
+                                    interact[i].SetActive(true);
+
+                                }
+                            }
                         }
+
                     }
 
                 }
-
             }
-
         }
     }
     public void DisableElements()
