@@ -21,10 +21,10 @@ MonoBehaviour:
     maxDistance: 80
     minDistance: 0.6
     height: 1.8
-    smooth: 3
-    smoothDamp: 3
-    xMouseSensitivity: 4
-    yMouseSensitivity: 3
+    smooth: 2
+    smoothDamp: 2
+    xMouseSensitivity: 2
+    yMouseSensitivity: 2
     yMinLimit: -75
     yMaxLimit: 75
     xMinLimit: -360
