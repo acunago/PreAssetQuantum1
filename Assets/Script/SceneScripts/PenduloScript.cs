@@ -49,16 +49,20 @@ public class PenduloScript : MonoBehaviour
     }
     public void SetActive()
     {
+
+        if (state == PenduloState.DISABLED)
+        {
+
+            state = PenduloState.ACTIVE;
+        }
+    }
+    public void SetDisable()
+    {
         if (state == PenduloState.ACTIVE)
         {
             state = PenduloState.DISABLED;
-            
 
-        }
-        else
-        {
-            
-            state = PenduloState.ACTIVE;
+
         }
     }
 }

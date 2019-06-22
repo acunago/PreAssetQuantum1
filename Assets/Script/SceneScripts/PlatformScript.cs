@@ -156,7 +156,7 @@ public class PlatformScript : MonoBehaviour
                         if (interact[i].layer == 24) //pendulo
                         {
 
-                            interact[i].GetComponent<PenduloScript>().SetActive();
+                            interact[i].GetComponent<PenduloScript>().SetDisable();
 
                         }
                         else
