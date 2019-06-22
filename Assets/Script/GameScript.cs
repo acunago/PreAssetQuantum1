@@ -32,7 +32,7 @@ public class GameScript : MonoBehaviour
 
     public void GameOver()
     {
-
+        Calavera.GetComponent<ActionsController>().DeathChar();
         Debug.Log("muerto");
         Invoke("ExectImage", 3);
 

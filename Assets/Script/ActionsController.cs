@@ -8,11 +8,13 @@ public enum MySounds : int
     disparo = 0,
     cajas = 1,
     init = 2,
+    death = 3,
 }
 
 public class ActionsController : MonoBehaviour
 {
     // Start is called before the first frame update
+    public bool AutoAtract;
     public GameObject red;
     public GameObject blue;
     public GameObject puntoDisparo;
@@ -34,10 +36,14 @@ public class ActionsController : MonoBehaviour
 
     public List<AudioClip> sounds = new List<AudioClip>();
     public AudioManager AudManager;
+
+    public Animator anim;
     // Start is called before the first frame update
     void Awake()
     {
         AudManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        
+        
     }
     private void Start()
     {
@@ -60,7 +66,7 @@ public class ActionsController : MonoBehaviour
                 transform.position = Vector3.Lerp(transform.position, PosTotal.transform.position, 0.15f);
                 transform.rotation = Quaternion.Lerp(transform.rotation, PosTotal.transform.rotation, 0.15f);
                 KeyPress();
-
+                CkeckAtractions();
             }
             else
             {
@@ -94,6 +100,7 @@ public class ActionsController : MonoBehaviour
             {
                 blueMagnet.transform.GetChild(4).GetChild(0).GetComponent<particleAttractorLinear>().target = redMagnet;
             }
+            anim.Play("spell");
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -110,24 +117,31 @@ public class ActionsController : MonoBehaviour
             {
                 blueMagnet.transform.GetChild(4).GetChild(0).GetComponent<particleAttractorLinear>().target = redMagnet;
             }
-
+            anim.Play("spell");
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (!AutoAtract)
         {
-            if (redMagnet != null && blueMagnet != null)
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                blueScript = blueMagnet.GetComponent<MagnetsController>();
-                redScript = redMagnet.GetComponent<MagnetsController>();
-                if (blueScript.Stick && redScript.Stick)
+                if (redMagnet != null && blueMagnet != null)
                 {
-                    RaycastHit hit;
-                    if (Physics.Linecast(redMagnet.transform.position, (redMagnet.transform.position - blueMagnet.transform.position).normalized * distanceCheck, out hit))
+                    blueScript = blueMagnet.GetComponent<MagnetsController>();
+                    redScript = redMagnet.GetComponent<MagnetsController>();
+                    if (blueScript.Stick && redScript.Stick)
                     {
-                        Debug.Log("hit.transform.gameObject.layer " + hit.transform.gameObject.layer);
+                        RaycastHit hit;
+                        if (Physics.Linecast(redMagnet.transform.position, (redMagnet.transform.position - blueMagnet.transform.position).normalized * distanceCheck, out hit))
+                        {
+                            Debug.Log("hit.transform.gameObject.layer " + hit.transform.gameObject.layer);
 
-                        Debug.Log("pego");
-                        atract = true;
+                            Debug.Log("pego");
+                            atract = true;
+                        }
+                        else
+                        {
+                            atract = false;
+                        }
                     }
                     else
                     {
@@ -138,12 +152,8 @@ public class ActionsController : MonoBehaviour
                 {
                     atract = false;
                 }
-            }
-            else
-            {
-                atract = false;
-            }
 
+            }
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -206,7 +216,42 @@ public class ActionsController : MonoBehaviour
     }
 
 
+    private void CkeckAtractions()
+    {
 
+        MagnetsController blueScript;
+        MagnetsController redScript;
+
+        if (!AutoAtract) return;
+        if (redMagnet != null && blueMagnet != null)
+        {
+            blueScript = blueMagnet.GetComponent<MagnetsController>();
+            redScript = redMagnet.GetComponent<MagnetsController>();
+            if (blueScript.Stick && redScript.Stick)
+            {
+                RaycastHit hit;
+                if (Physics.Linecast(redMagnet.transform.position, (redMagnet.transform.position - blueMagnet.transform.position).normalized * distanceCheck, out hit))
+                {
+                    Debug.Log("hit.transform.gameObject.layer " + hit.transform.gameObject.layer);
+
+                    Debug.Log("pego");
+                    atract = true;
+                }
+                else
+                {
+                    atract = false;
+                }
+            }
+            else
+            {
+                atract = false;
+            }
+        }
+        else
+        {
+            atract = false;
+        }
+    }
 
     private void InteractOrbs(GameObject atractObj, GameObject to)
     {
@@ -272,5 +317,12 @@ public class ActionsController : MonoBehaviour
         {
             playerClose = true;
         }
+    }
+
+    public void DeathChar()
+    {
+
+        AudManager.PlaySound(sounds[(int)MySounds.death]);
+
     }
 }
