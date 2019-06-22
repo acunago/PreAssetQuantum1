@@ -1877,11 +1877,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rojo
       objectReference: {fileID: 0}
-    - target: {fileID: 8152868537355652527, guid: 8726d19f22b02604a85f7752278ca4f9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8152868537355652520, guid: 8726d19f22b02604a85f7752278ca4f9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3482,7 +3477,7 @@ PrefabInstance:
     - target: {fileID: 8955311328478489906, guid: 20c0858ab9b9bf549a356fa5446643b1,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8955311328478489917, guid: 20c0858ab9b9bf549a356fa5446643b1,
         type: 3}

@@ -99,6 +99,7 @@ public class GameScript : MonoBehaviour
 
         SceneManager.LoadScene("Menu");
     }
+
     public void victoria()
     {
         //Gameover.gameObject.SetActive(true);
