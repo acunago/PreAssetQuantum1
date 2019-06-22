@@ -31,23 +31,22 @@ public class RejaScript : MonoBehaviour
         }
     }
 
+
+
     public void SetActive()
     {
-        Debug.Log("Entramos");
-        if (state == RejaState.ACTIVE)
-        {
-            state = RejaState.DISABLED;
-            if (snd != null)
-            {
-                snd.PlaySound();
-            }
 
-        }
-        else
-        {
+
 
             state = RejaState.ACTIVE;
+        
+    }
+    public void SetDisable()
+    {
+        state = RejaState.DISABLED;
+        if (snd != null)
+        {
+            snd.PlaySound();
         }
-
     }
 }

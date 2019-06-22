@@ -160,7 +160,7 @@ public class LeverScript : MonoBehaviour
                     if (interact[i].layer == 23) //reja
                     {
                         Debug.Log("reja");
-                        interact[i].GetComponent<RejaScript>().SetActive();
+                        interact[i].GetComponent<RejaScript>().SetDisable();
 
                     }
                     else

@@ -283,10 +283,14 @@ public class ActionsController : MonoBehaviour
 
         if (atractObj.transform.gameObject.layer == 22)
         {
-            atractObj.transform.parent.GetComponent<LeverScript>().ActiveElements();
+            if (atractObj.transform.parent.GetComponent<LeverScript>().state != LeverState.ACTIVE)
+            {
+                atractObj.transform.parent.GetComponent<LeverScript>().ActiveElements();
+                atract = false;
+            }
 
 
-            atract = false;
+
 
 
         }
