@@ -88,11 +88,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1319543179, guid: ecfc727ab52f6f44da6c79e536989f0f, type: 3}
       propertyPath: m_Range
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1319543179, guid: ecfc727ab52f6f44da6c79e536989f0f, type: 3}
       propertyPath: m_Shadows.m_Type
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319543179, guid: ecfc727ab52f6f44da6c79e536989f0f, type: 3}
+      propertyPath: m_Intensity
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc727ab52f6f44da6c79e536989f0f, type: 3}
