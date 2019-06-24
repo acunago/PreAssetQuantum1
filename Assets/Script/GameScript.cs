@@ -23,6 +23,7 @@ public class GameScript : MonoBehaviour
     public GameObject checkpoint;
 
     public GameObject Calavera;
+    private Animator anim;
 
     private void Update()
     {
@@ -33,6 +34,7 @@ public class GameScript : MonoBehaviour
     public void GameOver()
     {
         Calavera.GetComponent<ActionsController>().DeathChar();
+        anim = Player.GetComponent<Animator>();
         Debug.Log("muerto");
         Invoke("ExectImage", 3);
 
@@ -118,6 +120,7 @@ public class GameScript : MonoBehaviour
         Player = Instantiate(playerPrefab, checkpoint.transform.position, checkpoint.transform.rotation);
         Player.gameObject.GetComponent<vThirdPersonController>().onDead.AddListener(GameOver);
         Calavera.GetComponent<ActionsController>().PosTotal = Player.transform.Find("SkullPos").gameObject;
+        Calavera.GetComponent<ActionsController>().anim = anim;
         AudioManager.instance.sourceHolder = Player.transform.Find("collisionAudio").gameObject;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
