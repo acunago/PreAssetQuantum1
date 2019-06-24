@@ -38,6 +38,7 @@ public class ActionsController : MonoBehaviour
     public AudioManager AudManager;
 
     public Animator anim;
+    private bool activeLever;
     // Start is called before the first frame update
     void Awake()
     {
@@ -119,6 +120,7 @@ public class ActionsController : MonoBehaviour
                 blueMagnet.transform.GetChild(4).GetChild(0).GetComponent<particleAttractorLinear>().target = redMagnet;
             }
             anim.Play("spell");
+            activeLever = true;
         }
 
         if (!AutoAtract)
@@ -292,12 +294,15 @@ public class ActionsController : MonoBehaviour
 
         if (atractObj.transform.gameObject.layer == 22)
         {
-            if (atractObj.transform.parent.GetComponent<LeverScript>().state != LeverState.ACTIVE)
+            if (activeLever)
             {
-                atractObj.transform.parent.GetComponent<LeverScript>().ActiveElements();
-                atract = false;
+                if (atractObj.transform.parent.GetComponent<LeverScript>().state != LeverState.ACTIVE)
+                {
+                    atractObj.transform.parent.GetComponent<LeverScript>().ActiveElements();
+                    atract = false;
+                    activeLever = false;
+                }
             }
-
 
 
 
