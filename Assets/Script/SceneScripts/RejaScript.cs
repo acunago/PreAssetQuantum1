@@ -13,6 +13,8 @@ public class RejaScript : MonoBehaviour
     public GameObject fin;
     public GameObject Collider;
     public SoundBag snd;
+
+    public bool Old = false;
     // Start is called before the first frame update
 
 
@@ -31,7 +33,21 @@ public class RejaScript : MonoBehaviour
         }
     }
 
+    public void ChangeStatus()
+    {
 
+
+        if (state == RejaState.ACTIVE)
+        {
+            state = RejaState.DISABLED;
+        }
+        else
+        {
+            state = RejaState.ACTIVE;
+        }
+
+
+    }
 
     public void SetActive()
     {
@@ -40,7 +56,11 @@ public class RejaScript : MonoBehaviour
 
             state = RejaState.ACTIVE;
         
+
+
+
     }
+
     public void SetDisable()
     {
         state = RejaState.DISABLED;

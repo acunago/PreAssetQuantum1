@@ -101,6 +101,7 @@ public class ActionsController : MonoBehaviour
                 blueMagnet.transform.GetChild(4).GetChild(0).GetComponent<particleAttractorLinear>().target = redMagnet;
             }
             anim.Play("spell");
+
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -131,16 +132,17 @@ public class ActionsController : MonoBehaviour
                     if (blueScript.Stick && redScript.Stick)
                     {
                         RaycastHit hit;
-                        if (Physics.Linecast(redMagnet.transform.position, (redMagnet.transform.position - blueMagnet.transform.position).normalized * distanceCheck, out hit))
+                        Debug.DrawLine(redMagnet.transform.position, (blueMagnet.transform.position), Color.red);
+                        if (Physics.Linecast(redMagnet.transform.position, blueMagnet.transform.position))
                         {
-                            Debug.Log("hit.transform.gameObject.layer " + hit.transform.gameObject.layer);
+                            
 
-                            Debug.Log("pego");
-                            atract = true;
+                           
+                            atract = false;
                         }
                         else
                         {
-                            atract = false;
+                            atract = true;
                         }
                     }
                     else
@@ -229,17 +231,24 @@ public class ActionsController : MonoBehaviour
             redScript = redMagnet.GetComponent<MagnetsController>();
             if (blueScript.Stick && redScript.Stick)
             {
+                Debug.DrawLine(redMagnet.transform.position, (blueMagnet.transform.position), Color.yellow);
                 RaycastHit hit;
-                if (Physics.Linecast(redMagnet.transform.position, (redMagnet.transform.position - blueMagnet.transform.position).normalized * distanceCheck, out hit))
+                if (Physics.Linecast(redMagnet.transform.position, (blueMagnet.transform.position),out hit))
                 {
-                    Debug.Log("hit.transform.gameObject.layer " + hit.transform.gameObject.layer);
+                    if(hit.transform.gameObject.layer == 0) {
+                        atract = false;
+                    }
+                    else { 
+                    Debug.Log("hit" + hit.transform.gameObject.name);
 
-                    Debug.Log("pego");
                     atract = true;
+                    }
+
                 }
                 else
                 {
-                    atract = false;
+
+                    atract = true;
                 }
             }
             else

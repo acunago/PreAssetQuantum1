@@ -61,7 +61,6 @@ public class LeverScript : MonoBehaviour
             Movement.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
         }
     }
-
     public void SetActive()
     {
         if (snd != null)
@@ -84,7 +83,6 @@ public class LeverScript : MonoBehaviour
         }
 
     }
-
     public void ActiveElements()
     {
 
@@ -110,7 +108,14 @@ public class LeverScript : MonoBehaviour
                         if (interact[i].layer == 23) //reja
                         {
                             Debug.Log("reja");
-                            interact[i].GetComponent<RejaScript>().SetActive();
+                            if (!interact[i].GetComponent<RejaScript>().Old)
+                            {
+                                interact[i].GetComponent<RejaScript>().SetActive();
+                            }
+                            else
+                            {
+                                interact[i].GetComponent<RejaScript>().ChangeStatus();
+                            }
 
                         }
                         else
@@ -160,7 +165,14 @@ public class LeverScript : MonoBehaviour
                     if (interact[i].layer == 23) //reja
                     {
                         Debug.Log("reja");
-                        interact[i].GetComponent<RejaScript>().SetDisable();
+                        if (!interact[i].GetComponent<RejaScript>().Old)
+                        {
+                            interact[i].GetComponent<RejaScript>().SetDisable();
+                        }
+                        else
+                        {
+                            interact[i].GetComponent<RejaScript>().ChangeStatus();
+                        }
 
                     }
                     else
