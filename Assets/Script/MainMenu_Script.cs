@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu_Script : MonoBehaviour
 {
-    public Transform currentPos, startPos, optionsPos, playPos;
+    public Transform currentPos, startPos, optionsPos, playPos, instructionsPos;
     public float speedFactor = 0.1f;
 
     // Use this for initialization
@@ -40,6 +40,11 @@ public class MainMenu_Script : MonoBehaviour
     public void Move_3()
     {
         currentPos = playPos;
+    }
+
+    public void Move_4()
+    {
+        currentPos = instructionsPos;
     }
 
     public void Quit()
