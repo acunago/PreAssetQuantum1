@@ -30,7 +30,7 @@ public class SoundBag : MonoBehaviour
 
     public void PlaySound(int sound)
     {
-        if (AudManager != null && sonido != null)
+        if (AudManager != null && sonido != null && sonido.Length > sound)
         {
             if (!AudManager.isPlaying)
             {

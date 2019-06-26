@@ -9,6 +9,7 @@ public enum MySounds : int
     cajas = 1,
     init = 2,
     death = 3,
+    Orbe = 4,
 }
 
 public class ActionsController : MonoBehaviour
@@ -102,6 +103,7 @@ public class ActionsController : MonoBehaviour
                 blueMagnet.transform.GetChild(4).GetChild(0).GetComponent<particleAttractorLinear>().target = redMagnet;
             }
             anim.Play("spell");
+            AudManager.PlaySound(sounds[(int)MySounds.Orbe]);
             activeLever = true;
         }
 
@@ -120,6 +122,7 @@ public class ActionsController : MonoBehaviour
                 blueMagnet.transform.GetChild(4).GetChild(0).GetComponent<particleAttractorLinear>().target = redMagnet;
             }
             anim.Play("spell");
+            AudManager.PlaySound(sounds[(int)MySounds.Orbe]);
             activeLever = true;
         }
 

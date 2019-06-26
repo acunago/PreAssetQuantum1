@@ -14,6 +14,7 @@ public class PlatformScript : MonoBehaviour
     public int objects;
     public float objectsToChange = 1;
     public Color keepColour;
+    public SoundBag snd;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -36,6 +37,10 @@ public class PlatformScript : MonoBehaviour
         if (collision.gameObject.layer != 20)
         {
             objects = objects + 1;
+            if (snd != null)
+            {
+                snd.PlaySound();
+            }
         }
 
     }
