@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7285570904089416475}
   - component: {fileID: 370568154062433636}
   - component: {fileID: 7689141704840246498}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: Smoke (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4709,7 +4709,7 @@ GameObject:
   - component: {fileID: 3572243069188764476}
   - component: {fileID: 6999289610575900568}
   - component: {fileID: 1049261145524759181}
-  m_Layer: 20
+  m_Layer: 8
   m_Name: Smoke (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9409,7 +9409,7 @@ GameObject:
   - component: {fileID: 3984516057087200443}
   - component: {fileID: 4028782948624605541}
   - component: {fileID: 8685193319904373488}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Calabera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9423,7 +9423,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3777549015695101413}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.761, y: 0.155, z: 4.2739}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
@@ -9489,8 +9489,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.6873744
-  m_Center: {x: 0, y: 0.11326432, z: -0.02317071}
+  m_Radius: 2.2734113
+  m_Center: {x: -0.000000002295879, y: 0.113264084, z: 0.56286526}
 --- !u!114 &8685193319904373488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9503,6 +9503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82437354daac0a4e899a0fd28b502b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoAtract: 1
   red: {fileID: 8152868537355652527, guid: 8726d19f22b02604a85f7752278ca4f9, type: 3}
   blue: {fileID: 8955311328478489906, guid: 20c0858ab9b9bf549a356fa5446643b1, type: 3}
   puntoDisparo: {fileID: 7570369135699580758}
@@ -9512,6 +9513,18 @@ MonoBehaviour:
   atract: 0
   PosTotal: {fileID: 0}
   crossHair: {fileID: 0}
+  cross: {fileID: 0}
+  cam: {fileID: 0}
+  attached: 1
+  sounds:
+  - {fileID: 8300000, guid: 3d29151cc7c10ab458d64082628016fe, type: 3}
+  - {fileID: 8300000, guid: 3d29151cc7c10ab458d64082628016fe, type: 3}
+  - {fileID: 8300000, guid: 9eda8280ab2f5a04a9bf7eaaf79b4b67, type: 3}
+  - {fileID: 8300000, guid: 1da30983f6283ac448c4e2d0a185b1c3, type: 3}
+  - {fileID: 8300000, guid: e077ed1ce1ec3b14d9c0e5d4d0843335, type: 3}
+  AudManager: {fileID: 0}
+  anim: {fileID: 0}
+  activeLever: 0
 --- !u!1 &7570369135699580758
 GameObject:
   m_ObjectHideFlags: 0
