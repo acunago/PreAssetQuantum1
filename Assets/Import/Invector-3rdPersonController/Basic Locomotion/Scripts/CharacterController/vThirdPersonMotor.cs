@@ -978,7 +978,7 @@ namespace Invector.vCharacterController
             ragdolled = true;
             _capsuleCollider.isTrigger = true;
             _rigidbody.useGravity = false;
-            _rigidbody.isKinematic = true;
+            //_rigidbody.isKinematic = true;
             lockMovement = true;
         }
 

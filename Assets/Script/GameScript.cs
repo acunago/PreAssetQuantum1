@@ -77,7 +77,7 @@ public class GameScript : MonoBehaviour
             RestCheck();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             SceneManager.LoadScene("Level1-TheCave");
 

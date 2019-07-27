@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class ActiveScript : MonoBehaviour
 {
+    public GameObject[] activeObjects;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        foreach (var item in activeObjects)
+        {
+            if(item.gameObject.layer == 23 || item.gameObject.layer == 26)
+            {
+                item.GetComponent<RejaScript>().ChangeStatus();
+            }
+        } 
     }
-    public void SetActive()
+    private void OnTriggerExit(Collider other)
     {
-
+        foreach (var item in activeObjects)
+        {
+            if (item.gameObject.layer == 23 || item.gameObject.layer == 26)
+            {
+                item.GetComponent<RejaScript>().ChangeStatus();
+            }
+        }
     }
 }
