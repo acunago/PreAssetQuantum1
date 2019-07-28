@@ -44,15 +44,15 @@ public class MainMenu_Script : MonoBehaviour
                 speedFactor = 0.005f;
                 delayGo += 1 * Time.deltaTime;
                 Debug.Log(delayGo);
-                if(delayGo >= goScene)
-                {
-                    StartLevel();
-                }
+
             }
 
         }
 
-
+        if (Vector3.Distance(enterDoorPos.position, transform.position) < 1)
+        {
+            StartLevel();
+        }
     }
 
     public void Move_5()

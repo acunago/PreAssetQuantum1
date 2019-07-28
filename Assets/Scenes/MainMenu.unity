@@ -13648,6 +13648,7 @@ GameObject:
   - component: {fileID: 1032318862}
   - component: {fileID: 1032318863}
   - component: {fileID: 1032318864}
+  - component: {fileID: 1032318865}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -13851,6 +13852,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &1032318865
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032318858}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1032751521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 438576, guid: 42988b617e6b4924e88885352823ba7f,
