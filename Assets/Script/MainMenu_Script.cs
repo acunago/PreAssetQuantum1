@@ -6,11 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu_Script : MonoBehaviour
 {
+
+    public List<AudioClip> allSounds;
     public Transform currentPos, startPos, optionsPos, playPos, instructionsPos, enterDoorPos;
     public float speedFactor = 0.1f;
     private float delayWait = 0f;
-    private float goDoor = 2f;
+    private float delayGo = 0f;
 
+    private float goDoor = 2f;
+    private float goScene = 2f;
+    private AudioSource audioSource;
+
+
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     // Use this for initialization
     void Start()
     {
@@ -29,8 +40,14 @@ public class MainMenu_Script : MonoBehaviour
             if(delayWait >= goDoor)
             {
                 delayWait = 0;
-                Move_5();
-                speedFactor = 0.001f;
+                currentPos = enterDoorPos;
+                speedFactor = 0.005f;
+                delayGo += 1 * Time.deltaTime;
+                Debug.Log(delayGo);
+                if(delayGo >= goScene)
+                {
+                    StartLevel();
+                }
             }
 
         }
@@ -40,7 +57,8 @@ public class MainMenu_Script : MonoBehaviour
 
     public void Move_5()
     {
-        currentPos = enterDoorPos;
+        audioSource.clip = allSounds[0];
+        audioSource.Play();
     }
 
     public void StartLevel()
@@ -50,21 +68,29 @@ public class MainMenu_Script : MonoBehaviour
 
     public void Move_1()
     {
+        audioSource.clip = allSounds[0];
+        audioSource.Play();
         currentPos = startPos;
     }
 
     public void Move_2()
     {
+        audioSource.clip = allSounds[0];
+        audioSource.Play();
         currentPos = optionsPos;
     }
 
     public void Move_3()
     {
+        audioSource.clip = allSounds[0];
+        audioSource.Play();
         currentPos = playPos;
     }
 
     public void Move_4()
     {
+        audioSource.clip = allSounds[0];
+        audioSource.Play();
         currentPos = instructionsPos;
     }
 
@@ -72,6 +98,8 @@ public class MainMenu_Script : MonoBehaviour
 
     public void Quit()
     {
+        audioSource.clip = allSounds[0];
+        audioSource.Play();
         Application.Quit();
     }
 
