@@ -22,7 +22,7 @@ public class SurfScript : MonoBehaviour
     {
         if(other.gameObject.layer == 8)
         {
-            player.transform.SetParent(transform);
+            other.transform.root.SetParent(transform);
         }
     }
 
