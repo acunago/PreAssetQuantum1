@@ -9,6 +9,7 @@ public class ActiveScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.layer != 8) { return; }
         foreach (var item in activeObjects)
         {
             if(item.gameObject.layer == 23 || item.gameObject.layer == 26)
@@ -19,6 +20,7 @@ public class ActiveScript : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.layer != 8) { return; }
         foreach (var item in activeObjects)
         {
             if (item.gameObject.layer == 23 || item.gameObject.layer == 26)
