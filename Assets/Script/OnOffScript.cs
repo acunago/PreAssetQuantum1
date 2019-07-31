@@ -9,6 +9,8 @@ public class OnOffScript : MonoBehaviour
     public SoundBag snd;
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.layer != 8) return;
+
         foreach (GameObject go in turnON)
         {
 
