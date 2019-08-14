@@ -21,7 +21,10 @@ public class OnOffScript : MonoBehaviour
         {
             go.SetActive(false);
         }
-        snd.PlaySound();
+        if (snd != null)
+        {
+            snd.PlaySound();
+        }
         this.gameObject.SetActive(false);
     }
 }
