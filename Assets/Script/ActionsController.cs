@@ -57,10 +57,6 @@ public class ActionsController : MonoBehaviour
 
         if (PauseMenu.GameIsPaused) return;
 
-        //Ray ray = cam.ScreenPointToRay(new Vector3(cross.localPosition.x, cross.localPosition.y, 0));
-        //Debug.DrawRay(ray.origin, ray.direction * 10, Color.yellow);
-
-        //Debug.DrawLine(transform.position,  Camera.main.ScreenToWorldPoint(crossHair.transform.forward) * 8);
         if (PosTotal != null)
         {
             if (attached)
@@ -139,10 +135,7 @@ public class ActionsController : MonoBehaviour
                         RaycastHit hit;
                         Debug.DrawLine(redMagnet.transform.position, (blueMagnet.transform.position), Color.red);
                         if (Physics.Linecast(redMagnet.transform.position, blueMagnet.transform.position))
-                        {
-                            
-
-                           
+                        {                         
                             atract = false;
                         }
                         else
@@ -176,6 +169,7 @@ public class ActionsController : MonoBehaviour
                 atract = false;
             }
             atract = false;
+            activeLever = true;
         }
 
         if (atract)
@@ -186,8 +180,6 @@ public class ActionsController : MonoBehaviour
                 return;
             }
 
-
-
             Rigidbody rbBlue = blueMagnet.GetComponent<FixedJoint>().connectedBody;
             Rigidbody rbRed = redMagnet.GetComponent<FixedJoint>().connectedBody;
 
@@ -197,28 +189,8 @@ public class ActionsController : MonoBehaviour
 
             if (rbBlue.transform.gameObject.layer == 18 || rbBlue.transform.gameObject.layer == 22)
             {
-
-                Debug.Log("Deberia mover Azul");
-                //rbBlue.AddForce(-_force, ForceMode.Impulse);
-                //rbBlue.transform.position  = Vector3.Lerp (rbRed.transform.position, (rbRed.transform.position - rbBlue.transform.position).normalized,1f);
-
                 InteractOrbs(rbBlue.gameObject, rbRed.gameObject);
-
-
             }
-            else
-            {
-                //if (rbRed.transform.gameObject.layer == 18 || rbRed.transform.gameObject.layer == 22)
-                //{
-
-                //    InteractOrbs(rbRed.gameObject, rbBlue.gameObject);
-
-                //}
-            }
-
-
-
-
         }
     }
 
@@ -240,13 +212,15 @@ public class ActionsController : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Linecast(redMagnet.transform.position, (blueMagnet.transform.position),out hit))
                 {
-                    if(hit.transform.gameObject.layer == 0) {
+                    if (hit.transform.gameObject.layer == 0)
+                    {
                         atract = false;
                     }
-                    else { 
-                    Debug.Log("hit" + hit.transform.gameObject.name);
+                    else
+                    {
+                        Debug.Log("hit" + hit.transform.gameObject.name);
 
-                    atract = true;
+                        atract = true;
                     }
 
                 }
