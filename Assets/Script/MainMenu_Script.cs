@@ -9,6 +9,7 @@ public class MainMenu_Script : MonoBehaviour
 
     public List<AudioClip> allSounds;
     public Transform currentPos, startPos, optionsPos, playPos, instructionsPos, enterDoorPos;
+    public GameObject Loading;
     public float speedFactor = 0.1f;
     private float delayWait = 0f;
     private float delayGo = 0f;
@@ -21,12 +22,10 @@ public class MainMenu_Script : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        Loading.SetActive(false);
     }
     // Use this for initialization
-    void Start()
-    {
 
-    }
     // Update is called once per frame
     void Update()
     {
@@ -63,6 +62,7 @@ public class MainMenu_Script : MonoBehaviour
 
     public void StartLevel()
     {
+        Loading.SetActive(true);
         SceneManager.LoadScene("Level1-TheCave");
     }
 
